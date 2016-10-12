@@ -1,0 +1,15 @@
+{
+  "name": "final_year_project",
+  "version": "1.0.0",
+  "description": "James O'Meara Final Year Project Computer Science ID:13715519",
+  "main": "app/server/server.js",
+  "scripts": {
+    "start": "node app/server/server.js",
+    "test": "grunt:test"
+  },
+  "author": "James O'Meara 13715519",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
