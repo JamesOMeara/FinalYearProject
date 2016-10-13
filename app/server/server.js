@@ -5,6 +5,10 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
+// app.get('/', function (req, res) {
+//   res.render('../client/index');
+// });
+
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+  console.log('Server listening on port 3000!');
 });
