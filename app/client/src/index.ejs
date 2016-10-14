@@ -2,12 +2,22 @@
 <html>
 
   <head>
+
+    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="app/client/app.js"></script>
+
     <title>James O'Meara</title>
   </head>
 
   <body ng-app="app">
   	<p> Hello World </p>
-    <script src="app.js"></script>
+
+    <div ng-app="app" ng-controller="myfirstcontroller">
+      <ul>
+          <li ng-repeat="x in something">{{x}}</li>
+      </ul>
+    </div>
+
   </body>
 
 </html>
