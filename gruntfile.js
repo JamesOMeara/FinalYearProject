@@ -7,22 +7,22 @@ module.exports = function(grunt) {
         
 
         client: {
-            src: ['app/client/app.js'],
-            dest: 'app/client/public/app.js',
+            src: ['./app/client/app.js'],
+            dest: './app/client/public/app.js',
             options: {
                 external: ['angular'],
             }
         },
         deps: {
             src: [],
-            dest: 'public/deps.js',
+            dest: './app/client/public/libs.js',
             options: {
                 alias: {
                     angular: './node_modules/angular/angular.js'
                 }
             }
         },
-        },
+    },
 
 
     jshint: {
@@ -44,5 +44,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browserify');
 
   grunt.registerTask('default', ['browserify']);
+
+  grunt.registerTask('build', ['browserify']);
+  grunt.registerTask('b', ['build']);
+  
+  
 
 };
