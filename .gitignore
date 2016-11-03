@@ -1,3 +1,4 @@
 node_modules/
 app/client/public
 npm-debug.log
+coverage/

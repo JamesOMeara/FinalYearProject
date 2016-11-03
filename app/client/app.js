@@ -1,6 +1,6 @@
 
 
-require('../../node_modules/angular/angular');
+require('angular');
 var app = angular.module("app", []); 
 
 app.controller("myfirstcontroller", function($scope) {
