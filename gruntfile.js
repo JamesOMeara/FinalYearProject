@@ -11,6 +11,8 @@ module.exports = function(grunt) {
             dest: './app/client/public/app.js',
             options: {
                 external: ['angular'],
+                bootstrap: ['ui-bootstrap'],
+                jquery: ['jquery'],
             }
         },
         deps: {
@@ -18,7 +20,9 @@ module.exports = function(grunt) {
             dest: './app/client/public/libs.js',
             options: {
                 alias: {
-                    angular: './node_modules/angular/angular.js'
+                    angular: './app/client/public/lib/angular/angular.js',
+                    bootstrap: ['./app/client/public/lib/angular-bootstrap/ui-bootstrap-tpls.js'],
+                    // jquery: ['./app/client/public/lib/angular/jquery/dist/jquery.js'],
                 }
             }
         },
