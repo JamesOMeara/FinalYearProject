@@ -4,15 +4,15 @@ module.exports = function(grunt) {
     grunt.initConfig({
 
     browserify: {
-        
-
         client: {
             src: ['./app/client/app.js'],
             dest: './app/client/public/app.js',
             options: {
-                external: ['angular'],
-                bootstrap: ['ui-bootstrap'],
-                jquery: ['jquery'],
+                external:{
+                    angular: ['angular'],
+                    bootstrap: ['ui-bootstrap'],
+                    jquery: ['jquery'],
+                }
             }
         },
         deps: {
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
                 alias: {
                     angular: './app/client/public/lib/angular/angular.js',
                     bootstrap: ['./app/client/public/lib/angular-bootstrap/ui-bootstrap-tpls.js'],
-                    // jquery: ['./app/client/public/lib/angular/jquery/dist/jquery.js'],
+                    jquery: ['./app/client/public/lib/angular/jquery/dist/jquery.js'],
                 }
             }
         },

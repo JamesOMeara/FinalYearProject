@@ -10,4 +10,4 @@ installation instructions
 	
 
 Test 
-- gtunt test 
+- grunt test 
