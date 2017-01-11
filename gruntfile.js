@@ -27,8 +27,6 @@ grunt.initConfig({
             }
         },
     },
-
-
     jshint: {
       files: ['Gruntfile.js', 'app/**/*.js', 'test/**/*.js'],
       options: {
@@ -42,29 +40,79 @@ grunt.initConfig({
       tasks: ['jshint']
     },
     karma: {
-      unit: {
-        configFile: 'karma.conf.js',
-        singleRun: true,
-        browsers: ['Chrome'],
-        reporters: ['coverage', 'story', 'dots','junit']  /*'progress',  'spec'*/
-      }
+        unit: {
+            configFile: 'karma.conf.js',
+            port: 9999,
+            singleRun: true,
+            browsers: ['Chrome'],
+            logLevel: 'ERROR'
+        }
     },
+    jasmine_nodejs: {
+        // task specific (default) options 
+        options: {
+            specNameSuffix: ".js", // also accepts an array 
+            helperNameSuffix: "helper.js",
+            useHelpers: false,
+            random: false,
+            seed: null,
+            defaultTimeout: null, // defaults to 5000 
+            stopOnFailure: false,
+            traceFatal: true,
+            // configure one or more built-in reporters 
+            reporters: {
+                console: {
+                    colors: true,        // (0|false)|(1|true)|2 
+                    cleanStack: 1,       // (0|false)|(1|true)|2|3 
+                    verbosity: 4,        // (0|false)|1|2|3|(4|true) 
+                    listStyle: "indent", // "flat"|"indent" 
+                    activity: false
+                },
+            },
+            // add custom Jasmine reporter(s) 
+            customReporters: []
+        },
+        your_target: {
+            options: {
+                useHelpers: true
+            },
+            specs: [
+                "spec/unit/server/**",
+            ],
+            helpers: [
+            ]
+        }
+    },
+
+
+
   });
 
+
+
+  //--LOADING TASKS--
+  //testing
+  grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-jasmine-nodejs');
+  //grunt
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  //building
   grunt.loadNpmTasks('grunt-browserify');
-
-  grunt.registerTask('default', ['browserify']);
-
   
+
+
+
+  //--REGISTERING TASKS--
+  //default task
+  grunt.registerTask('default', ['browserify']);
   //build
   grunt.registerTask('b', ['build']);
   grunt.registerTask('build', ['browserify']);
-
   //test
-  grunt.registerTask('karma', ['karma:unit']);
-  
+  grunt.registerTask('test', ['karma:unit', 'jasmine_nodejs']);
+  grunt.registerTask('test_unit', ['karma:unit']);
+  grunt.registerTask('test_server', ['jasmine_nodejs']);
   
 
 };
