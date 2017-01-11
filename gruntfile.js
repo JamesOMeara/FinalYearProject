@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
     
-    grunt.initConfig({
+grunt.initConfig({
 
     browserify: {
         client: {
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
                 alias: {
                     angular: './app/client/public/lib/angular/angular.js',
                     bootstrap: ['./app/client/public/lib/angular-bootstrap/ui-bootstrap-tpls.js'],
-                    jquery: ['./app/client/public/lib/angular/jquery/dist/jquery.js'],
+                    jquery: ['./app/client/public/lib/jquery/dist/jquery.js'],
                 }
             }
         },
@@ -40,7 +40,15 @@ module.exports = function(grunt) {
     watch: {
       files: ['<%= jshint.files %>'],
       tasks: ['jshint']
-    }
+    },
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js',
+        singleRun: true,
+        browsers: ['Chrome'],
+        reporters: ['coverage', 'story', 'dots','junit']  /*'progress',  'spec'*/
+      }
+    },
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -49,8 +57,13 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['browserify']);
 
-  grunt.registerTask('build', ['browserify']);
+  
+  //build
   grunt.registerTask('b', ['build']);
+  grunt.registerTask('build', ['browserify']);
+
+  //test
+  grunt.registerTask('karma', ['karma:unit']);
   
   
 
