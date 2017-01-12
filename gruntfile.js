@@ -83,9 +83,22 @@ grunt.initConfig({
             ]
         }
     },
-
-
-
+    protractor: {
+        // tasks: ['node_modules/grunt-protractor-runner/scripts/webdriver-manager-update'],
+        run:{
+            options: {
+                webdriverManagerUpdate: true,
+                configFile: "conf.js", // Default config file 
+                // configFile: "node_modules/protractor/example/conf.js", // Default config file 
+                webdriverManagerUpdate: true,
+                
+                keepAlive: true, // If false, the grunt process stops when the test fails. 
+                noColor: false, // If true, protractor will not use colors in its output. 
+                args: {
+                }
+            },
+        }
+    },
   });
 
 
@@ -94,6 +107,8 @@ grunt.initConfig({
   //testing
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-jasmine-nodejs');
+  grunt.loadNpmTasks('grunt-protractor-runner');
+  grunt.loadNpmTasks('grunt-protractor-webdriver');
   //grunt
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -113,6 +128,8 @@ grunt.initConfig({
   grunt.registerTask('test', ['karma:unit', 'jasmine_nodejs']);
   grunt.registerTask('test_unit', ['karma:unit']);
   grunt.registerTask('test_server', ['jasmine_nodejs']);
+  grunt.registerTask('setupe2e', ['protractor_webdriver']);
+  
   
 
 };
