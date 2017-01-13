@@ -16,7 +16,8 @@
     "express": "^4.14.0",
     "grunt": "^1.0.1",
     "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0"
+    "grunt-contrib-watch": "^1.0.0",
+    "mongodb": "^2.2.20"
   },
   "devDependencies": {
     "grunt-browserify": "^5.0.0",
