@@ -12,6 +12,7 @@ grunt.initConfig({
                     angular: ['angular'],
                     bootstrap: ['ui-bootstrap'],
                     jquery: ['jquery'],
+                    appTemplates: ['./app/client/src/directives/templates/templates.js']
                 }
             }
         },
@@ -23,9 +24,19 @@ grunt.initConfig({
                     angular: './app/client/public/lib/angular/angular.js',
                     bootstrap: ['./app/client/public/lib/angular-bootstrap/ui-bootstrap-tpls.js'],
                     jquery: ['./app/client/public/lib/jquery/dist/jquery.js'],
+                    appTemplates: './app/client/src/directives/templates/templates.js',
                 }
             }
         },
+    },
+    ngtemplates:  {
+        app:        {
+            src:      './app/client/src/directives/templates/*.ejs',
+            dest:     './app/client/src/directives/templates/templates.js',
+            options:  {
+                prefix: '',
+            }
+        }
     },
     jshint: {
       files: ['Gruntfile.js', 'app/**/*.js', 'test/**/*.js'],
@@ -114,7 +125,7 @@ grunt.initConfig({
   grunt.loadNpmTasks('grunt-contrib-watch');
   //building
   grunt.loadNpmTasks('grunt-browserify');
-  
+  grunt.loadNpmTasks('grunt-angular-templates');
 
 
 
@@ -123,12 +134,12 @@ grunt.initConfig({
   grunt.registerTask('default', ['browserify']);
   //build
   grunt.registerTask('b', ['build']);
-  grunt.registerTask('build', ['browserify']);
+  grunt.registerTask('build', ['ngtemplates', 'browserify']);
   //test
-  grunt.registerTask('test', ['karma:unit', 'jasmine_nodejs']);
+  grunt.registerTask('test', ['test_unit', 'test_server', 'test_e2e']);
   grunt.registerTask('test_unit', ['karma:unit']);
   grunt.registerTask('test_server', ['jasmine_nodejs']);
-  grunt.registerTask('setupe2e', ['protractor_webdriver']);
+  grunt.registerTask('test_e2e', ['protractor']);
   
   
 
