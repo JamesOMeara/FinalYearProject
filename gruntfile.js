@@ -12,19 +12,22 @@ grunt.initConfig({
                     angular: ['angular'],
                     bootstrap: ['ui-bootstrap'],
                     jquery: ['jquery'],
-                    "./app/client/src/directives/templates/templates.js": ['./app/client/src/directives/templates/templates.js']
+                    "./src/directives/templates/templates.js": ['./app/client/src/directives/templates/templates.js']
                 }
             }
         },
-        templates: {
-            src: [],
-            dest: './app/client/public/templates.js',
-            options: {
-                alias: {
-                    "./app/client/src/directives/templates/templates.js": './app/client/src/directives/templates/templates.js',
-                }
-            }
-        },
+        // templates: {
+        //     src: [ './app/client/src/directives/templates/templates.js' ],
+        //     dest: './app/client/public/templates.js',
+        //     options: {
+        //         // external:{
+        //         //     angular: ['angular'],
+        //         // },
+        //         alias: {
+        //             "./src/directives/templates/templates.js": ['./app/client/src/directives/templates/templates.js']
+        //         }
+        //     }
+        // },
         deps: {
             src: [],
             dest: './app/client/public/libs.js',
@@ -33,6 +36,7 @@ grunt.initConfig({
                     angular: './app/client/public/lib/angular/angular.js',
                     bootstrap: ['./app/client/public/lib/angular-bootstrap/ui-bootstrap-tpls.js'],
                     jquery: ['./app/client/public/lib/jquery/dist/jquery.js'],
+                    "./src/directives/templates/templates.js": ['./app/client/src/directives/templates/templates.js']
                 }
             }
         },
@@ -42,7 +46,7 @@ grunt.initConfig({
             src:      './app/client/src/directives/templates/*.ejs',
             dest:     './app/client/src/directives/templates/templates.js',
             options:  {
-                prefix: '',
+                // prefix: '',
             }
         }
     },
@@ -55,8 +59,8 @@ grunt.initConfig({
       }
     },
     watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint']
+      files: ['./app/client/src/**/*.js', 'gruntfile.js'],
+      tasks: ['build']
     },
     karma: {
         unit: {
