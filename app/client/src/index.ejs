@@ -4,21 +4,19 @@
   <head>
     <meta charset = "UTF-8">
 
-    
     <script type="text/javascript" src="libs.js"></script>
     <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="templates.js"></script>
 
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
-  
-    
 
     <title>James O'Meara</title>
-    
+
   </head>
 
-  <body ng-app="app">
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+  <header>
+  
+    <nav class="navbar navbar-inverse navbar-default.navbar-static-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -40,8 +38,13 @@
       </div>
     </nav>
 
+  </header>
+  
+
+  <body ng-app="app" style="height: 80px;">
 
     <div class="container">
+
       <div class="starter-template">
         <h1>Bootstrap starter template</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
@@ -50,16 +53,21 @@
       <div  ng-controller="myfirstcontroller">
         <ul>
             <li ng-repeat="x in something">{{x}}</li>
+            {{testVariable}}
         </ul>
+        <test-directive>
       </div>
-    </div><!-- /.container -->
+    
+      <div>
+        <test-directive>
+      </div>
 
-    
-    <div>
-      <test-directive>
-    </div>
-    
-    
+      <div>
+        <my-customer>
+      </div>
+
+
+    </div><!-- /.container -->
 
   </body>
 

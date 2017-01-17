@@ -12,7 +12,16 @@ grunt.initConfig({
                     angular: ['angular'],
                     bootstrap: ['ui-bootstrap'],
                     jquery: ['jquery'],
-                    appTemplates: ['./app/client/src/directives/templates/templates.js']
+                    "./app/client/src/directives/templates/templates.js": ['./app/client/src/directives/templates/templates.js']
+                }
+            }
+        },
+        templates: {
+            src: [],
+            dest: './app/client/public/templates.js',
+            options: {
+                alias: {
+                    "./app/client/src/directives/templates/templates.js": './app/client/src/directives/templates/templates.js',
                 }
             }
         },
@@ -24,7 +33,6 @@ grunt.initConfig({
                     angular: './app/client/public/lib/angular/angular.js',
                     bootstrap: ['./app/client/public/lib/angular-bootstrap/ui-bootstrap-tpls.js'],
                     jquery: ['./app/client/public/lib/jquery/dist/jquery.js'],
-                    appTemplates: './app/client/src/directives/templates/templates.js',
                 }
             }
         },

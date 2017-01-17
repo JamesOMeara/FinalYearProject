@@ -10,6 +10,8 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "  {{testVariable}}\r" +
     "\n" +
+    "  {{val.data}}\r" +
+    "\n" +
     "</div>"
   );
 
