@@ -5,10 +5,14 @@
   "main": "app/server/server.js",
   "scripts": {
     "start": "node app/server/server.js",
-    "test": "grunt:test"
+    "dev": "grunt watch",
+    "test": "grunt test"
   },
   "author": "James O'Meara 13715519",
   "license": "ISC",
+  "browser": {
+    "templates": "./app/client/src/directives/templates/templates.js"
+  },
   "dependencies": {
     "bower": "^1.8.0",
     "ejs": "^2.5.2",

@@ -1,50 +1,63 @@
 module.exports = function(grunt) {
 
+var pkg = require('./package.json')
     
 grunt.initConfig({
-
+    
+    
     browserify: {
         client: {
             src: ['./app/client/app.js'],
             dest: './app/client/public/app.js',
             options: {
-                external:{
-                    angular: ['angular'],
-                    bootstrap: ['ui-bootstrap'],
-                    jquery: ['jquery'],
-                    "./src/directives/templates/templates.js": ['./app/client/src/directives/templates/templates.js']
-                }
+                // external:{
+                //     angular: ['angular'],
+                //     bootstrap: ['ui-bootstrap'],
+                //     // jquery: ['jquery'],
+                //     // "templates": [ pkg.browser.templates ],
+                // }
+                external:[
+                    'angular',
+                    // 'bootstrap',
+                    "templates",
+                ]
             }
         },
-        // templates: {
-        //     src: [ './app/client/src/directives/templates/templates.js' ],
-        //     dest: './app/client/public/templates.js',
-        //     options: {
-        //         // external:{
-        //         //     angular: ['angular'],
-        //         // },
-        //         alias: {
-        //             "./src/directives/templates/templates.js": ['./app/client/src/directives/templates/templates.js']
-        //         }
-        //     }
-        // },
+        templates: {
+            src: [ ],
+            dest: './app/client/public/templates.js',
+            options: {
+                browserifyOptions: {				 
+                    paths: ['./node_modules', './app/client/public/lib/', '.']
+                },
+                alias: [
+                    'templates',
+                    // "./src/directives/templates/templates.js": ['./app/client/src/directives/templates/templates.js']
+                ]
+            }
+        },
         deps: {
             src: [],
             dest: './app/client/public/libs.js',
             options: {
-                alias: {
-                    angular: './app/client/public/lib/angular/angular.js',
-                    bootstrap: ['./app/client/public/lib/angular-bootstrap/ui-bootstrap-tpls.js'],
-                    jquery: ['./app/client/public/lib/jquery/dist/jquery.js'],
-                    "./src/directives/templates/templates.js": ['./app/client/src/directives/templates/templates.js']
-                }
+                browserifyOptions: {				 
+                    paths: ['./node_modules', './app/client/public/lib/', '.']
+                },
+                alias: [
+                    // angular: './app/client/public/lib/angular/angular.js',
+                    // bootstrap: ['./app/client/public/lib/angular-bootstrap/ui-bootstrap-tpls.js'],
+                    // jquery: ['./app/client/public/lib/jquery/dist/jquery.js'],
+                    'angular',
+                    // 'templates',
+                    // "./src/directives/templates/templates.js": ['./app/client/src/directives/templates/templates.js']
+                ]
             }
         },
     },
     ngtemplates:  {
         app:        {
             src:      './app/client/src/directives/templates/*.ejs',
-            dest:     './app/client/src/directives/templates/templates.js',
+            dest:     pkg.browser.templates, //'./app/client/src/directives/templates/templates.js',
             options:  {
                 // prefix: '',
             }
@@ -59,7 +72,7 @@ grunt.initConfig({
       }
     },
     watch: {
-      files: ['./app/client/src/**/*.js', 'gruntfile.js'],
+      files: ['./app/client/src/**/*.js', './app/server/**/*.js', './app/client/src/**/*.ejs', 'gruntfile.js'],
       tasks: ['build']
     },
     karma: {
@@ -138,7 +151,6 @@ grunt.initConfig({
   //building
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-angular-templates');
-
 
 
   //--REGISTERING TASKS--

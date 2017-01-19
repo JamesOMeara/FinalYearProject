@@ -5,8 +5,9 @@
     <meta charset = "UTF-8">
 
     <script type="text/javascript" src="libs.js"></script>
-    <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="templates.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    
 
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
 
@@ -14,10 +15,10 @@
 
   </head>
 
-  <header>
+  <header ng-controller="navController">
   
     <nav class="navbar navbar-inverse navbar-default.navbar-static-top">
-      <div class="container">
+      <div class="container" >
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -30,27 +31,29 @@
         
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a style="cursor: hand" ng-click="setSection('home')"  >Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
+          
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
+    <p>Section = {{section}}</p>
   </header>
   
 
   <body ng-app="app" style="height: 80px;">
 
-    <div class="container">
+    <div class="container" ng-controller="mainController">
 
       <div class="starter-template">
         <h1>Bootstrap starter template</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <p>Section = {{section}}</p>
       </div>
 
-      <div  ng-controller="mainController">
+      <div  >
         <ul>
             <li ng-repeat="x in something">{{x}}</li>
             {{testVariable}}
@@ -65,6 +68,7 @@
       <div>
         <my-customer>
       </div>
+      
 
 
     </div><!-- /.container -->
