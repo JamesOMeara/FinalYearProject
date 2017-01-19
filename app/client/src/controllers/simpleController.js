@@ -2,33 +2,25 @@
 module.exports = function(app) {
  
     app.controller("mainController", function($scope) {
-
-        // $scope.sections = {
-        //     home: "home",
-        //     firstPage: "firstpage"
-        // };
-        $scope.section = "not changed yet"
-        // $scope.setSection = function(sec){
-        //     $scope.section = sec
-        // }
-
-
         $scope.something = ["Printing ", 'out', 'something', 'from', 'an', 'angular', 'controlller'];
         $scope.testVariable = 'some string'
     });
 
     app.controller("navController", function($scope) {
-
+        $scope.selected = 1;
         $scope.sections = {
-            home: "home",
-            firstPage: "firstpage"
-        };
-        $scope.section = $scope.sections.firstPage
-        $scope.setSection = function(sec){
-            $scope.section = sec
+                home: 1,
+                two: 2,
+                three: 3,
         }
-
-
+        $scope.isNavbuttonActive = function(s){
+            if(s == $scope.selected){
+                return true
+            }else
+            return false;
+        }
+        $scope.setSection = function(sec){
+            $scope.selected = sec
+        }
     });
-
 };
