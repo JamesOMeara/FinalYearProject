@@ -40,7 +40,7 @@ deleteDocument = function(db, callback) {
   });
 }
 
-exports.findDocuments = function() {
+exports.findDocuments = function(req, res) {
 
     MongoClient.connect(dburl, function(err, db) {
         console.log("Connected correctly to server")
@@ -53,23 +53,33 @@ exports.findDocuments = function() {
                 console.log("Found the following records");
                 console.dir(docs);
                 db.close();
-                return docs
+                res.send( { data: docs } ) ;
+                // return docs
             });
         })
     })
 };
 
-insertDocuments = function(db, callback) {
-  // Get the documents collection 
-  var collection = db.collection('test');
-  // Insert some documents 
-  collection.insertMany([
-    {a : 1}, {a : 2}, {a : 3}
-  ], function(err, result) {
-    console.log("Inserted 3 documents into the document collection");
-    callback(result);
-  });
-}
+
+exports.insertDocuments = function(record) {
+
+    MongoClient.connect(dburl, function(err, db) {
+        console.log("Connected correctly to server")
+        
+        db.authenticate(usr, pass, function(err, result) {
+        console.log("Authenticated correctly to server")
+            var collection = db.collection('test');
+            // console.log('record')
+            // console.log(record)
+            collection.insertMany( [ record ], function(err, result) {
+              console.log("Inserted document into the document collection");
+              db.close();
+            });
+        })
+    })
+};
+
+
     
 
 

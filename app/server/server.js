@@ -8,14 +8,40 @@ app.set('views', __dirname + '/../client/src');
 
 app.use(express.static(path.join(__dirname, '/../client/public')));
 
+
+
+
 app.get('/', function(req, res) {
     res.render('index');
 });
 
-app.get('/addTest', function(req, res) {
-    results = MongoClient.findDocuments();
-    res.render('index', {'results': results} ) ;
+app.get('/getSomething', function(req, res) {
+    console.log('sending data...')
+    results = MongoClient.findDocuments(req, res);
+    console.log(results)
 });
+
+app.post('/postSomething', function(req, res) {
+    var body = '';
+    req.on('data', function(chunk) {
+        body += chunk;
+    });
+    
+    req.on('end', function() {
+        // var data = JSON.parse( body ).data; 
+        var obj = JSON.parse(body);
+        // console.log('saving data...')
+        console.log('body');
+        console.log(obj);
+        // console.log('data');
+        // console.log(data);
+        MongoClient.insertDocuments(obj);
+    });	
+});
+
+
+
+
 
 app.listen(3333, function () {
   console.log('Server listening on port 3333!');
@@ -24,3 +50,9 @@ app.listen(3333, function () {
 
 
 
+
+		// Handle partial data receipt
+		
+		    
+		// Handle data receipt completion
+	    
