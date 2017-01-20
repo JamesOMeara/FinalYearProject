@@ -17,6 +17,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [   //load files in to be tested, covered etc
+         'app/client/public/lib/angular/angular.js',
+         'app/client/public/lib/angular-mocks/angular-mocks.js',
+         
+         'app/client/public/templates.js',
          'app/client/public/libs.js',
          'app/client/public/app.js',
 
@@ -44,7 +48,7 @@ module.exports = function(config) {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     // reporters: [ 'progress', 'coverage', 'story', 'dots','junit' ],    ///  'progress', 'coverage'  'spec'
-    reporters: [ 'progress', 'coverage' ],    ///  'progress', 'coverage'  'spec'
+    reporters: [ 'progress', 'coverage' , 'story'],    ///  'progress', 'coverage'  'spec'
     
 
 

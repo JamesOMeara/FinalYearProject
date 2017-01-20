@@ -82,6 +82,13 @@ grunt.initConfig({
             singleRun: true,
             browsers: ['Chrome'],
             logLevel: 'ERROR'
+        },
+        dev: {
+            configFile: 'karma.conf.js',
+            port: 9999,
+            singleRun: false,
+            browsers: ['Chrome'],
+            // logLevel: 'config.LOG_DEBUG'
         }
     },
     jasmine_nodejs: {
