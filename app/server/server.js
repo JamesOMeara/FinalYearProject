@@ -47,12 +47,3 @@ app.listen(8080, function () {
   console.log('Server listening on port 8080!');
 });
 
-
-
-
-
-		// Handle partial data receipt
-		
-		    
-		// Handle data receipt completion
-	    

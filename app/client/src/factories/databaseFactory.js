@@ -18,7 +18,6 @@ module.exports = function(app) {
             return $http.post(url, something);
         };
 
-
         return factory;
        
     });
