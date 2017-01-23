@@ -12,10 +12,10 @@ module.exports = function(app) {
         setCurrentPage = function(page){
             currentPage = page
         }
-
+        
         return {
             getCurrentPage: getCurrentPage,
-            setCurrentPage: setCurrentPage
+            setCurrentPage: setCurrentPage,
         }
     });
 

@@ -54,16 +54,72 @@ angular.module('app').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('./app/client/src/directives/templates/testDirective.ejs',
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
+  $templateCache.put('./app/client/src/directives/templates/simpleTable.ejs',
     "<div>\r" +
     "\n" +
-    "  {{testVariable}}\r" +
+    "    <table style=\"width:100%\">\r" +
     "\n" +
-    "  {{val.data}}\r" +
+    "        <tr>\r" +
+    "\n" +
+    "            <th>Firstname</th>\r" +
+    "\n" +
+    "            <th>Lastname</th> \r" +
+    "\n" +
+    "            <th>Age</th>\r" +
+    "\n" +
+    "        </tr>\r" +
+    "\n" +
+    "        <tr ng-repeat=\"x in data\">\r" +
+    "\n" +
+    "            <td>{{ x.name }}</td>\r" +
+    "\n" +
+    "            <td>{{ x.lastname }}</td>\r" +
+    "\n" +
+    "            <td>{{ x.age }}</td>\r" +
+    "\n" +
+    "        </tr>\r" +
+    "\n" +
+    "        <tr>\r" +
+    "\n" +
+    "            <td>\r" +
+    "\n" +
+    "                <form>\r" +
+    "\n" +
+    "                    <input type=\"text\" ng-model=\"formData.firstname\">\r" +
+    "\n" +
+    "                </form>\r" +
+    "\n" +
+    "            </td>\r" +
+    "\n" +
+    "            <td>\r" +
+    "\n" +
+    "                <form>\r" +
+    "\n" +
+    "                    <input type=\"text\" ng-model=\"formData.lastname\">\r" +
+    "\n" +
+    "                </form>\r" +
+    "\n" +
+    "            </td>\r" +
+    "\n" +
+    "            <td>\r" +
+    "\n" +
+    "                <form>\r" +
+    "\n" +
+    "                    <input type=\"text\" ng-model=\"formData.age\">\r" +
+    "\n" +
+    "                </form>\r" +
+    "\n" +
+    "            </td>\r" +
+    "\n" +
+    "            <td>\r" +
+    "\n" +
+    "                <button ng-click = \"submit(formData.firstname, formData.lastname, formData.age)\" >Submit</button>\r" +
+    "\n" +
+    "            </td>\r" +
+    "\n" +
+    "        </tr>\r" +
+    "\n" +
+    "    </table>\r" +
     "\n" +
     "</div>"
   );
