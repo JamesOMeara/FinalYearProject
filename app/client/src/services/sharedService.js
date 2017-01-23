@@ -3,7 +3,7 @@ module.exports = function(app) {
  
     app.service("sharedService", function() {
 
-        currentPage = 0
+        currentPage = 1
 
         getCurrentPage = function(){
             return currentPage

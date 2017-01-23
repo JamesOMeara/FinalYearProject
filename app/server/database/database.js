@@ -6,18 +6,6 @@ dburl= "mongodb://danu7.it.nuigalway.ie:8717/mongodb2868";
 usr = "mongodb2868oj";
 pass = "no1cuk";
 
-findDocuments = function(db, callback) {
-    // Get the documents collection 
-    var collection = db.collection('test');
-    // Find some documents 
-    collection.find({}).toArray(function(err, docs) {
-        console.log("Found the following records");
-        console.dir(docs);
-        callback(docs);
-    });
-};
-
-
 
 updateDocument = function(db, callback) {
   // Get the documents collection 
@@ -30,15 +18,6 @@ updateDocument = function(db, callback) {
   });  
 }
 
-deleteDocument = function(db, callback) {
-  // Get the documents collection 
-  var collection = db.collection('documents');
-  // Insert some documents 
-  collection.deleteOne({ a : 3 }, function(err, result) {
-    console.log("Removed the document with the field a equal to 3");
-    callback(result);
-  });
-}
 
 exports.findDocuments = function(req, res) {
 
@@ -50,11 +29,8 @@ exports.findDocuments = function(req, res) {
             var collection = db.collection('test');
 
             collection.find({}).toArray(function(err, docs) {
-                console.log("Found the following records");
-                console.dir(docs);
                 db.close();
                 res.send( { data: docs } ) ;
-                // return docs
             });
         })
     })
@@ -69,8 +45,6 @@ exports.insertDocuments = function(record) {
         db.authenticate(usr, pass, function(err, result) {
         console.log("Authenticated correctly to server")
             var collection = db.collection('test');
-            // console.log('record')
-            // console.log(record)
             collection.insertMany( [ record ], function(err, result) {
               console.log("Inserted document into the document collection");
               db.close();
@@ -78,6 +52,28 @@ exports.insertDocuments = function(record) {
         })
     })
 };
+
+
+exports.deleteDocument = function(record) {
+
+    MongoClient.connect(dburl, function(err, db) {
+        console.log("Connected correctly to server")
+        
+        db.authenticate(usr, pass, function(err, result) {
+        console.log("Authenticated correctly to server")
+            var collection = db.collection('test');
+            collection.deleteOne( record , function(err, result) {
+                console.log("Deleted document from document collection");
+                db.close();
+            });
+        })
+    })
+};
+
+
+
+
+
 
 
     

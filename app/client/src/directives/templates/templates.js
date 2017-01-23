@@ -22,7 +22,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "            </button>\r" +
     "\n" +
-    "            <a class=\"navbar-brand\" href=\"#\">Project name</a>\r" +
+    "            <a class=\"navbar-brand\" href=\"#\">James O'M FYP</a>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
@@ -77,6 +77,8 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <td>{{ x.age }}</td>\r" +
     "\n" +
+    "            <td><button ng-click = \"delete(  x.name , x.lastname , x.age )\" >Delete</button></td>\r" +
+    "\n" +
     "        </tr>\r" +
     "\n" +
     "        <tr>\r" +
@@ -122,6 +124,43 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "    </table>\r" +
     "\n" +
     "</div>"
+  );
+
+
+  $templateCache.put('./app/client/src/directives/templates/tab1.ejs',
+    "<div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <h1> Home Page </h1>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</div>"
+  );
+
+
+  $templateCache.put('./app/client/src/directives/templates/tab2.ejs',
+    "\r" +
+    "\n" +
+    "<div>\r" +
+    "\n" +
+    "    <div class=\"starter-template\">\r" +
+    "\n" +
+    "        <p>Section = {{ currentPage() }}</p>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div>\r" +
+    "\n" +
+    "        <simple-table-directive>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n"
   );
 
 }]);

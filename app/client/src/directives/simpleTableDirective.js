@@ -3,7 +3,7 @@ module.exports = function(app) {
  
     app.directive('simpleTableDirective', ['databaseFactory', function (databaseFactory) {
         return {
-            controller: 'mainController' ,
+            // controller: 'mainController' ,
             restrict: 'E',
             replace: true,
             scope: {
@@ -17,8 +17,7 @@ module.exports = function(app) {
                 function callmethod(){
                     databaseFactory.getSomething()
                         .then(function (response) {
-                            // $scope.data = response.data.data[0].name;
-                            console.log('Method called')
+                            console.log('find all Method called')
                             scope.data = response.data.data;
                         }, function (error) {
                             scope.data = 'Unable to load data: ' + error.message;
@@ -36,12 +35,30 @@ module.exports = function(app) {
 
                     databaseFactory.postSomething('postSomething', obj)
                         .then(function (response) {
+                            console.log("submitted")
                             scope.status = 'success.';
                         }, function(error) {
                             scope.status = 'Unable to submit: ' + error.message;
                         });
                     callmethod()
                     scope.formData = {}
+                }
+
+                scope.delete = function(firstname, lastname, age){
+                    console.log('Submitted ' + firstname + ' ' + lastname)
+                    obj = {
+                        name : firstname,
+                        lastname : lastname,
+                        age : age
+                    }
+
+                    databaseFactory.deleteSomething('deleteSomething', obj)
+                        .then(function (response) {
+                            scope.status = 'success.';
+                        }, function(error) {
+                            scope.status = 'Unable to submit: ' + error.message;
+                        });
+                    callmethod()
                 }
 
 

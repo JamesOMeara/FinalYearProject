@@ -11,6 +11,9 @@ module.exports = function(app) {
         factory.postSomething = function (url, something) {
             return $http.post(url, something);
         };
+        factory.deleteSomething = function (url, something) {
+            return $http.post(url, something);
+        };
 
 
         return factory;

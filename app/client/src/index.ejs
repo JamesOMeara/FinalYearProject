@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 
   <head>
     <meta charset = "UTF-8">
@@ -13,25 +13,28 @@
 
     <title>James O'Meara</title>
 
+    <header ng-controller="navController">
+      <nav-directive></nav-directive>
+    </header>
+
   </head>
 
-  <header ng-controller="navController">
-    <nav-directive></nav-directive>
-  </header>
+ 
   
 
-  <body ng-app="app" style="height: 80px;">
+  <body ng-controller="mainController" style="height: 80px;">
 
-    <div class="container" ng-controller="mainController">
 
-      <div class="starter-template">
-        <p>Section = {{ currentPage() }}</p>
-      </div>
+    <div class="container" >
+        <div ng-show="showTab(1)">
+            <tab1-directive>
+        </div>
+    </div><!-- /.container -->
 
-      <div>
-        <simple-table-directive>
-      </div>
-
+    <div class="container" >
+        <div ng-show="showTab(2)">
+            <tab2-directive>
+        </div>
     </div><!-- /.container -->
 
   </body>

@@ -16,9 +16,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/getSomething', function(req, res) {
-    console.log('sending data...')
     results = MongoClient.findDocuments(req, res);
-    console.log(results)
 });
 
 app.post('/postSomething', function(req, res) {
@@ -28,14 +26,20 @@ app.post('/postSomething', function(req, res) {
     });
     
     req.on('end', function() {
-        // var data = JSON.parse( body ).data; 
         var obj = JSON.parse(body);
-        // console.log('saving data...')
-        console.log('body');
-        console.log(obj);
-        // console.log('data');
-        // console.log(data);
         MongoClient.insertDocuments(obj);
+    });	
+});
+
+app.post('/deleteSomething', function(req, res) {
+    var body = '';
+    req.on('data', function(chunk) {
+        body += chunk;
+    });
+    
+    req.on('end', function() {
+        var obj = JSON.parse(body);
+        MongoClient.deleteDocument(obj);
     });	
 });
 
