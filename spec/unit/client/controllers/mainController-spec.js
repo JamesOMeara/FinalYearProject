@@ -20,7 +20,7 @@ beforeEach( module('app') );
 
 
     it('Expect the section to be defaulted to 0', function() {
-        expect( $scope.currentPage() ).toBe(0);
+        expect( $scope.currentPage() ).toBe(1);
     });
 
    
