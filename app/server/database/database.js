@@ -2,9 +2,7 @@
 
 MongoClient = require('mongodb').MongoClient;
 
-dburl= "mongodb://danu7.it.nuigalway.ie:8717/mongodb2868";
-usr = "mongodb2868oj";
-pass = "no1cuk";
+
 
 
 updateDocument = function(db, callback) {
