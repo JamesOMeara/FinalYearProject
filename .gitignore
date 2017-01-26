@@ -3,3 +3,4 @@ app/client/public
 npm-debug.log
 coverage/
 .vscode/
+app/server/database/passwords.json

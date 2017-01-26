@@ -1,10 +1,13 @@
 
 
 MongoClient = require('mongodb').MongoClient;
+cred = require("./passwords.json")
+
+console.log(cred)
 
 dburl= "mongodb://danu7.it.nuigalway.ie:8717/mongodb2868";
-usr = "mongodb2868oj";
-pass = "no1cuk";
+usr = cred.user
+pass = cred.password
 
 
 updateDocument = function(db, callback) {

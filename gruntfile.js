@@ -18,7 +18,7 @@ grunt.initConfig({
                 // }
                 external:[
                     'angular',
-                    // 'bootstrap',
+                    'bootstrap',
                     "templates",
                 ]
             }
