@@ -5,9 +5,11 @@ cred = require("./passwords.json")
 
 console.log(cred)
 
+
 dburl= "mongodb://danu7.it.nuigalway.ie:8717/mongodb2868";
 usr = cred.user
 pass = cred.password
+
 
 
 updateDocument = function(db, callback) {
