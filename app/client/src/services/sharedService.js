@@ -3,20 +3,23 @@ module.exports = function(app) {
  
     app.service("sharedService", function() {
 
+        service = {};
+
         currentPage = 1
 
-        getCurrentPage = function(){
+        service.getCurrentPage = function(){
             return currentPage
         }
 
-        setCurrentPage = function(page){
+        service.setCurrentPage = function(page){
             currentPage = page
         }
         
-        return {
-            getCurrentPage: getCurrentPage,
-            setCurrentPage: setCurrentPage,
-        }
+        return service
+        // {
+        //     getCurrentPage: getCurrentPage,
+        //     setCurrentPage: setCurrentPage,
+        // }
     });
 
 };
