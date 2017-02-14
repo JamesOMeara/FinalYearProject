@@ -1,6 +1,46 @@
 angular.module('app').run(['$templateCache', function($templateCache) {
   'use strict';
 
+  $templateCache.put('./app/client/src/directives/templates/codeEditorInput-template.ejs',
+    "\r" +
+    "\n" +
+    "<div>\r" +
+    "\n" +
+    "    <p> Hello World </p>\r" +
+    "\n" +
+    "    <textarea rows=\"4\" cols=\"50\" ng-model=\"input1\">\r" +
+    "\n" +
+    "        \r" +
+    "\n" +
+    "    </textarea>\r" +
+    "\n" +
+    "    {{input1}}\r" +
+    "\n" +
+    "    <textarea rows=\"4\" cols=\"50\" ng-model=\"input2\">\r" +
+    "\n" +
+    "        \r" +
+    "\n" +
+    "    </textarea>\r" +
+    "\n" +
+    "</div>"
+  );
+
+
+  $templateCache.put('./app/client/src/directives/templates/codeEditorTemplate.ejs',
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "<div> \r" +
+    "\n" +
+    "    <p>hello from code editor teplace</p>\r" +
+    "\n" +
+    "    <code-editor-input-directive>\r" +
+    "\n" +
+    "</div>"
+  );
+
+
   $templateCache.put('./app/client/src/directives/templates/navDirective.ejs',
     "<div>\r" +
     "\n" +
@@ -136,6 +176,14 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
+    "    <div>\r" +
+    "\n" +
+    "        <code-editor-directive>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
     "</div>"
   );
 
@@ -161,6 +209,35 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "</div>\r" +
     "\n"
+  );
+
+
+  $templateCache.put('./app/client/src/directives/templates/tab3.ejs',
+    "\r" +
+    "\n" +
+    "<div>\r" +
+    "\n" +
+    "tab3\r" +
+    "\n" +
+    "    <div class=\"starter-template\">\r" +
+    "\n" +
+    "        <p>Section = {{ currentPage() }}</p>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "    <div>\r" +
+    "\n" +
+    "        <code-editor-directive>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "    <div>\r" +
+    "\n" +
+    "        <simple-table-directive>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "</div> "
   );
 
 }]);

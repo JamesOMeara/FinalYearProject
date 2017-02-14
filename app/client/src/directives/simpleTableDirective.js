@@ -19,6 +19,7 @@ module.exports = function(app) {
                         .then(function (response) {
                             console.log('find all Method called')
                             scope.data = response.data.data;
+                            console.log(response.data)
                         }, function (error) {
                             scope.data = 'Unable to load data: ' + error.message;
                         });

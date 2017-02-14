@@ -4,11 +4,11 @@ MongoClient = require('mongodb').MongoClient;
 cred = require("./passwords.json")
 
 console.log(cred)
-
+console.log(cred.Database.user)
 
 dburl= "mongodb://danu7.it.nuigalway.ie:8717/mongodb2868";
-usr = cred.user
-pass = cred.password
+usr = cred.Database.user
+pass = cred.Database.password
 
 
 
