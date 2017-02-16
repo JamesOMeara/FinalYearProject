@@ -19,7 +19,7 @@ grunt.initConfig({
                 external:[
                     'angular',
                     'bootstrap',
-                    "templates",
+                    "templates"
                 ]
             }
         },
@@ -48,6 +48,7 @@ grunt.initConfig({
                     // bootstrap: ['./app/client/public/lib/angular-bootstrap/ui-bootstrap-tpls.js'],
                     // jquery: ['./app/client/public/lib/jquery/dist/jquery.js'],
                     'angular',
+                    "angular-sanitize"           
                     // 'templates',
                     // "./src/directives/templates/templates.js": ['./app/client/src/directives/templates/templates.js']
                 ]

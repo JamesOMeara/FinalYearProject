@@ -10,9 +10,19 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <textarea rows=\"4\" cols=\"50\" ng-model=\"input1\">\r" +
     "\n" +
-    "        \r" +
+    "         \r" +
     "\n" +
     "    </textarea>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <p ng-bind-html=\"myText\"></p>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "  \r" +
+    "\n" +
+    "\r" +
     "\n" +
     "    {{input1}}\r" +
     "\n" +

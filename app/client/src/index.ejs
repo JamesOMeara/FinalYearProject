@@ -7,6 +7,11 @@
     <script type="text/javascript" src="libs.js"></script>
     <script type="text/javascript" src="templates.js"></script>
     <script type="text/javascript" src="app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>
+
+
+    <link rel="import" href="lib/jsfiddle-demo/jsfiddle-demo.html">
+
 
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/css.css">
@@ -23,6 +28,12 @@
   
 
   <body ng-controller="mainController" style="height: 80px;">
+
+    <jsfiddle-demo username="james" fiddle="111"></jsfiddle-demo>
+
+    <p ng-bind-html="myText"></p>
+    
+    
 
 
     <div class="container" >
@@ -42,6 +53,7 @@
             <tab3-directive>
         </div>
     </div><!-- /.container -->
+
 
   </body>
 
