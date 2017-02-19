@@ -1,51 +1,26 @@
 angular.module('app').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('./app/client/src/directives/templates/codeEditorInput-template.ejs',
-    "\r" +
-    "\n" +
-    "<div>\r" +
-    "\n" +
-    "    <p> Hello World </p>\r" +
-    "\n" +
-    "    <textarea rows=\"4\" cols=\"50\" ng-model=\"input1\">\r" +
-    "\n" +
-    "         \r" +
-    "\n" +
-    "    </textarea>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <p ng-bind-html=\"myText\"></p>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "  \r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    {{input1}}\r" +
-    "\n" +
-    "    <textarea rows=\"4\" cols=\"50\" ng-model=\"input2\">\r" +
-    "\n" +
-    "        \r" +
-    "\n" +
-    "    </textarea>\r" +
-    "\n" +
-    "</div>"
-  );
-
-
-  $templateCache.put('./app/client/src/directives/templates/codeEditorTemplate.ejs',
+  $templateCache.put('./app/client/src/directives/templates/embeddedPluker.ejs',
     "\r" +
     "\n" +
     "\r" +
     "\n" +
     "<div> \r" +
     "\n" +
-    "    <p>hello from code editor teplace</p>\r" +
+    "    <iframe \r" +
     "\n" +
-    "    <code-editor-input-directive>\r" +
+    "        style=\"width: 100%; height: 800px\" \r" +
+    "\n" +
+    "        src=\"http://embed.plnkr.co/?sidebar=tree&autoCloseSidebar=false\" \r" +
+    "\n" +
+    "        frameborder=\"0\"\r" +
+    "\n" +
+    "        sidebar = \"true\" \r" +
+    "\n" +
+    "        allowfullscren=\"allowfullscren\">\r" +
+    "\n" +
+    "    </iframe>\r" +
     "\n" +
     "</div>"
   );
@@ -72,7 +47,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "            </button>\r" +
     "\n" +
-    "            <a class=\"navbar-brand\" href=\"#\">James O'M FYP</a>\r" +
+    "            <a class=\"navbar-brand\" ng-click=\"setSection(sections.home)\">James O'M FYP</a>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
@@ -86,7 +61,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <li ng-class=\"{active: isNavbuttonActive(sections.two) }\" ><a ng-click=\"setSection(sections.two)\"> About </a></li>\r" +
     "\n" +
-    "            <li ng-class=\"{active: isNavbuttonActive(sections.three) }\" ><a ng-click=\"setSection(sections.three)\"> Contact </a></li>\r" +
+    "            <li ng-class=\"{active: isNavbuttonActive(sections.three) }\" ><a ng-click=\"setSection(sections.three)\"> Editor </a></li>\r" +
     "\n" +
     "            </ul>\r" +
     "\n" +
@@ -178,7 +153,15 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('./app/client/src/directives/templates/tab1.ejs',
-    "<div>\r" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "<div class=\"container\" >\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -186,22 +169,26 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "    <div>\r" +
-    "\n" +
-    "        <code-editor-directive>\r" +
-    "\n" +
-    "    </div>\r" +
+    "    \r" +
     "\n" +
     "\r" +
     "\n" +
-    "</div>"
+    "\r" +
+    "\n" +
+    "</div><!-- /.container -->"
   );
 
 
   $templateCache.put('./app/client/src/directives/templates/tab2.ejs',
     "\r" +
     "\n" +
-    "<div>\r" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "<div class=\"container\" >\r" +
     "\n" +
     "    <div class=\"starter-template\">\r" +
     "\n" +
@@ -217,8 +204,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "    </div>\r" +
     "\n" +
-    "</div>\r" +
-    "\n"
+    "</div><!-- /.container -->"
   );
 
 
@@ -227,27 +213,26 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "<div>\r" +
     "\n" +
-    "tab3\r" +
+    "    <div class=\"container\" >\r" +
     "\n" +
-    "    <div class=\"starter-template\">\r" +
+    "        <h2>Practice editing here! <h2>\r" +
     "\n" +
-    "        <p>Section = {{ currentPage() }}</p>\r" +
+    "    </div><!-- /.container -->\r" +
     "\n" +
-    "    </div>\r" +
+    "    \r" +
     "\n" +
-    "    <div>\r" +
-    "\n" +
-    "        <code-editor-directive>\r" +
-    "\n" +
-    "    </div>\r" +
+    "    \r" +
     "\n" +
     "    <div>\r" +
     "\n" +
-    "        <simple-table-directive>\r" +
+    "    <code-editor-directive>\r" +
     "\n" +
     "    </div>\r" +
     "\n" +
-    "</div> "
+    "</div>\r" +
+    "\n" +
+    "\r" +
+    "\n"
   );
 
 }]);

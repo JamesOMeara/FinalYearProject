@@ -3,7 +3,7 @@ require('angular');
 
 var app = angular.module("app", [ 
     require('./src/source'),
-    "ngSanitize"
+    require('angular-sanitize')
 ]);
 
 require('templates')

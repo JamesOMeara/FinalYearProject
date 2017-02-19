@@ -7,10 +7,6 @@
     <script type="text/javascript" src="libs.js"></script>
     <script type="text/javascript" src="templates.js"></script>
     <script type="text/javascript" src="app.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>
-
-
-    <link rel="import" href="lib/jsfiddle-demo/jsfiddle-demo.html">
 
 
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
@@ -29,30 +25,20 @@
 
   <body ng-controller="mainController" style="height: 80px;">
 
-    <jsfiddle-demo username="james" fiddle="111"></jsfiddle-demo>
-
-    <p ng-bind-html="myText"></p>
     
+      <div ng-show="showTab(1)">
+          <tab1-directive>
+      </div>
+  
+  
+      <div ng-show="showTab(2)">
+          <tab2-directive>
+      </div>
     
 
-
-    <div class="container" >
-        <div ng-show="showTab(1)">
-            <tab1-directive>
-        </div>
-    </div><!-- /.container -->
-
-    <div class="container" >
-        <div ng-show="showTab(2)">
-            <tab2-directive>
-        </div>
-    </div><!-- /.container -->
-
-    <div class="container" >
-        <div ng-show="showTab(3)">
-            <tab3-directive>
-        </div>
-    </div><!-- /.container -->
+      <div ng-show="showTab(3)">
+        <tab3-directive>
+      </div>
 
 
   </body>

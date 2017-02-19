@@ -9,5 +9,4 @@ module.exports = function(app) {
   require('./tab2Directive.js')(app);
   require('./tab3Directive.js')(app);
   require('./codeEditorDirective.js')(app);
-  require('./codeEditorInputDirective.js')(app);
 };

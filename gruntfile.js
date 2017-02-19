@@ -19,7 +19,8 @@ grunt.initConfig({
                 external:[
                     'angular',
                     'bootstrap',
-                    "templates"
+                    "templates",
+                    "angular-sanitize"
                 ]
             }
         },

@@ -9,7 +9,7 @@ module.exports = function(app) {
             scope: {
 
             },
-            templateUrl: './app/client/src/directives/templates/codeEditorTemplate.ejs',
+            templateUrl: './app/client/src/directives/templates/embeddedPluker.ejs',
             link: function(scope) {
 
 
