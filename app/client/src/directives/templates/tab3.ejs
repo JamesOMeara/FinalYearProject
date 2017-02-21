@@ -1,12 +1,19 @@
 
 <div>
+
     <div class="container" >
         <h2>Practice editing here! <h2>
+        <button ng-click="selectEditor(1)">Plunker</button>
+        <button ng-click="selectEditor(2)">JSFiddle</button>
     </div><!-- /.container -->
     
-    
-    <div>
-    <code-editor-directive>
+    <div ng-show="showEditor(1)">
+        <embedded-plunker-directive>
     </div>
+
+    <div ng-show="showEditor(2)">
+        <embedded-jsfiddle-directive>
+    </div>
+
 </div>
 
