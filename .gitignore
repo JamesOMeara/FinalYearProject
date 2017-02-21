@@ -1,5 +1,5 @@
 node_modules/
-app/client/public
+app/client/public/lib
 npm-debug.log
 coverage/
 .vscode/
