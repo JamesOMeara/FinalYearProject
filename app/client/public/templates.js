@@ -5,447 +5,457 @@ angular.module('app').run(['$templateCache', function($templateCache) {
   $templateCache.put('./app/client/src/directives/templates/displayTutorial.ejs',
     "<div>\r" +
     "\n" +
-    "    from directive : \r" +
-    "\n" +
-    "    {{tutorials.angular}}\r" +
+    "\r" +
     "\n" +
     "  \r" +
     "\n" +
-    "<div class=\"container\">\r" +
+    "<div>\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "        <div class=\"content\"><style>@import url(http://fonts.googleapis.com/css?family=Oxygen+Mono);\r" +
     "\n" +
-    "/* Please Keep this font import at the very top of any CSS file */\r" +
+    "            /* Please Keep this font import at the very top of any CSS file */\r" +
     "\n" +
-    "@charset \"UTF-8\";\r" +
+    "            @charset \"UTF-8\";\r" +
     "\n" +
-    "/* Starter CSS for Flyout Menu */\r" +
+    "            /* Starter CSS for Flyout Menu */\r" +
     "\n" +
-    "#cssmenu {\r" +
+    "            #cssmenu {\r" +
     "\n" +
-    "  padding: 0;\r" +
+    "            float: left;\r" +
     "\n" +
-    "  margin: 0;\r" +
+    "            padding: 0;\r" +
     "\n" +
-    "  border: 0;\r" +
+    "            margin: 0;\r" +
     "\n" +
-    "  line-height: 1;\r" +
+    "            border: 0;\r" +
     "\n" +
-    "}\r" +
+    "            line-height: 1;\r" +
     "\n" +
-    "#cssmenu ul,\r" +
+    "            }\r" +
     "\n" +
-    "#cssmenu ul li,\r" +
+    "            #cssmenu ul,\r" +
     "\n" +
-    "#cssmenu ul ul {\r" +
+    "            #cssmenu ul li,\r" +
     "\n" +
-    "  list-style: none;\r" +
+    "            #cssmenu ul ul {\r" +
     "\n" +
-    "  margin: 0;\r" +
+    "            list-style: none;\r" +
     "\n" +
-    "  padding: 0;\r" +
+    "            margin: 0;\r" +
     "\n" +
-    "}\r" +
+    "            padding: 0;\r" +
     "\n" +
-    "#cssmenu ul {\r" +
+    "            }\r" +
     "\n" +
-    "  position: relative;\r" +
+    "            #cssmenu ul {\r" +
     "\n" +
-    "  z-index: 597;\r" +
+    "            position: relative;\r" +
     "\n" +
-    "  float: left;\r" +
+    "            z-index: 597;\r" +
     "\n" +
-    "}\r" +
+    "            float: left;\r" +
     "\n" +
-    "#cssmenu ul li {\r" +
+    "            }\r" +
     "\n" +
-    "  float: left;\r" +
+    "            #cssmenu ul li {\r" +
     "\n" +
-    "  min-height: 1px;\r" +
+    "            float: left;\r" +
     "\n" +
-    "  line-height: 1em;\r" +
+    "            min-height: 1px;\r" +
     "\n" +
-    "  vertical-align: middle;\r" +
+    "            line-height: 1em;\r" +
     "\n" +
-    "  position: relative;\r" +
+    "            vertical-align: middle;\r" +
     "\n" +
-    "}\r" +
+    "            position: relative;\r" +
     "\n" +
-    "#cssmenu ul li.hover,\r" +
+    "            }\r" +
     "\n" +
-    "#cssmenu ul li:hover {\r" +
+    "            #cssmenu ul li.hover,\r" +
     "\n" +
-    "  position: relative;\r" +
+    "            #cssmenu ul li:hover {\r" +
     "\n" +
-    "  z-index: 599;\r" +
+    "            position: relative;\r" +
     "\n" +
-    "  cursor: default;\r" +
+    "            z-index: 599;\r" +
     "\n" +
-    "}\r" +
+    "            cursor: default;\r" +
     "\n" +
-    "#cssmenu ul ul {\r" +
+    "            }\r" +
     "\n" +
-    "  visibility: hidden;\r" +
+    "            #cssmenu ul ul {\r" +
     "\n" +
-    "  position: absolute;\r" +
+    "            visibility: hidden;\r" +
     "\n" +
-    "  top: 100%;\r" +
+    "            position: absolute;\r" +
     "\n" +
-    "  left: 0px;\r" +
+    "            top: 100%;\r" +
     "\n" +
-    "  z-index: 598;\r" +
+    "            left: 0px;\r" +
     "\n" +
-    "  width: 100%;\r" +
+    "            z-index: 598;\r" +
     "\n" +
-    "}\r" +
+    "            width: 100%;\r" +
     "\n" +
-    "#cssmenu ul ul li {\r" +
+    "            }\r" +
     "\n" +
-    "  float: none;\r" +
+    "            #cssmenu ul ul li {\r" +
     "\n" +
-    "}\r" +
+    "            float: none;\r" +
     "\n" +
-    "#cssmenu ul ul ul {\r" +
+    "            }\r" +
     "\n" +
-    "  top: -2px;\r" +
+    "            #cssmenu ul ul ul {\r" +
     "\n" +
-    "  right: 0;\r" +
+    "            top: -2px;\r" +
     "\n" +
-    "}\r" +
+    "            right: 0;\r" +
     "\n" +
-    "#cssmenu ul li:hover > ul {\r" +
+    "            }\r" +
     "\n" +
-    "  visibility: visible;\r" +
+    "            #cssmenu ul li:hover > ul {\r" +
     "\n" +
-    "}\r" +
+    "            visibility: visible;\r" +
     "\n" +
-    "#cssmenu ul ul {\r" +
+    "            }\r" +
     "\n" +
-    "  top: 1px;\r" +
+    "            #cssmenu ul ul {\r" +
     "\n" +
-    "  left: 99%;\r" +
+    "            top: 1px;\r" +
     "\n" +
-    "}\r" +
+    "            left: 99%;\r" +
     "\n" +
-    "#cssmenu ul li {\r" +
+    "            }\r" +
     "\n" +
-    "  float: none;\r" +
+    "            #cssmenu ul li {\r" +
     "\n" +
-    "}\r" +
+    "            float: none;\r" +
     "\n" +
-    "#cssmenu ul ul {\r" +
+    "            }\r" +
     "\n" +
-    "  margin-top: 1px;\r" +
+    "            #cssmenu ul ul {\r" +
     "\n" +
-    "}\r" +
+    "            margin-top: 1px;\r" +
     "\n" +
-    "#cssmenu ul ul li {\r" +
+    "            }\r" +
     "\n" +
-    "  font-weight: normal;\r" +
+    "            #cssmenu ul ul li {\r" +
     "\n" +
-    "}\r" +
+    "            font-weight: normal;\r" +
     "\n" +
-    "/* Custom CSS Styles */\r" +
+    "            }\r" +
     "\n" +
-    "#cssmenu {\r" +
+    "            /* Custom CSS Styles */\r" +
     "\n" +
-    "  width: 200px;\r" +
+    "            #cssmenu {\r" +
     "\n" +
-    "  background: #333333;\r" +
+    "            width: 200px;\r" +
     "\n" +
-    "  font-family: 'Oxygen Mono', Tahoma, Arial, sans-serif;\r" +
+    "            background: #333333;\r" +
     "\n" +
-    "  zoom: 1;\r" +
+    "            font-family: 'Oxygen Mono', Tahoma, Arial, sans-serif;\r" +
     "\n" +
-    "  font-size: 12px;\r" +
+    "            zoom: 1;\r" +
     "\n" +
-    "}\r" +
+    "            font-size: 12px;\r" +
     "\n" +
-    "#cssmenu:before {\r" +
+    "            }\r" +
     "\n" +
-    "  content: '';\r" +
+    "            #cssmenu:before {\r" +
     "\n" +
-    "  display: block;\r" +
+    "            content: '';\r" +
     "\n" +
-    "}\r" +
+    "            display: block;\r" +
     "\n" +
-    "#cssmenu:after {\r" +
+    "            }\r" +
     "\n" +
-    "  content: '';\r" +
+    "            #cssmenu:after {\r" +
     "\n" +
-    "  display: table;\r" +
+    "            content: '';\r" +
     "\n" +
-    "  clear: both;\r" +
+    "            display: table;\r" +
     "\n" +
-    "}\r" +
+    "            clear: both;\r" +
     "\n" +
-    "#cssmenu a {\r" +
+    "            }\r" +
     "\n" +
-    "  display: block;\r" +
+    "            #cssmenu a {\r" +
     "\n" +
-    "  padding: 15px 20px;\r" +
+    "            display: block;\r" +
     "\n" +
-    "  color: #ffffff;\r" +
+    "            padding: 15px 20px;\r" +
     "\n" +
-    "  text-decoration: none;\r" +
+    "            color: #ffffff;\r" +
     "\n" +
-    "  text-transform: uppercase;\r" +
+    "            text-decoration: none;\r" +
     "\n" +
-    "}\r" +
+    "            text-transform: uppercase;\r" +
     "\n" +
-    "#cssmenu > ul {\r" +
+    "            }\r" +
     "\n" +
-    "  width: 200px;\r" +
+    "            #cssmenu > ul {\r" +
     "\n" +
-    "}\r" +
+    "            width: 200px;\r" +
     "\n" +
-    "#cssmenu ul ul {\r" +
+    "            }\r" +
     "\n" +
-    "  width: 200px;\r" +
+    "            #cssmenu ul ul {\r" +
     "\n" +
-    "}\r" +
+    "            width: 200px;\r" +
     "\n" +
-    "#cssmenu > ul > li > a {\r" +
+    "            }\r" +
     "\n" +
-    "  border-right: 4px solid #1b9bff;\r" +
+    "            #cssmenu > ul > li > a {\r" +
     "\n" +
-    "  color: #ffffff;\r" +
+    "            border-right: 4px solid #1b9bff;\r" +
     "\n" +
-    "}\r" +
+    "            color: #ffffff;\r" +
     "\n" +
-    "#cssmenu > ul > li > a:hover {\r" +
+    "            }\r" +
     "\n" +
-    "  color: #ffffff;\r" +
+    "            #cssmenu > ul > li > a:hover {\r" +
     "\n" +
-    "}\r" +
+    "            color: #ffffff;\r" +
     "\n" +
-    "#cssmenu > ul > li.active a {\r" +
+    "            }\r" +
     "\n" +
-    "  background: #1b9bff;\r" +
+    "            #cssmenu > ul > li.active a {\r" +
     "\n" +
-    "}\r" +
+    "            background: #1b9bff;\r" +
     "\n" +
-    "#cssmenu > ul > li a:hover,\r" +
+    "            }\r" +
     "\n" +
-    "#cssmenu > ul > li:hover a {\r" +
+    "            #cssmenu > ul > li a:hover,\r" +
     "\n" +
-    "  background: #1b9bff;\r" +
+    "            #cssmenu > ul > li:hover a {\r" +
     "\n" +
-    "}\r" +
+    "            background: #1b9bff;\r" +
     "\n" +
-    "#cssmenu li {\r" +
+    "            }\r" +
     "\n" +
-    "  position: relative;\r" +
+    "            #cssmenu li {\r" +
     "\n" +
-    "}\r" +
+    "            position: relative;\r" +
     "\n" +
-    "#cssmenu ul li.has-sub > a:after {\r" +
+    "            }\r" +
     "\n" +
-    "  content: '+';\r" +
+    "            #cssmenu ul li.has-sub > a:after {\r" +
     "\n" +
-    "  position: absolute;\r" +
+    "            content: '+';\r" +
     "\n" +
-    "  top: 50%;\r" +
+    "            position: absolute;\r" +
     "\n" +
-    "  right: 15px;\r" +
+    "            top: 50%;\r" +
     "\n" +
-    "  margin-top: -6px;\r" +
+    "            right: 15px;\r" +
     "\n" +
-    "}\r" +
+    "            margin-top: -6px;\r" +
     "\n" +
-    "#cssmenu ul ul li.first {\r" +
+    "            }\r" +
     "\n" +
-    "  -webkit-border-radius: 0 3px 0 0;\r" +
+    "            #cssmenu ul ul li.first {\r" +
     "\n" +
-    "  -moz-border-radius: 0 3px 0 0;\r" +
+    "            -webkit-border-radius: 0 3px 0 0;\r" +
     "\n" +
-    "  border-radius: 0 3px 0 0;\r" +
+    "            -moz-border-radius: 0 3px 0 0;\r" +
     "\n" +
-    "}\r" +
+    "            border-radius: 0 3px 0 0;\r" +
     "\n" +
-    "#cssmenu ul ul li.last {\r" +
+    "            }\r" +
     "\n" +
-    "  -webkit-border-radius: 0 0 3px 0;\r" +
+    "            #cssmenu ul ul li.last {\r" +
     "\n" +
-    "  -moz-border-radius: 0 0 3px 0;\r" +
+    "            -webkit-border-radius: 0 0 3px 0;\r" +
     "\n" +
-    "  border-radius: 0 0 3px 0;\r" +
+    "            -moz-border-radius: 0 0 3px 0;\r" +
     "\n" +
-    "  border-bottom: 0;\r" +
+    "            border-radius: 0 0 3px 0;\r" +
     "\n" +
-    "}\r" +
+    "            border-bottom: 0;\r" +
     "\n" +
-    "#cssmenu ul ul {\r" +
+    "            }\r" +
     "\n" +
-    "  -webkit-border-radius: 0 3px 3px 0;\r" +
+    "            #cssmenu ul ul {\r" +
     "\n" +
-    "  -moz-border-radius: 0 3px 3px 0;\r" +
+    "            -webkit-border-radius: 0 3px 3px 0;\r" +
     "\n" +
-    "  border-radius: 0 3px 3px 0;\r" +
+    "            -moz-border-radius: 0 3px 3px 0;\r" +
     "\n" +
-    "}\r" +
+    "            border-radius: 0 3px 3px 0;\r" +
     "\n" +
-    "#cssmenu ul ul {\r" +
+    "            }\r" +
     "\n" +
-    "  border: 1px solid #0082e7;\r" +
+    "            #cssmenu ul ul {\r" +
     "\n" +
-    "}\r" +
+    "            border: 1px solid #0082e7;\r" +
     "\n" +
-    "#cssmenu ul ul a {\r" +
+    "            }\r" +
     "\n" +
-    "  font-size: 12px;\r" +
+    "            #cssmenu ul ul a {\r" +
     "\n" +
-    "  color: #ffffff;\r" +
+    "            font-size: 12px;\r" +
     "\n" +
-    "}\r" +
+    "            color: #ffffff;\r" +
     "\n" +
-    "#cssmenu ul ul a:hover {\r" +
+    "            }\r" +
     "\n" +
-    "  color: #ffffff;\r" +
+    "            #cssmenu ul ul a:hover {\r" +
     "\n" +
-    "}\r" +
+    "            color: #ffffff;\r" +
     "\n" +
-    "#cssmenu ul ul li {\r" +
+    "            }\r" +
     "\n" +
-    "  border-bottom: 1px solid #0082e7;\r" +
+    "            #cssmenu ul ul li {\r" +
     "\n" +
-    "}\r" +
+    "            border-bottom: 1px solid #0082e7;\r" +
     "\n" +
-    "#cssmenu ul ul li:hover > a {\r" +
+    "            }\r" +
     "\n" +
-    "  background: #4eb1ff;\r" +
+    "            #cssmenu ul ul li:hover > a {\r" +
     "\n" +
-    "  color: #ffffff;\r" +
+    "            background: #4eb1ff;\r" +
     "\n" +
-    "}\r" +
+    "            color: #ffffff;\r" +
     "\n" +
-    "#cssmenu.align-right > ul > li > a {\r" +
+    "            }\r" +
     "\n" +
-    "  border-left: 4px solid #1b9bff;\r" +
+    "            #cssmenu.align-right > ul > li > a {\r" +
     "\n" +
-    "  border-right: none;\r" +
+    "            border-left: 4px solid #1b9bff;\r" +
     "\n" +
-    "}\r" +
+    "            border-right: none;\r" +
     "\n" +
-    "#cssmenu.align-right {\r" +
+    "            }\r" +
     "\n" +
-    "  float: right;\r" +
+    "            #cssmenu.align-right {\r" +
     "\n" +
-    "}\r" +
+    "            float: right;\r" +
     "\n" +
-    "#cssmenu.align-right li {\r" +
+    "            }\r" +
     "\n" +
-    "  text-align: right;\r" +
+    "            #cssmenu.align-right li {\r" +
     "\n" +
-    "}\r" +
+    "            text-align: right;\r" +
     "\n" +
-    "#cssmenu.align-right ul li.has-sub > a:before {\r" +
+    "            }\r" +
     "\n" +
-    "  content: '+';\r" +
+    "            #cssmenu.align-right ul li.has-sub > a:before {\r" +
     "\n" +
-    "  position: absolute;\r" +
+    "            content: '+';\r" +
     "\n" +
-    "  top: 50%;\r" +
+    "            position: absolute;\r" +
     "\n" +
-    "  left: 15px;\r" +
+    "            top: 50%;\r" +
     "\n" +
-    "  margin-top: -6px;\r" +
+    "            left: 15px;\r" +
     "\n" +
-    "}\r" +
+    "            margin-top: -6px;\r" +
     "\n" +
-    "#cssmenu.align-right ul li.has-sub > a:after {\r" +
+    "            }\r" +
     "\n" +
-    "  content: none;\r" +
+    "            #cssmenu.align-right ul li.has-sub > a:after {\r" +
     "\n" +
-    "}\r" +
+    "            content: none;\r" +
     "\n" +
-    "#cssmenu.align-right ul ul {\r" +
+    "            }\r" +
     "\n" +
-    "  visibility: hidden;\r" +
+    "            #cssmenu.align-right ul ul {\r" +
     "\n" +
-    "  position: absolute;\r" +
+    "            visibility: hidden;\r" +
     "\n" +
-    "  top: 0;\r" +
+    "            position: absolute;\r" +
     "\n" +
-    "  left: -100%;\r" +
+    "            top: 0;\r" +
     "\n" +
-    "  z-index: 598;\r" +
+    "            left: -100%;\r" +
     "\n" +
-    "  width: 100%;\r" +
+    "            z-index: 598;\r" +
     "\n" +
-    "}\r" +
+    "            width: 100%;\r" +
     "\n" +
-    "#cssmenu.align-right ul ul li.first {\r" +
+    "            }\r" +
     "\n" +
-    "  -webkit-border-radius: 3px 0 0 0;\r" +
+    "            #cssmenu.align-right ul ul li.first {\r" +
     "\n" +
-    "  -moz-border-radius: 3px 0 0 0;\r" +
+    "            -webkit-border-radius: 3px 0 0 0;\r" +
     "\n" +
-    "  border-radius: 3px 0 0 0;\r" +
+    "            -moz-border-radius: 3px 0 0 0;\r" +
     "\n" +
-    "}\r" +
+    "            border-radius: 3px 0 0 0;\r" +
     "\n" +
-    "#cssmenu.align-right ul ul li.last {\r" +
+    "            }\r" +
     "\n" +
-    "  -webkit-border-radius: 0 0 0 3px;\r" +
+    "            #cssmenu.align-right ul ul li.last {\r" +
     "\n" +
-    "  -moz-border-radius: 0 0 0 3px;\r" +
+    "            -webkit-border-radius: 0 0 0 3px;\r" +
     "\n" +
-    "  border-radius: 0 0 0 3px;\r" +
+    "            -moz-border-radius: 0 0 0 3px;\r" +
     "\n" +
-    "}\r" +
+    "            border-radius: 0 0 0 3px;\r" +
     "\n" +
-    "#cssmenu.align-right ul ul {\r" +
+    "            }\r" +
     "\n" +
-    "  -webkit-border-radius: 3px 0 0 3px;\r" +
+    "            #cssmenu.align-right ul ul {\r" +
     "\n" +
-    "  -moz-border-radius: 3px 0 0 3px;\r" +
+    "            -webkit-border-radius: 3px 0 0 3px;\r" +
     "\n" +
-    "  border-radius: 3px 0 0 3px;\r" +
+    "            -moz-border-radius: 3px 0 0 3px;\r" +
     "\n" +
-    "}\r" +
+    "            border-radius: 3px 0 0 3px;\r" +
     "\n" +
-    "</style><div id=\"cssmenu\">\r" +
+    "            }\r" +
     "\n" +
-    "<ul>\r" +
+    "            </style>\r" +
     "\n" +
-    "   <li><a ng-click=\"selectTutorial(tutorials.blank)\"><span>Home</span></a></li>\r" +
+    "            \r" +
     "\n" +
-    "   <li class=\"active has-sub\"><a href=\"#\"><span>Angular</span></a>\r" +
+    "            <div id=\"cssmenu\">\r" +
     "\n" +
-    "      <ul>\r" +
+    "            <ul>\r" +
     "\n" +
-    "         <li class=\"has-sub\"><a ng-click=\"selectTutorial(tutorials.angular)\"><span>Angular</span></a></li>\r" +
+    "                <li><a ng-click=\"selectTutorial(tutorials.blank)\"><span>Home</span></a></li>\r" +
     "\n" +
-    "         <li class=\"has-sub\"><a ng-click=\"selectTutorial(tutorials.node)\"><span>Node</span></a></li>\r" +
+    "                <li class=\"active has-sub\"><a href=\"#\"><span>Angular</span></a>\r" +
     "\n" +
-    "      </ul>\r" +
+    "                    <ul>\r" +
     "\n" +
-    "   </li>\r" +
+    "                        <li class=\"has-sub\"><a ng-click=\"selectTutorial(tutorials.angular)\"><span>Angular</span></a></li>\r" +
     "\n" +
-    "   <li><a href=\"#\"><span>About</span></a></li>\r" +
+    "                        <li class=\"has-sub\"><a ng-click=\"selectTutorial(tutorials.node)\"><span>Node</span></a></li>\r" +
     "\n" +
-    "   <li class=\"last\"><a href=\"#\"><span>Contact</span></a></li>\r" +
+    "                    </ul>\r" +
     "\n" +
-    "</ul>\r" +
+    "                </li>\r" +
     "\n" +
-    "</div></div>\r" +
+    "                <li><a href=\"#\"><span>About</span></a></li>\r" +
+    "\n" +
+    "                <li class=\"last\"><a href=\"#\"><span>Contact</span></a></li>\r" +
+    "\n" +
+    "            </ul>\r" +
+    "\n" +
+    "            </div></div>\r" +
+    "\n" +
+    "        \r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
-    "\r" +
+    "            <div class=\"container\">\r" +
     "\n" +
     "\r" +
     "\n" +
-    "\r" +
+    "                <div> \r" +
+    "\n" +
+    "                    <iframe style=\"width: 100%; height: 800px\" frameborder=\"0\" src={{selectedTutorial}}></iframe>\r" +
+    "\n" +
+    "                </div>\r" +
     "\n" +
     "\r" +
-    "\n" +
-    "    <div> \r" +
-    "\n" +
-    "        <iframe style=\"width: 100%; height: 800px\" frameborder=\"0\" src={{selectedTutorial}}></iframe>\r" +
-    "\n" +
-    "    </div>\r" +
     "\n" +
     "</div>"
   );
@@ -649,9 +659,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "<div class=\"container\" >\r" +
-    "\n" +
-    "    <h2> Tutorials </h2>\r" +
+    "<div >\r" +
     "\n" +
     "    \r" +
     "\n" +
@@ -665,7 +673,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "    \r" +
     "\n" +
-    "</div><!-- /.container -->"
+    "</div>"
   );
 
 

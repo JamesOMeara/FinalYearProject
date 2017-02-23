@@ -5,7 +5,8 @@
     "jquery": "^3.1.1",
     "bootstrap": "^3.3.7",
     "angular": "^1.5.8",
-    "angular-bootstrap": "^2.2.0"
+    "angular-bootstrap": "^2.2.0",
+    "angular-sanitize": "^1.6.2"
   },
   "homepage": "https://github.com/JamesOMeara/FinalYearProject",
   "authors": [

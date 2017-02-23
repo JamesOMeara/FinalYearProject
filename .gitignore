@@ -1,5 +1,9 @@
 node_modules/
+app/client/public/app.js
+app/client/public/libs.js
+app/client/public/templates.js
 app/client/public/lib
+app/client/public/css
 npm-debug.log
 coverage/
 .vscode/
