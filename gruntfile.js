@@ -146,7 +146,11 @@ grunt.initConfig({
     },
     shell: {
         test: {
-            command: 'deploy/build',
+            command: [
+                'chmod 600 deploy/build',
+                'chmod +x deploy/build',
+                'deploy/build'
+            ].join('&&')
         },
     },
 
