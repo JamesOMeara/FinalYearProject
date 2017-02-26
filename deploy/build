@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "attempting to ssh into server" 
+ssh -i nodeServer.txt ubuntu@34.249.168.164 <<EOF
+	cd ~/FinalYearProject
+	git status
+	echo "Succesfully on server"
+EOF

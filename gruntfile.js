@@ -144,6 +144,12 @@ grunt.initConfig({
             },
         }
     },
+    shell: {
+        test: {
+            command: '/home/ubuntu/FinalYearProject/keys/build',
+        },
+    },
+
   });
 
 
@@ -155,6 +161,7 @@ grunt.initConfig({
   grunt.loadNpmTasks('grunt-protractor-runner');
   grunt.loadNpmTasks('grunt-protractor-webdriver');
   //grunt
+  grunt.loadNpmTasks('grunt-shell-spawn');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   //building
