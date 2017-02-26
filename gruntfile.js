@@ -146,7 +146,7 @@ grunt.initConfig({
     },
     shell: {
         test: {
-            command: '/home/ubuntu/FinalYearProject/keys/build',
+            command: 'deploy/build',
         },
     },
 
