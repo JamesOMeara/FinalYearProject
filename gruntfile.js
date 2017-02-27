@@ -85,6 +85,13 @@ grunt.initConfig({
             browsers: ['Chrome'],
             logLevel: 'ERROR'
         },
+        headless: {
+            configFile: 'karma.conf.js',
+            port: 9999,
+            singleRun: true,
+            browsers: ['PhantomJS'],
+            logLevel: 'DEBUG'
+        },
         dev: {
             configFile: 'karma.conf.js',
             port: 9999,

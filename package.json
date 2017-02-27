@@ -5,6 +5,7 @@
   "main": "app/server/server.js",
   "scripts": {
     "start": "node app/server/server.js",
+    "startcontinous": "forever start app/server/server.js",
     "dev": "grunt watch",
     "test": "grunt test"
   },
@@ -35,6 +36,7 @@
     "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.2",
     "karma-story-reporter": "^0.3.1"
   }
 }
