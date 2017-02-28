@@ -413,29 +413,27 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <div id=\"cssmenu\">\r" +
     "\n" +
-    "            <ul>\r" +
+    "                <ul>\r" +
     "\n" +
-    "                <li><a ng-click=\"selectTutorial(tutorials.blank)\"><span>Home</span></a></li>\r" +
+    "                    <li ng-repeat=\"t in tutorials\"><a><span> {{t.name}} </span></a>\r" +
     "\n" +
-    "                <li class=\"active has-sub\"><a href=\"#\"><span>Angular</span></a>\r" +
+    "                        <ul>\r" +
     "\n" +
-    "                    <ul>\r" +
+    "                            <li ng-repeat=\"data in t.data\" class=\"has-sub\"><a ng-click=\"selectTutorial( data.url )\"><span> {{data.name}}</span></a></li>\r" +
     "\n" +
-    "                        <li class=\"has-sub\"><a ng-click=\"selectTutorial(tutorials.angular)\"><span>Angular</span></a></li>\r" +
+    "                        </ul>\r" +
     "\n" +
-    "                        <li class=\"has-sub\"><a ng-click=\"selectTutorial(tutorials.node)\"><span>Node</span></a></li>\r" +
+    "                    </li>\r" +
     "\n" +
-    "                    </ul>\r" +
+    "                </ul>\r" +
     "\n" +
-    "                </li>\r" +
+    "            </div>\r" +
     "\n" +
-    "                <li><a href=\"#\"><span>About</span></a></li>\r" +
+    "            \r" +
     "\n" +
-    "                <li class=\"last\"><a href=\"#\"><span>Contact</span></a></li>\r" +
+    "        </div>\r" +
     "\n" +
-    "            </ul>\r" +
-    "\n" +
-    "            </div></div>\r" +
+    "            \r" +
     "\n" +
     "        \r" +
     "\n" +

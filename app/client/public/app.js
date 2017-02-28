@@ -79,11 +79,36 @@ module.exports = function(app) {
 
                 scope.selectedTutorial = "doc/blank.htm";
 
-                scope.tutorials = {
-                    blank: "doc/blank.htm",
-                    angular: "doc/Angular.htm",
-                    node: "doc/node.htm"
-                }
+                scope.tutorials = [
+                    {   
+                        name: "Home",
+                        data: [     
+                                {   url: "doc/blank.htm",
+                                    name: 'blank'
+                                }
+                            ]
+                    },
+                    {   
+                        name: "angular",
+                        data: [     
+                                {   url: "doc/blank.htm",
+                                    name: 'blank'
+                                },
+                                {   url: "doc/Angular.htm",
+                                    name: "Angular"} 
+                            ]
+                    },
+                    {   
+                        name: "node",
+                        data: [     
+                                {   url: "doc/blank.htm",
+                                    name: 'blank'
+                                },
+                                {   url: "doc/node.htm",
+                                    name: "Node"} 
+                            ]
+                    }
+                ];
 
                 scope.selectTutorial = function(tutorial){
                     scope.selectedTutorial = tutorial;
