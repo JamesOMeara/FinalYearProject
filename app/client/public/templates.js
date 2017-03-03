@@ -493,6 +493,57 @@ angular.module('app').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('./app/client/src/directives/templates/forceGraphTemplate.ejs',
+    "<div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <style>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        .node {\r" +
+    "\n" +
+    "            fill: #ccc;\r" +
+    "\n" +
+    "            stroke: #fff;\r" +
+    "\n" +
+    "            stroke-width: 2px;\r" +
+    "\n" +
+    "        }\r" +
+    "\n" +
+    "        /*add css for links*/\r" +
+    "\n" +
+    "        \r" +
+    "\n" +
+    "        .link {\r" +
+    "\n" +
+    "            stroke: #777;\r" +
+    "\n" +
+    "            stroke-width: 2px;\r" +
+    "\n" +
+    "        }\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    </style>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div id=\"graph\">\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</div>"
+  );
+
+
   $templateCache.put('./app/client/src/directives/templates/navDirective.ejs',
     "<div>\r" +
     "\n" +
@@ -639,6 +690,22 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "    <div>\r" +
     "\n" +
     "        <simple-table-directive>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div>\r" +
+    "\n" +
+    "        <force-graph-directive>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div>\r" +
+    "\n" +
+    "        <div my-directive></div>\r" +
     "\n" +
     "    </div>\r" +
     "\n" +

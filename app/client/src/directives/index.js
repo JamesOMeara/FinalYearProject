@@ -11,5 +11,9 @@ module.exports = function(app) {
   require('./embeddedPlunkerDirective.js')(app);
   require('./embeddedJsfiddleDirective.js')(app);
   require('./displayTutorialDirective.js')(app);
+  require('./forceGraphDirective.js')(app);
+  
+
+  
   
 };

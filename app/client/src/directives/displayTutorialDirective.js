@@ -11,7 +11,6 @@ module.exports = function(app) {
             },
             templateUrl: './app/client/src/directives/templates/displayTutorial.ejs',
             link: function(scope) {
-                console.log('test', scope.myvar)
 
                 scope.selectedTutorial = "doc/blank.htm";
 

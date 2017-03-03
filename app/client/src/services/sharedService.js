@@ -16,10 +16,6 @@ module.exports = function(app) {
         }
         
         return service
-        // {
-        //     getCurrentPage: getCurrentPage,
-        //     setCurrentPage: setCurrentPage,
-        // }
     });
 
 };
