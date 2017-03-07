@@ -1,23 +1,46 @@
 <div>
-
-
+    
+    
     <style>
 
-        .node {
-            fill: #ccc;
-            stroke: #fff;
-            stroke-width: 2px;
-        }
-        /*add css for links*/
-        
         .link {
-            stroke: #777;
-            stroke-width: 2px;
+            fill: none;
+            stroke: #666;
+            stroke-width: 1.5px;
         }
 
+        .node circle {
+            fill: #ccc;
+            stroke: 0000FF;
+            stroke-width: 1.5px;
+        }
+
+        text {
+            font: 16px sans-serif;
+            pointer-events: none;
+            fill: black
+        }
+
+        desc {
+            font: 18px sans-serif;
+            pointer-events: none;
+            fill: black
+        }
+
+        rect {
+            background-color: white;
+            border: 1px solid black;
+            opacity: 0.8;
+            filter: alpha(opacity=60); /* For IE8 and earlier */
+        }
+
+      
+
+      
     </style>
 
     <div id="graph">
+
     </div>
 
 

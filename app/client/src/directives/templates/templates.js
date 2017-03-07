@@ -495,43 +495,89 @@ angular.module('app').run(['$templateCache', function($templateCache) {
   $templateCache.put('./app/client/src/directives/templates/forceGraphTemplate.ejs',
     "<div>\r" +
     "\n" +
-    "\r" +
+    "    \r" +
     "\n" +
-    "\r" +
+    "    \r" +
     "\n" +
     "    <style>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "        .node {\r" +
-    "\n" +
-    "            fill: #ccc;\r" +
-    "\n" +
-    "            stroke: #fff;\r" +
-    "\n" +
-    "            stroke-width: 2px;\r" +
-    "\n" +
-    "        }\r" +
-    "\n" +
-    "        /*add css for links*/\r" +
-    "\n" +
-    "        \r" +
-    "\n" +
     "        .link {\r" +
     "\n" +
-    "            stroke: #777;\r" +
+    "            fill: none;\r" +
     "\n" +
-    "            stroke-width: 2px;\r" +
+    "            stroke: #666;\r" +
+    "\n" +
+    "            stroke-width: 1.5px;\r" +
     "\n" +
     "        }\r" +
     "\n" +
     "\r" +
+    "\n" +
+    "        .node circle {\r" +
+    "\n" +
+    "            fill: #ccc;\r" +
+    "\n" +
+    "            stroke: 0000FF;\r" +
+    "\n" +
+    "            stroke-width: 1.5px;\r" +
+    "\n" +
+    "        }\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        text {\r" +
+    "\n" +
+    "            font: 16px sans-serif;\r" +
+    "\n" +
+    "            pointer-events: none;\r" +
+    "\n" +
+    "            fill: black\r" +
+    "\n" +
+    "        }\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        desc {\r" +
+    "\n" +
+    "            font: 18px sans-serif;\r" +
+    "\n" +
+    "            pointer-events: none;\r" +
+    "\n" +
+    "            fill: black\r" +
+    "\n" +
+    "        }\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        rect {\r" +
+    "\n" +
+    "            background-color: white;\r" +
+    "\n" +
+    "            border: 1px solid black;\r" +
+    "\n" +
+    "            opacity: 0.8;\r" +
+    "\n" +
+    "            filter: alpha(opacity=60); /* For IE8 and earlier */\r" +
+    "\n" +
+    "        }\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "      \r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "      \r" +
     "\n" +
     "    </style>\r" +
     "\n" +
     "\r" +
     "\n" +
     "    <div id=\"graph\">\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "    </div>\r" +
     "\n" +
@@ -674,23 +720,31 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "\r" +
-    "\n" +
-    "<div class=\"container\" >\r" +
+    "<div>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "    <h1> Home Page </h1>\r" +
+    "    <div class=\"container\" >\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <h1> Home Page </h1>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        \r" +
+    "\n" +
+    "    \r" +
     "\n" +
     "\r" +
     "\n" +
     "    \r" +
     "\n" +
-    "    <div>\r" +
+    "\r" +
     "\n" +
-    "        <simple-table-directive>\r" +
+    "    </div><!-- /.container -->\r" +
     "\n" +
-    "    </div>\r" +
+    "\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -702,15 +756,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "    <div>\r" +
-    "\n" +
-    "        <div my-directive></div>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "</div><!-- /.container -->"
+    "</div>"
   );
 
 
