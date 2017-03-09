@@ -512,6 +512,8 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "            stroke-width: 1.5px;\r" +
     "\n" +
+    "            stroke-opacity: 1.0;\r" +
+    "\n" +
     "        }\r" +
     "\n" +
     "\r" +
@@ -523,6 +525,8 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "            stroke: 0000FF;\r" +
     "\n" +
     "            stroke-width: 1.5px;\r" +
+    "\n" +
+    "            opacity: 1.0;\r" +
     "\n" +
     "        }\r" +
     "\n" +
@@ -565,8 +569,6 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "        }\r" +
     "\n" +
     "\r" +
-    "\n" +
-    "      \r" +
     "\n" +
     "\r" +
     "\n" +

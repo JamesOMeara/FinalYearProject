@@ -94,45 +94,65 @@ module.exports = function(app) {
                     size: sizes.medium,
                     desc: ""
                 },
+                'controller': {
+                    name: 'Controller',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: ""
+                },
+                'busisnessLogic': {
+                    name: 'Busisness Logic',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: ""
+                },
+                'customElements': {
+                    name: 'Custom Elements',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: ""
+                },
+
+
                 'processes': {
                     name: 'Processes',
                     group: 'red',
                     size: sizes.large,
                     desc: ""
                 },
+                'design': {
+                    name: 'design',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: ""
+                },
                 'development': {
                     name: 'Development',
-                    group: 'grey',
+                    group: 'orange',
                     size: sizes.medium,
                     desc: ""
                 },
                 'testing': {
                     name: 'Testing',
-                    group: 'red',
+                    group: 'orange',
                     size: sizes.medium,
                     desc: ""
                 },
                 'building': {
                     name: 'Building',
-                    group: 'grey',
+                    group: 'orange',
                     size: sizes.medium,
                     desc: ""
                 },
                 'deployment': {
                     name: 'Deployment',
-                    group: 'grey',
+                    group: 'orange',
                     size: sizes.medium,
                     desc: ""
                 },
                 'ci': {
                     name: 'Continous Integration',
                     group: 'red',
-                    size: sizes.medium,
-                    desc: ""
-                },
-                'tools': {
-                    name: 'Tools',
-                    group: 'grey',
                     size: sizes.medium,
                     desc: ""
                 },
@@ -192,31 +212,51 @@ module.exports = function(app) {
                 {source: elements.singlePage        ,target: elements.angular   },
                 {source: elements.singlePage        ,target: elements.node   },
                 {source: elements.singlePage        ,target: elements.javascript   },
+                {source: elements.singlePage        ,target: elements.processes   },
+                
                 {source: elements.angular           ,target: elements.client   },
-                {source: elements.node              ,target: elements.server   },
                 {source: elements.angular           ,target: elements.componments   },
+                {source: elements.angular           ,target: elements.componments   },
+                
+                {source: elements.node              ,target: elements.server   },
+
+                {source: elements.javascript           ,target: elements.angular   },
+                {source: elements.javascript           ,target: elements.node   },
+                
                 {source: elements.componments       ,target: elements.directive   },
                 {source: elements.componments       ,target: elements.service   },
                 {source: elements.componments       ,target: elements.filter   },
                 {source: elements.componments       ,target: elements.factory   },
+                {source: elements.componments       ,target: elements.controller   },
+
+                {source: elements.controller       ,target: elements.busisnessLogic   },
+                
+                {source: elements.directive       ,target: elements.customElements   },
 
                 {source: elements.processes       ,target: elements.development   },
                 {source: elements.processes       ,target: elements.testing   },
                 {source: elements.processes       ,target: elements.building   },
                 {source: elements.processes       ,target: elements.deployment   },
-                {source: elements.processes       ,target: elements.tools   },
+                {source: elements.processes       ,target: elements.design   },
+                
+
                 {source: elements.ci       ,target: elements.building   },
                 {source: elements.ci       ,target: elements.deployment   },
-
-                {source: elements.jenkins       ,target: elements.buildserver   },
                 {source: elements.ci       ,target: elements.jenkins   },
+                {source: elements.ci       ,target: elements.karma   },
+                {source: elements.ci       ,target: elements.grunt   },
+                {source: elements.ci       ,target: elements.testing   },
+                
+                {source: elements.jenkins       ,target: elements.buildserver   },
                 
                 {source: elements.testing       ,target: elements.serverTesting   },
                 {source: elements.testing       ,target: elements.clientTesting   }, 
-                {source: elements.ci       ,target: elements.grunt   },
-                {source: elements.ci       ,target: elements.karma   },
-                {source: elements.clientTesting       ,target: elements.karma   },
+                
                 {source: elements.grunt       ,target: elements.taskRunner   },
+                {source: elements.grunt       ,target: elements.building   },
+                
+                {source: elements.clientTesting       ,target: elements.karma   },
+                
                 {source: elements.karma       ,target: elements.testRunner   },
                 
               
@@ -224,77 +264,48 @@ module.exports = function(app) {
             ];
 
             var nodes = elements
-            console.log(nodes)
-            console.log(links)
             
-            // Compute the distinct nodes from the links.
-            // links.forEach(function(link) {
-            //     link.source = nodes[link.source.name] || (nodes[link.source.name] = {name: link.source.name, size: link.source.size, color: link.source.group});
-            // });
-            // links.forEach(function(link) {
-            //     link.target = nodes[link.target.name] || (nodes[link.target.name] = {name: link.target.name, size: link.target.size, color: link.target.group});
-            // });
-
-            console.log(nodes)
-            console.log(links)
-
             var width = (window.innerWidth > 0) ? window.innerWidth : screen.width,
-                height = 1000;
+                height = 800;
 
             var force = d3.layout.force()
                 .nodes(d3.values(nodes))
                 .links(links)
-                .size([width, height/1.5])
-                .linkDistance(40)
+                .size([width, height])
+                .linkDistance(70)
                 .charge(-1000)
                 .on("tick", tick)
                 .start();
 
-
             var svg = d3.select("#graph").append("svg")
                 .attr("width", '100%')
                 .attr("height", height);
-
 
             var link = svg.selectAll(".link")
                 .data(force.links())
                 .enter().append("line")
                 .attr("class", "link");
 
-
             var node = svg.selectAll(".node")
                 .data(force.nodes())
-                .enter().append("g")
+                .enter()
+                .append("g")
                 .attr("class", "node")
                 .on("mouseover", mouseover)
                 .on("mouseout", mouseout)
                 .call(force.drag);
 
-
-
             node.append("circle")
                 .style('fill', function(d) { return d.group; })
                 .attr('r', function(d) { return d.size; });
-
 
             node.append("text")
                 .attr("x", 12)
                 .attr("dy", ".35em")
                 .text(function(d) { return d.name; });
 
-            function addDesc(elem) {
-                d3.select(elem).append("text").transition()
-                    .attr("class", "descText")
-                    .attr("x", 12)
-                    .attr("dy", "2em")
-                    .style("fill", 'black')
-                    .text(function(d) { return d.desc; });
-                
-                bbox = elem.getBBox();
-                console.log(bbox)
-                
-            }
-
+            node.append("title")
+                .text(function(d) { return d.name; });
 
             function tick() {
                 link
@@ -307,52 +318,73 @@ module.exports = function(app) {
                     .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
             }
 
-            function mouseover() {
-                d3.select(this).append("rect")
-                    .attr("class", "transbox")
-                d3.select(this).select("circle").transition()
-                    .duration(750)
-                    .attr("r", 16)
-                    .style('fill', 'green')
-                d3.select(this).select("text").transition()
-                    .duration(750)
-                    .style("font", '32px sans-serif')
-                    .style("fill", 'green')
-                descbox = d3.select(this).append("text").transition()
-                    .attr("class", "descText")
-                    .attr("x", 12)
-                    .attr("dy", "2em")
-                    .style("fill", 'black')
-                    .text(function(d) { return d.desc; });
-
-                var bbox = descbox.node().getBBox();
-                console.log(bbox)
-
-                d3.selectAll(".transbox")
-                    .style("fill", 'lightblue')
-                    .attr("x", 12)
-                    .attr("y", 12)
-                    // .attr("width", bbox.width)
-                    // .attr("height", bbox.height)
+             function mouseover(d) {
+                var circle = d3.select(this);
+                node
+                    .transition(500)
+                    .style("opacity", function(o) {
+                        return isConnected(o, d) ? 1.0 : 0.2 ;
+                    })
+                    .selectAll('circle')
+                    .style("fill", function(o) {
+                        if (isConnectedAsTarget(o, d) && isConnectedAsSource(o, d) ) {
+                        fillcolor = 'green';
+                        } else if (isConnectedAsSource(o, d)) {
+                        fillcolor = 'red';
+                        } else if (isConnectedAsTarget(o, d)) {
+                        fillcolor = 'blue';
+                        } else if (isEqual(o, d)) {
+                        fillcolor = "hotpink";
+                        } else {
+                        fillcolor = '#000';
+                        }
+                        return fillcolor;
+                    });
+                link
+                    .transition(500)
+                    .style("stroke-opacity", function(o) {
+                        return o.source === d || o.target === d ? 1 : 0.2;
+                    })
+           
+            }
+            
+            function mouseout(d) {
+                var circle = d3.select(this);
+                node
+                    .transition(500)
+                    .style("opacity", 1)
+                    .selectAll('circle')
+                    .style("fill", function(o) {
+                  
+                        return o.group;
+                    });
+                link
+                    .transition(500)
+                    .style("stroke-opacity", 1)
             }
 
-            function mouseout() {
-                d3.select(this).select("circle").transition()
-                    .duration(750)
-                    .attr("r", function(d) { return d.size; })
-                    .style('fill', function(d) { return d.group; })
-                d3.select(this).select("text").transition()
-                    .duration(750)
-                    .style("font", '16px sans-serif')
-                    .style("fill", 'black')
-                d3.selectAll(".descText").remove()
-                d3.selectAll(".transbox").remove()
-                
-                    
+            function node_radius(d) { return Math.pow(40.0 * d.size, 1/3); }
+
+            function isConnected(a, b) {
+                return isConnectedAsTarget(a, b) || isConnectedAsSource(a, b) || a.name == b.name;
             }
 
+            function isConnectedAsSource(a, b) {
+                return linkedByIndex[a.name + "," + b.name];
+            }
 
+            function isConnectedAsTarget(a, b) {
+                return linkedByIndex[b.name + "," + a.name];
+            }
 
+            function isEqual(a, b) {
+                return a.name == b.name;
+            }
+
+            var linkedByIndex = {};
+                links.forEach(function(d) {
+                linkedByIndex[d.source.name + "," + d.target.name] = true;
+                });
 
         });
       }
@@ -363,3 +395,67 @@ module.exports = function(app) {
   
 
 };
+
+
+
+
+
+
+       // Compute the distinct nodes from the links.
+            // links.forEach(function(link) {
+            //     link.source = nodes[link.source.name] || (nodes[link.source.name] = {name: link.source.name, size: link.source.size, color: link.source.group});
+            // });
+            // links.forEach(function(link) {
+            //     link.target = nodes[link.target.name] || (nodes[link.target.name] = {name: link.target.name, size: link.target.size, color: link.target.group});
+            // });
+
+
+
+
+
+       // function mouseover() {
+            //     d3.select(this).append("rect")
+            //         .attr("class", "transbox")
+
+            //     d3.select(this).select("circle").transition()
+            //         .duration(750)
+            //         .attr("r", 16)
+            //         .style('fill', 'green')
+
+            //     d3.select(this).select("text").transition()
+            //         .duration(750)
+            //         .style("font", '32px sans-serif')
+            //         .style("fill", 'green')
+
+            //     descbox = d3.select(this).append("text").transition()
+            //         .attr("class", "descText")
+            //         .attr("x", 12)
+            //         .attr("dy", "2em")
+            //         .style("fill", 'black')
+            //         .text(function(d) { return d.desc; });
+
+            //     d3.selectAll(".transbox")
+            //         .style("fill", 'lightblue')
+            //         .attr("x", 0)
+            //         .attr("y", 0)
+            //         .attr("width", 20 )
+            //         .attr("height", 20 )
+
+            // }
+
+
+
+
+
+                  
+
+                // d3.select(this).select("circle").transition()
+                //     .duration(750)
+                //     .attr("r", function(d) { return d.size; })
+                //     .style('fill', function(d) { return d.group; })
+                // d3.select(this).select("text").transition()
+                //     .duration(750)
+                //     .style("font", '16px sans-serif')
+                //     .style("fill", 'black')
+                // d3.selectAll(".descText").remove()
+                // d3.selectAll(".transbox").remove()
