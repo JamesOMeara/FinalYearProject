@@ -15,6 +15,7 @@
             stroke: 0000FF;
             stroke-width: 1.5px;
             opacity: 1.0;
+            
         }
 
         text {
@@ -23,17 +24,23 @@
             fill: black
         }
 
-        desc {
-            font: 18px sans-serif;
-            pointer-events: none;
-            fill: black
-        }
 
-        rect {
-            background-color: white;
-            border: 1px solid black;
-            opacity: 0.8;
-            filter: alpha(opacity=60); /* For IE8 and earlier */
+
+        div.tooltip {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            padding: 6px 10px;
+            top: 1.4em;
+            left: 50%;
+            transform: translateX(12%) translateY(0);
+            background: grey;
+            color: white;
+            white-space: nowrap;
+            z-index: 2;
+            border-radius: 2px;
+            transition:  opacity 0.5s linear
+                
         }
 
 

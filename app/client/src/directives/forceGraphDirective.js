@@ -1,7 +1,7 @@
 
 module.exports = function(app) {
  
-  app.directive('forceGraphDirective', [ "d3Service", function (d3Service) {
+  app.directive('forceGraphDirective', [ "d3Service", function ( d3Service) {
     return {
       controller: 'navController' ,
       restrict: 'EA',
@@ -12,6 +12,7 @@ module.exports = function(app) {
       templateUrl: './app/client/src/directives/templates/forceGraphTemplate.ejs',
       link: function(scope, element, attrs) {
 
+        
 
         var groups= {
             Highlevel: "blue",
@@ -26,6 +27,9 @@ module.exports = function(app) {
         }
 
         d3Service.d3().then(function(d3) {
+
+            var elements = {};
+            var links = [];
 
             var elements = {
                 'singlePage': {
@@ -112,8 +116,6 @@ module.exports = function(app) {
                     size: sizes.medium,
                     desc: ""
                 },
-
-
                 'processes': {
                     name: 'Processes',
                     group: 'red',
@@ -168,18 +170,18 @@ module.exports = function(app) {
                     size: sizes.medium,
                     desc: ""
                 },
-                'clientTesting': {
-                    name: 'Client Side',
-                    group: 'grey',
-                    size: sizes.medium,
-                    desc: ""
-                },
-                'serverTesting': {
-                    name: 'Server Side',
-                    group: 'grey',
-                    size: sizes.medium,
-                    desc: ""
-                },
+                // 'clientTesting': {
+                //     name: 'Client Side',
+                //     group: 'grey',
+                //     size: sizes.medium,
+                //     desc: ""
+                // },
+                // 'serverTesting': {
+                //     name: 'Server Side',
+                //     group: 'grey',
+                //     size: sizes.medium,
+                //     desc: ""
+                // },
                 'karma': {
                     name: 'Karma',
                     group: 'grey',
@@ -249,18 +251,16 @@ module.exports = function(app) {
                 
                 {source: elements.jenkins       ,target: elements.buildserver   },
                 
-                {source: elements.testing       ,target: elements.serverTesting   },
-                {source: elements.testing       ,target: elements.clientTesting   }, 
+                {source: elements.testing       ,target: elements.server   },
+                {source: elements.testing       ,target: elements.client   }, 
                 
                 {source: elements.grunt       ,target: elements.taskRunner   },
                 {source: elements.grunt       ,target: elements.building   },
                 
-                {source: elements.clientTesting       ,target: elements.karma   },
+                {source: elements.client       ,target: elements.karma   },
                 
                 {source: elements.karma       ,target: elements.testRunner   },
                 
-              
-          
             ];
 
             var nodes = elements
@@ -293,7 +293,13 @@ module.exports = function(app) {
                 .attr("class", "node")
                 .on("mouseover", mouseover)
                 .on("mouseout", mouseout)
+                .on("mousemove", mousemove)
                 .call(force.drag);
+
+            var tooltip = d3.select("#graph")
+                .append('div')
+                .attr("class", "tooltip") 
+                .style("opacity", 0)
 
             node.append("circle")
                 .style('fill', function(d) { return d.group; })
@@ -304,8 +310,8 @@ module.exports = function(app) {
                 .attr("dy", ".35em")
                 .text(function(d) { return d.name; });
 
-            node.append("title")
-                .text(function(d) { return d.name; });
+            
+
 
             function tick() {
                 link
@@ -318,8 +324,16 @@ module.exports = function(app) {
                     .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
             }
 
+           
+
              function mouseover(d) {
-                var circle = d3.select(this);
+                tooltip	
+                    .html('<p>'+d.name+'</p>' + '<p>'+d.desc+'</p>' )	 
+                tooltip
+                    .transition(500)
+                    .style("opacity", .9)
+                    .style("visibility", "visible")
+
                 node
                     .transition(500)
                     .style("opacity", function(o) {
@@ -339,23 +353,34 @@ module.exports = function(app) {
                         fillcolor = '#000';
                         }
                         return fillcolor;
-                    });
+                    })
+
                 link
                     .transition(500)
                     .style("stroke-opacity", function(o) {
                         return o.source === d || o.target === d ? 1 : 0.2;
                     })
-           
+            }
+
+            
+            function mousemove(d) {
+                tooltip
+                    .style("left", (d3.event.pageX + 50) + "px")
+                    .style("top", (d3.event.pageY + 50) + "px");
             }
             
             function mouseout(d) {
-                var circle = d3.select(this);
+
+                tooltip
+                    .transition(500)
+                    .style("opacity", 0)
+                    .style("visibility", "hidden");
+
                 node
                     .transition(500)
                     .style("opacity", 1)
                     .selectAll('circle')
                     .style("fill", function(o) {
-                  
                         return o.group;
                     });
                 link
@@ -397,65 +422,3 @@ module.exports = function(app) {
 };
 
 
-
-
-
-
-       // Compute the distinct nodes from the links.
-            // links.forEach(function(link) {
-            //     link.source = nodes[link.source.name] || (nodes[link.source.name] = {name: link.source.name, size: link.source.size, color: link.source.group});
-            // });
-            // links.forEach(function(link) {
-            //     link.target = nodes[link.target.name] || (nodes[link.target.name] = {name: link.target.name, size: link.target.size, color: link.target.group});
-            // });
-
-
-
-
-
-       // function mouseover() {
-            //     d3.select(this).append("rect")
-            //         .attr("class", "transbox")
-
-            //     d3.select(this).select("circle").transition()
-            //         .duration(750)
-            //         .attr("r", 16)
-            //         .style('fill', 'green')
-
-            //     d3.select(this).select("text").transition()
-            //         .duration(750)
-            //         .style("font", '32px sans-serif')
-            //         .style("fill", 'green')
-
-            //     descbox = d3.select(this).append("text").transition()
-            //         .attr("class", "descText")
-            //         .attr("x", 12)
-            //         .attr("dy", "2em")
-            //         .style("fill", 'black')
-            //         .text(function(d) { return d.desc; });
-
-            //     d3.selectAll(".transbox")
-            //         .style("fill", 'lightblue')
-            //         .attr("x", 0)
-            //         .attr("y", 0)
-            //         .attr("width", 20 )
-            //         .attr("height", 20 )
-
-            // }
-
-
-
-
-
-                  
-
-                // d3.select(this).select("circle").transition()
-                //     .duration(750)
-                //     .attr("r", function(d) { return d.size; })
-                //     .style('fill', function(d) { return d.group; })
-                // d3.select(this).select("text").transition()
-                //     .duration(750)
-                //     .style("font", '16px sans-serif')
-                //     .style("fill", 'black')
-                // d3.selectAll(".descText").remove()
-                // d3.selectAll(".transbox").remove()

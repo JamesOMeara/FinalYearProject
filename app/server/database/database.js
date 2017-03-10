@@ -23,9 +23,8 @@ updateDocument = function(db, callback) {
   });  
 }
 
-
+ 
 exports.findDocuments = function(req, res) {
-
     MongoClient.connect(dburl, function(err, db) {
         console.log("Connected correctly to server")
         

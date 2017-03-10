@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var fs = require('fs');
 var app = express();
 var MongoClient = require('./database/database.js');
 
@@ -19,10 +20,10 @@ app.get('/home', function(req, res) {
     res.render('index');
 });
 
+
 app.get('/getSomething', function(req, res) {
     results = MongoClient.findDocuments(req, res);
 });
-
 app.post('/postSomething', function(req, res) {
     var body = '';
     req.on('data', function(chunk) {

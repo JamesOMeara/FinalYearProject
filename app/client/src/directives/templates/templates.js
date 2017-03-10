@@ -527,6 +527,8 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "            opacity: 1.0;\r" +
     "\n" +
+    "            \r" +
+    "\n" +
     "        }\r" +
     "\n" +
     "\r" +
@@ -543,27 +545,39 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "        desc {\r" +
-    "\n" +
-    "            font: 18px sans-serif;\r" +
-    "\n" +
-    "            pointer-events: none;\r" +
-    "\n" +
-    "            fill: black\r" +
-    "\n" +
-    "        }\r" +
+    "\r" +
     "\n" +
     "\r" +
     "\n" +
-    "        rect {\r" +
+    "        div.tooltip {\r" +
     "\n" +
-    "            background-color: white;\r" +
+    "            opacity: 0;\r" +
     "\n" +
-    "            border: 1px solid black;\r" +
+    "            visibility: hidden;\r" +
     "\n" +
-    "            opacity: 0.8;\r" +
+    "            position: absolute;\r" +
     "\n" +
-    "            filter: alpha(opacity=60); /* For IE8 and earlier */\r" +
+    "            padding: 6px 10px;\r" +
+    "\n" +
+    "            top: 1.4em;\r" +
+    "\n" +
+    "            left: 50%;\r" +
+    "\n" +
+    "            transform: translateX(12%) translateY(0);\r" +
+    "\n" +
+    "            background: grey;\r" +
+    "\n" +
+    "            color: white;\r" +
+    "\n" +
+    "            white-space: nowrap;\r" +
+    "\n" +
+    "            z-index: 2;\r" +
+    "\n" +
+    "            border-radius: 2px;\r" +
+    "\n" +
+    "            transition:  opacity 0.5s linear\r" +
+    "\n" +
+    "                \r" +
     "\n" +
     "        }\r" +
     "\n" +
