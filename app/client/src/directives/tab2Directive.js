@@ -6,6 +6,7 @@ module.exports = function(app) {
             controller: 'mainController' ,
             restrict: 'E',
             replace: true,
+            transclude: true,
             scope: {
 
             },

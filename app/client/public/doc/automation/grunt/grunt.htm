@@ -1,0 +1,341 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#954F72;
+	text-decoration:underline;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link="#0563C1" vlink="#954F72">
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Grunt</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><a
+href="http://gruntjs.com/getting-started">http://gruntjs.com/getting-started</a>
+</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Grunt is a
+task manager, do not get this confused between NPM or Bower, </p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>                Grunt:
+task manager</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>                Npm:
+server side dependency manager</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>                Bower:
+client side dependency manager</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>What is
+Grunt</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Getting
+Started</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Browserify</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<span style='font-size:11.0pt;line-height:107%;font-family:"Calibri",sans-serif'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><b><span
+style='color:red'>What is Grunt</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Grunt is a
+cross platform task runner for your project, Similar to what NPM and Gulp can
+do, Grunt uses JavaScript and can be used easily by selecting the appropriate
+plugin and installing and configuring it. Grunt has a good community following,
+and there are many NPM plugins that have a grunt plugin available.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Grunt Tasks
+read/write to/from disk, keep this in mind as many tasks might require to
+read/write to disk, this can cause grunt to run slow. While with NPM, does it
+differently by using bash to pipe output into the next command.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Gulp relies
+heavily on streams, pipes and asynchronous code, which fits hand in hand with
+Node unlike NPM and grunt. Grunt seems to be the easiest method as most
+developers working on the client side and server side, will know and be using
+JavaScript. Also for big teams grunt also has the advantage of more of the team
+members knowing how to use it, rather than having to specialize in Node.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Grunt: <a
+href="http://gruntjs.com/getting-started">http://gruntjs.com/getting-started</a>
+</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Gulp: <a
+href="http://gulpjs.com/">http://gulpjs.com/</a> </p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Comparing
+NPM, Grunt, Gulp: <a
+href="https://ponyfoo.com/articles/choose-grunt-gulp-or-npm">https://ponyfoo.com/articles/choose-grunt-gulp-or-npm</a>
+<br clear=all style='page-break-before:always'>
+</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><b><span
+style='color:red'>Getting Started</span></b><br>
+<br>
+</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Start of by
+installing the command line interface for grunt (grunt-cli) from NPM, this will
+install the grunt command line interface and will allow us to call grunt from
+anywhere in our project (use grunt globally with <b><span style='color:#2E74B5'>“-g”</span></b>).</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Command: <b><span
+style='color:#2E74B5'>“npm install grunt-cli”</span></b></p>
+
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:center'><img border=0 width=155 height=23 id="Picture 5"
+src="grunt_files/image001.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Install
+these 3 modules to get up and running, we need grunt initially, but also
+install </p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-indent:
+.5in'><b><span style='color:#2E74B5'>“grunt-contrib-jshint”,</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-indent:
+.5in'><b><span style='color:#2E74B5'>“grunt-contrib-watch” </span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>as these
+will come in handy later on.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><img
+border=0 width=510 height=19 id="Picture 2" src="grunt_files/image002.jpg"> <img
+border=0 width=623 height=21 id="Picture 3" src="grunt_files/image003.jpg"><img
+border=0 width=623 height=18 id="Picture 1" src="grunt_files/image004.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Once we have
+these dependacies installed and updated in our package.json we can create the
+gruntfile.js now.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>This is a
+simple example of a grunt file using the dependacies mentioned above.</p>
+
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:center'><img border=0 width=367 height=322 id="Picture 6"
+src="grunt_files/image005.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>In this
+example we have 2 tasks currently, jshint and watch, since we installed these 2
+dependacies also, if we want to use them we must load the task plugin by:</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-indent:
+.5in'><b><span style='color:#2E74B5'> “grunt.loadNpmTasks('grunt-contrib-watch');”</span></b><span
+style='color:#2E74B5'> </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>You may
+create custom tasks inside this grunt file, some may require you to install
+more dependacies or load more npm tasks.<br clear=all style='page-break-before:
+always'>
+</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><b><span
+style='color:red'>Browserify</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>With our
+app, we specify all js files in the browser, this includes all angular
+directives, controllers, factories, filters and even the dependacies. A good
+way to do this is to use a plugin like “Browserify” this will bundle all the
+apps files and dependacies into one or many files, which then can be used in
+the index.ejs page.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Info @ <a
+href="https://www.npmjs.com/package/grunt-browserify"><b>https://www.npmjs.com/package/grunt-browserify</b></a><b><span
+style='color:red'> </span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><b><span
+style='color:red'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Browserify
+will collate all the files needed for loading into the browser into one file.
+Or mutiple if you wish.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>For this app
+we are going to create 2 files, one for the app code, and another for all the dependacies.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>To do this
+we must install browserify:</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><img
+border=0 width=519 height=26 id="Picture 10" src="grunt_files/image006.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Once we have
+this done and the package.json updated we can start to edit the gruntfile.js</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Add in this
+new line of code:</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>                “<span
+style='color:red'>grunt.loadNpmTasks('grunt-browserify');</span>”</p>
+
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:center'><img border=0 width=334 height=64 id="Picture 11"
+src="grunt_files/image007.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Now we can
+begin to add our browserify task and configure it. </p>
+
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:center'><img border=0 width=404 height=280 id="Picture 13"
+src="grunt_files/image008.jpg"></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Start of by
+creating the task “<span style='color:red'>Browserify</span>” and we have here
+2 tasks within it. This is a basic example to get browserify to create separate
+files (One for App source code, 2<sup>nd</sup> for dependencies). </p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>More info
+can be found:@ <a href="https://www.npmjs.com/package/grunt-browserify">https://www.npmjs.com/package/grunt-browserify</a>
+</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Inside the
+client task we are telling browserify what file is our entry-point to the app,
+here it is the app.js</p>
+
+<p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+text-align:center'><b><span style='color:#2E74B5'>src: ['./app/client/app.js'],</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><b><span
+style='color:#2E74B5'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>And then we
+specify the destination where we want to save the file. We must give this task
+a list of the external files also.</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:1.5in;margin-bottom:.0001pt'>                <b><span
+style='color:#2E74B5'>dest: './app/client/public/app.js',</span></b></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:1.5in;margin-bottom:.0001pt'><b><span style='color:#2E74B5'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:1.5in;margin-bottom:.0001pt;text-indent:.5in'><b><span
+style='color:#2E74B5'>external:[</span></b></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:1.5in;margin-bottom:.0001pt'><b><span style='color:#2E74B5'>                   
+'angular',</span></b></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:1.5in;margin-bottom:.0001pt'><b><span style='color:#2E74B5'>                   
+'bootstrap',</span></b></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:1.5in;margin-bottom:.0001pt'><b><span style='color:#2E74B5'>                   
+&quot;templates&quot;,</span></b></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:1.5in;margin-bottom:.0001pt'><b><span style='color:#2E74B5'>               
+]</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>*May ask why
+are we having separate file?</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>-To get
+correct coverage of our app for testing</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>-Faster
+build times for dev, as you only need to create one file when source code is
+changed</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Inside the
+deps task we do not need to tell it of any source files, but we must give it
+the location of where the dependencies are kept for it to include them in the
+output file.</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;text-indent:-.5in'>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>

@@ -6,415 +6,415 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "  \r" +
+    "        <div class=\"content\">\r" +
     "\n" +
-    "<div>\r" +
+    "            <style>@import url(http://fonts.googleapis.com/css?family=Oxygen+Mono);\r" +
     "\n" +
-    "\r" +
+    "                /* Please Keep this font import at the very top of any CSS file */\r" +
     "\n" +
-    "        <div class=\"content\"><style>@import url(http://fonts.googleapis.com/css?family=Oxygen+Mono);\r" +
+    "                @charset \"UTF-8\";\r" +
     "\n" +
-    "            /* Please Keep this font import at the very top of any CSS file */\r" +
+    "                /* Starter CSS for Flyout Menu */\r" +
     "\n" +
-    "            @charset \"UTF-8\";\r" +
+    "                #cssmenu {\r" +
     "\n" +
-    "            /* Starter CSS for Flyout Menu */\r" +
+    "                float: left;\r" +
     "\n" +
-    "            #cssmenu {\r" +
+    "                padding: 0;\r" +
     "\n" +
-    "            float: left;\r" +
+    "                margin: 0;\r" +
     "\n" +
-    "            padding: 0;\r" +
+    "                border: 0;\r" +
     "\n" +
-    "            margin: 0;\r" +
+    "                line-height: 1;\r" +
     "\n" +
-    "            border: 0;\r" +
+    "                }\r" +
     "\n" +
-    "            line-height: 1;\r" +
+    "                #cssmenu ul,\r" +
     "\n" +
-    "            }\r" +
+    "                #cssmenu ul li,\r" +
     "\n" +
-    "            #cssmenu ul,\r" +
+    "                #cssmenu ul ul {\r" +
     "\n" +
-    "            #cssmenu ul li,\r" +
+    "                list-style: none;\r" +
     "\n" +
-    "            #cssmenu ul ul {\r" +
+    "                margin: 0;\r" +
     "\n" +
-    "            list-style: none;\r" +
+    "                padding: 0;\r" +
     "\n" +
-    "            margin: 0;\r" +
+    "                }\r" +
     "\n" +
-    "            padding: 0;\r" +
+    "                #cssmenu ul {\r" +
     "\n" +
-    "            }\r" +
+    "                position: relative;\r" +
     "\n" +
-    "            #cssmenu ul {\r" +
+    "                z-index: 597;\r" +
     "\n" +
-    "            position: relative;\r" +
+    "                float: left;\r" +
     "\n" +
-    "            z-index: 597;\r" +
+    "                }\r" +
     "\n" +
-    "            float: left;\r" +
+    "                #cssmenu ul li {\r" +
     "\n" +
-    "            }\r" +
+    "                float: left;\r" +
     "\n" +
-    "            #cssmenu ul li {\r" +
+    "                min-height: 1px;\r" +
     "\n" +
-    "            float: left;\r" +
+    "                line-height: 1em;\r" +
     "\n" +
-    "            min-height: 1px;\r" +
+    "                vertical-align: middle;\r" +
     "\n" +
-    "            line-height: 1em;\r" +
+    "                position: relative;\r" +
     "\n" +
-    "            vertical-align: middle;\r" +
+    "                }\r" +
     "\n" +
-    "            position: relative;\r" +
+    "                #cssmenu ul li.hover,\r" +
     "\n" +
-    "            }\r" +
+    "                #cssmenu ul li:hover {\r" +
     "\n" +
-    "            #cssmenu ul li.hover,\r" +
+    "                position: relative;\r" +
     "\n" +
-    "            #cssmenu ul li:hover {\r" +
+    "                z-index: 599;\r" +
     "\n" +
-    "            position: relative;\r" +
+    "                cursor: default;\r" +
     "\n" +
-    "            z-index: 599;\r" +
+    "                }\r" +
     "\n" +
-    "            cursor: default;\r" +
+    "                #cssmenu ul ul {\r" +
     "\n" +
-    "            }\r" +
+    "                visibility: hidden;\r" +
     "\n" +
-    "            #cssmenu ul ul {\r" +
+    "                position: absolute;\r" +
     "\n" +
-    "            visibility: hidden;\r" +
+    "                top: 100%;\r" +
     "\n" +
-    "            position: absolute;\r" +
+    "                left: 0px;\r" +
     "\n" +
-    "            top: 100%;\r" +
+    "                z-index: 598;\r" +
     "\n" +
-    "            left: 0px;\r" +
+    "                width: 100%;\r" +
     "\n" +
-    "            z-index: 598;\r" +
+    "                }\r" +
     "\n" +
-    "            width: 100%;\r" +
+    "                #cssmenu ul ul li {\r" +
     "\n" +
-    "            }\r" +
+    "                float: none;\r" +
     "\n" +
-    "            #cssmenu ul ul li {\r" +
+    "                }\r" +
     "\n" +
-    "            float: none;\r" +
+    "                #cssmenu ul ul ul {\r" +
     "\n" +
-    "            }\r" +
+    "                top: -2px;\r" +
     "\n" +
-    "            #cssmenu ul ul ul {\r" +
+    "                right: 0;\r" +
     "\n" +
-    "            top: -2px;\r" +
+    "                }\r" +
     "\n" +
-    "            right: 0;\r" +
+    "                #cssmenu ul li:hover > ul {\r" +
     "\n" +
-    "            }\r" +
+    "                visibility: visible;\r" +
     "\n" +
-    "            #cssmenu ul li:hover > ul {\r" +
+    "                }\r" +
     "\n" +
-    "            visibility: visible;\r" +
+    "                #cssmenu ul ul {\r" +
     "\n" +
-    "            }\r" +
+    "                top: 1px;\r" +
     "\n" +
-    "            #cssmenu ul ul {\r" +
+    "                left: 99%;\r" +
     "\n" +
-    "            top: 1px;\r" +
+    "                }\r" +
     "\n" +
-    "            left: 99%;\r" +
+    "                #cssmenu ul li {\r" +
     "\n" +
-    "            }\r" +
+    "                float: none;\r" +
     "\n" +
-    "            #cssmenu ul li {\r" +
+    "                }\r" +
     "\n" +
-    "            float: none;\r" +
+    "                #cssmenu ul ul {\r" +
     "\n" +
-    "            }\r" +
+    "                margin-top: 1px;\r" +
     "\n" +
-    "            #cssmenu ul ul {\r" +
+    "                }\r" +
     "\n" +
-    "            margin-top: 1px;\r" +
+    "                #cssmenu ul ul li {\r" +
     "\n" +
-    "            }\r" +
+    "                font-weight: normal;\r" +
     "\n" +
-    "            #cssmenu ul ul li {\r" +
+    "                }\r" +
     "\n" +
-    "            font-weight: normal;\r" +
+    "                /* Custom CSS Styles */\r" +
     "\n" +
-    "            }\r" +
+    "                #cssmenu {\r" +
     "\n" +
-    "            /* Custom CSS Styles */\r" +
+    "                width: 200px;\r" +
     "\n" +
-    "            #cssmenu {\r" +
+    "                background: #333333;\r" +
     "\n" +
-    "            width: 200px;\r" +
+    "                font-family: 'Oxygen Mono', Tahoma, Arial, sans-serif;\r" +
     "\n" +
-    "            background: #333333;\r" +
+    "                zoom: 1;\r" +
     "\n" +
-    "            font-family: 'Oxygen Mono', Tahoma, Arial, sans-serif;\r" +
+    "                font-size: 12px;\r" +
     "\n" +
-    "            zoom: 1;\r" +
+    "                }\r" +
     "\n" +
-    "            font-size: 12px;\r" +
+    "                #cssmenu:before {\r" +
     "\n" +
-    "            }\r" +
+    "                content: '';\r" +
     "\n" +
-    "            #cssmenu:before {\r" +
+    "                display: block;\r" +
     "\n" +
-    "            content: '';\r" +
+    "                }\r" +
     "\n" +
-    "            display: block;\r" +
+    "                #cssmenu:after {\r" +
     "\n" +
-    "            }\r" +
+    "                content: '';\r" +
     "\n" +
-    "            #cssmenu:after {\r" +
+    "                display: table;\r" +
     "\n" +
-    "            content: '';\r" +
+    "                clear: both;\r" +
     "\n" +
-    "            display: table;\r" +
+    "                }\r" +
     "\n" +
-    "            clear: both;\r" +
+    "                #cssmenu a {\r" +
     "\n" +
-    "            }\r" +
+    "                display: block;\r" +
     "\n" +
-    "            #cssmenu a {\r" +
+    "                padding: 15px 20px;\r" +
     "\n" +
-    "            display: block;\r" +
+    "                color: #ffffff;\r" +
     "\n" +
-    "            padding: 15px 20px;\r" +
+    "                text-decoration: none;\r" +
     "\n" +
-    "            color: #ffffff;\r" +
+    "                text-transform: uppercase;\r" +
     "\n" +
-    "            text-decoration: none;\r" +
+    "                }\r" +
     "\n" +
-    "            text-transform: uppercase;\r" +
+    "                #cssmenu > ul {\r" +
     "\n" +
-    "            }\r" +
+    "                width: 200px;\r" +
     "\n" +
-    "            #cssmenu > ul {\r" +
+    "                }\r" +
     "\n" +
-    "            width: 200px;\r" +
+    "                #cssmenu ul ul {\r" +
     "\n" +
-    "            }\r" +
+    "                width: 200px;\r" +
     "\n" +
-    "            #cssmenu ul ul {\r" +
+    "                }\r" +
     "\n" +
-    "            width: 200px;\r" +
+    "                #cssmenu > ul > li > a {\r" +
     "\n" +
-    "            }\r" +
+    "                border-right: 4px solid #1b9bff;\r" +
     "\n" +
-    "            #cssmenu > ul > li > a {\r" +
+    "                color: #ffffff;\r" +
     "\n" +
-    "            border-right: 4px solid #1b9bff;\r" +
+    "                }\r" +
     "\n" +
-    "            color: #ffffff;\r" +
+    "                #cssmenu > ul > li > a:hover {\r" +
     "\n" +
-    "            }\r" +
+    "                color: #ffffff;\r" +
     "\n" +
-    "            #cssmenu > ul > li > a:hover {\r" +
+    "                }\r" +
     "\n" +
-    "            color: #ffffff;\r" +
+    "                #cssmenu > ul > li.active a {\r" +
     "\n" +
-    "            }\r" +
+    "                background: #1b9bff;\r" +
     "\n" +
-    "            #cssmenu > ul > li.active a {\r" +
+    "                }\r" +
     "\n" +
-    "            background: #1b9bff;\r" +
+    "                #cssmenu > ul > li a:hover,\r" +
     "\n" +
-    "            }\r" +
+    "                #cssmenu > ul > li:hover a {\r" +
     "\n" +
-    "            #cssmenu > ul > li a:hover,\r" +
+    "                background: #1b9bff;\r" +
     "\n" +
-    "            #cssmenu > ul > li:hover a {\r" +
+    "                }\r" +
     "\n" +
-    "            background: #1b9bff;\r" +
+    "                #cssmenu li {\r" +
     "\n" +
-    "            }\r" +
+    "                position: relative;\r" +
     "\n" +
-    "            #cssmenu li {\r" +
+    "                }\r" +
     "\n" +
-    "            position: relative;\r" +
+    "                #cssmenu ul li.has-sub > a:after {\r" +
     "\n" +
-    "            }\r" +
+    "                content: '+';\r" +
     "\n" +
-    "            #cssmenu ul li.has-sub > a:after {\r" +
+    "                position: absolute;\r" +
     "\n" +
-    "            content: '+';\r" +
+    "                top: 50%;\r" +
     "\n" +
-    "            position: absolute;\r" +
+    "                right: 15px;\r" +
     "\n" +
-    "            top: 50%;\r" +
+    "                margin-top: -6px;\r" +
     "\n" +
-    "            right: 15px;\r" +
+    "                }\r" +
     "\n" +
-    "            margin-top: -6px;\r" +
+    "                #cssmenu ul ul li.first {\r" +
     "\n" +
-    "            }\r" +
+    "                -webkit-border-radius: 0 3px 0 0;\r" +
     "\n" +
-    "            #cssmenu ul ul li.first {\r" +
+    "                -moz-border-radius: 0 3px 0 0;\r" +
     "\n" +
-    "            -webkit-border-radius: 0 3px 0 0;\r" +
+    "                border-radius: 0 3px 0 0;\r" +
     "\n" +
-    "            -moz-border-radius: 0 3px 0 0;\r" +
+    "                }\r" +
     "\n" +
-    "            border-radius: 0 3px 0 0;\r" +
+    "                #cssmenu ul ul li.last {\r" +
     "\n" +
-    "            }\r" +
+    "                -webkit-border-radius: 0 0 3px 0;\r" +
     "\n" +
-    "            #cssmenu ul ul li.last {\r" +
+    "                -moz-border-radius: 0 0 3px 0;\r" +
     "\n" +
-    "            -webkit-border-radius: 0 0 3px 0;\r" +
+    "                border-radius: 0 0 3px 0;\r" +
     "\n" +
-    "            -moz-border-radius: 0 0 3px 0;\r" +
+    "                border-bottom: 0;\r" +
     "\n" +
-    "            border-radius: 0 0 3px 0;\r" +
+    "                }\r" +
     "\n" +
-    "            border-bottom: 0;\r" +
+    "                #cssmenu ul ul {\r" +
     "\n" +
-    "            }\r" +
+    "                -webkit-border-radius: 0 3px 3px 0;\r" +
     "\n" +
-    "            #cssmenu ul ul {\r" +
+    "                -moz-border-radius: 0 3px 3px 0;\r" +
     "\n" +
-    "            -webkit-border-radius: 0 3px 3px 0;\r" +
+    "                border-radius: 0 3px 3px 0;\r" +
     "\n" +
-    "            -moz-border-radius: 0 3px 3px 0;\r" +
+    "                }\r" +
     "\n" +
-    "            border-radius: 0 3px 3px 0;\r" +
+    "                #cssmenu ul ul {\r" +
     "\n" +
-    "            }\r" +
+    "                border: 1px solid #0082e7;\r" +
     "\n" +
-    "            #cssmenu ul ul {\r" +
+    "                }\r" +
     "\n" +
-    "            border: 1px solid #0082e7;\r" +
+    "                #cssmenu ul ul a {\r" +
     "\n" +
-    "            }\r" +
+    "                font-size: 12px;\r" +
     "\n" +
-    "            #cssmenu ul ul a {\r" +
+    "                color: #ffffff;\r" +
     "\n" +
-    "            font-size: 12px;\r" +
+    "                }\r" +
     "\n" +
-    "            color: #ffffff;\r" +
+    "                #cssmenu ul ul a:hover {\r" +
     "\n" +
-    "            }\r" +
+    "                color: #ffffff;\r" +
     "\n" +
-    "            #cssmenu ul ul a:hover {\r" +
+    "                }\r" +
     "\n" +
-    "            color: #ffffff;\r" +
+    "                #cssmenu ul ul li {\r" +
     "\n" +
-    "            }\r" +
+    "                border-bottom: 1px solid #0082e7;\r" +
     "\n" +
-    "            #cssmenu ul ul li {\r" +
+    "                }\r" +
     "\n" +
-    "            border-bottom: 1px solid #0082e7;\r" +
+    "                #cssmenu ul ul li:hover > a {\r" +
     "\n" +
-    "            }\r" +
+    "                background: #4eb1ff;\r" +
     "\n" +
-    "            #cssmenu ul ul li:hover > a {\r" +
+    "                color: #ffffff;\r" +
     "\n" +
-    "            background: #4eb1ff;\r" +
+    "                }\r" +
     "\n" +
-    "            color: #ffffff;\r" +
+    "                #cssmenu.align-right > ul > li > a {\r" +
     "\n" +
-    "            }\r" +
+    "                border-left: 4px solid #1b9bff;\r" +
     "\n" +
-    "            #cssmenu.align-right > ul > li > a {\r" +
+    "                border-right: none;\r" +
     "\n" +
-    "            border-left: 4px solid #1b9bff;\r" +
+    "                }\r" +
     "\n" +
-    "            border-right: none;\r" +
+    "                #cssmenu.align-right {\r" +
     "\n" +
-    "            }\r" +
+    "                float: right;\r" +
     "\n" +
-    "            #cssmenu.align-right {\r" +
+    "                }\r" +
     "\n" +
-    "            float: right;\r" +
+    "                #cssmenu.align-right li {\r" +
     "\n" +
-    "            }\r" +
+    "                text-align: right;\r" +
     "\n" +
-    "            #cssmenu.align-right li {\r" +
+    "                }\r" +
     "\n" +
-    "            text-align: right;\r" +
+    "                #cssmenu.align-right ul li.has-sub > a:before {\r" +
     "\n" +
-    "            }\r" +
+    "                content: '+';\r" +
     "\n" +
-    "            #cssmenu.align-right ul li.has-sub > a:before {\r" +
+    "                position: absolute;\r" +
     "\n" +
-    "            content: '+';\r" +
+    "                top: 50%;\r" +
     "\n" +
-    "            position: absolute;\r" +
+    "                left: 15px;\r" +
     "\n" +
-    "            top: 50%;\r" +
+    "                margin-top: -6px;\r" +
     "\n" +
-    "            left: 15px;\r" +
+    "                }\r" +
     "\n" +
-    "            margin-top: -6px;\r" +
+    "                #cssmenu.align-right ul li.has-sub > a:after {\r" +
     "\n" +
-    "            }\r" +
+    "                content: none;\r" +
     "\n" +
-    "            #cssmenu.align-right ul li.has-sub > a:after {\r" +
+    "                }\r" +
     "\n" +
-    "            content: none;\r" +
+    "                #cssmenu.align-right ul ul {\r" +
     "\n" +
-    "            }\r" +
+    "                visibility: hidden;\r" +
     "\n" +
-    "            #cssmenu.align-right ul ul {\r" +
+    "                position: absolute;\r" +
     "\n" +
-    "            visibility: hidden;\r" +
+    "                top: 0;\r" +
     "\n" +
-    "            position: absolute;\r" +
+    "                left: -100%;\r" +
     "\n" +
-    "            top: 0;\r" +
+    "                z-index: 598;\r" +
     "\n" +
-    "            left: -100%;\r" +
+    "                width: 100%;\r" +
     "\n" +
-    "            z-index: 598;\r" +
+    "                }\r" +
     "\n" +
-    "            width: 100%;\r" +
+    "                #cssmenu.align-right ul ul li.first {\r" +
     "\n" +
-    "            }\r" +
+    "                -webkit-border-radius: 3px 0 0 0;\r" +
     "\n" +
-    "            #cssmenu.align-right ul ul li.first {\r" +
+    "                -moz-border-radius: 3px 0 0 0;\r" +
     "\n" +
-    "            -webkit-border-radius: 3px 0 0 0;\r" +
+    "                border-radius: 3px 0 0 0;\r" +
     "\n" +
-    "            -moz-border-radius: 3px 0 0 0;\r" +
+    "                }\r" +
     "\n" +
-    "            border-radius: 3px 0 0 0;\r" +
+    "                #cssmenu.align-right ul ul li.last {\r" +
     "\n" +
-    "            }\r" +
+    "                -webkit-border-radius: 0 0 0 3px;\r" +
     "\n" +
-    "            #cssmenu.align-right ul ul li.last {\r" +
+    "                -moz-border-radius: 0 0 0 3px;\r" +
     "\n" +
-    "            -webkit-border-radius: 0 0 0 3px;\r" +
+    "                border-radius: 0 0 0 3px;\r" +
     "\n" +
-    "            -moz-border-radius: 0 0 0 3px;\r" +
+    "                }\r" +
     "\n" +
-    "            border-radius: 0 0 0 3px;\r" +
+    "                #cssmenu.align-right ul ul {\r" +
     "\n" +
-    "            }\r" +
+    "                -webkit-border-radius: 3px 0 0 3px;\r" +
     "\n" +
-    "            #cssmenu.align-right ul ul {\r" +
+    "                -moz-border-radius: 3px 0 0 3px;\r" +
     "\n" +
-    "            -webkit-border-radius: 3px 0 0 3px;\r" +
+    "                border-radius: 3px 0 0 3px;\r" +
     "\n" +
-    "            -moz-border-radius: 3px 0 0 3px;\r" +
-    "\n" +
-    "            border-radius: 3px 0 0 3px;\r" +
-    "\n" +
-    "            }\r" +
+    "                }\r" +
     "\n" +
     "            </style>\r" +
     "\n" +
     "            \r" +
     "\n" +
+    "            \r" +
+    "\n" +
+    "\r" +
+    "\n" +
     "            <div id=\"cssmenu\">\r" +
     "\n" +
     "                <ul>\r" +
     "\n" +
-    "                    <li ng-repeat=\"t in tutorials\"><a><span> {{t.name}} </span></a>\r" +
+    "                    <li ng-repeat=\"t in tutorials\"><a ng-click=\"selectTutorial( t.url )\"><span> {{t.name}} </span></a>\r" +
     "\n" +
     "                        <ul>\r" +
     "\n" +
@@ -428,9 +428,37 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "            </div>\r" +
     "\n" +
+    "\r" +
+    "\n" +
+    "               \r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "            <div ng-if=\"showDesc(selectedTutorial)\">\r" +
+    "\n" +
+    "                <force-graph-directive>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "            <div ng-if=\"showDoc(selectedTutorial)\">\r" +
+    "\n" +
+    "                <div class=\"container\">\r" +
+    "\n" +
+    "                    <iframe style=\"width: 100%; height: 800px\" frameborder=\"0\" src={{selectedTutorial}}></iframe>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
     "            \r" +
     "\n" +
     "        </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "            \r" +
     "\n" +
     "            \r" +
     "\n" +
@@ -438,23 +466,12 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "\r" +
-    "\n" +
-    "        </div>\r" +
-    "\n" +
-    "            <div class=\"container\">\r" +
+    "        \r" +
     "\n" +
     "\r" +
     "\n" +
-    "                <div> \r" +
-    "\n" +
-    "                    <iframe style=\"width: 100%; height: 800px\" frameborder=\"0\" src={{selectedTutorial}}></iframe>\r" +
-    "\n" +
-    "                </div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "</div>"
+    "</div>\r" +
+    "\n"
   );
 
 
@@ -500,6 +517,24 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "    \r" +
     "\n" +
     "    <style>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        #graph {\r" +
+    "\n" +
+    "            width: 100%;\r" +
+    "\n" +
+    "            height: 100%;\r" +
+    "\n" +
+    "            position: absolute;\r" +
+    "\n" +
+    "            top: 0;\r" +
+    "\n" +
+    "            left: 0;\r" +
+    "\n" +
+    "            z-index: -10;\r" +
+    "\n" +
+    "        }\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -758,7 +793,11 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "    </div><!-- /.container -->\r" +
+    "    </div>\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    <!-- /.container -->\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -787,7 +826,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "<div >\r" +
     "\n" +
-    "    \r" +
+    "   \r" +
     "\n" +
     "    <div>\r" +
     "\n" +
@@ -795,9 +834,11 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "    </div>\r" +
     "\n" +
-    "\r" +
-    "\n" +
     "    \r" +
+    "\n" +
+    " \r" +
+    "\n" +
+    "\r" +
     "\n" +
     "</div>"
   );
