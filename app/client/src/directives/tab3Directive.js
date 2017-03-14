@@ -3,7 +3,6 @@ module.exports = function(app) {
  
     app.directive('tab3Directive', [ function () {
         return {
-            controller: 'mainController' ,
             restrict: 'E',
             replace: true,
             scope: {

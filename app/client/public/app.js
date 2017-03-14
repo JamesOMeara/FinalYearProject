@@ -11,7 +11,7 @@ var app = angular.module("app", [
 
 require('templates')
 
-},{"./src/source":21,"angular":"angular","angular-sanitize":"angular-sanitize","templates":"templates"}],2:[function(require,module,exports){
+},{"./src/source":23,"angular":"angular","angular-sanitize":"angular-sanitize","templates":"templates"}],2:[function(require,module,exports){
 
 require('angular');
 
@@ -84,9 +84,8 @@ module.exports = function(app) {
 
 module.exports = function(app) {
  
-    app.directive('displayTutorialDirective', [function () {
+    app.directive('displayTutorialDirective', [ "forceGraphCollectionsService" , function (forceGraphCollectionsService) {
         return {
-            // controller: 'mainController' ,
             restrict: 'E',
             replace: true,
             transclude: true,
@@ -94,14 +93,17 @@ module.exports = function(app) {
                 name: "="
             },
             templateUrl: './app/client/src/directives/templates/displayTutorial.ejs',
-            link: function(scope) {
+            link: function(scope, $scope, forceGraphController) {
 
-                scope.selectedTutorial = "doc/blank.htm";
+                scope.selectedTutorial = {  name:"Error",
+                                            url: "doc/blank.htm"
+                                        };  
 
                 scope.tutorials = [
                     {   
                         name: "Overview",
                         url: "description",
+                        graphData: forceGraphCollectionsService.overview,
                         data: [     
                                 {   url: "description",
                                     name: 'description'}
@@ -110,6 +112,7 @@ module.exports = function(app) {
                     {   
                         name: "Angular",
                         url: "description",
+                        graphData: forceGraphCollectionsService.angular,
                         data: [     
                                 {   url: "doc/angular/Angular.htm",
                                     name: "Walkthrough"} 
@@ -184,7 +187,9 @@ module.exports = function(app) {
                 }
 
                 scope.showDesc = function(tutorial){
-                    if(tutorial === "description"){
+                    console.log('called')
+                    console.log(tutorial)
+                    if(tutorial.url === "description"){
                         return true;
                     }else{
                         return false;
@@ -192,7 +197,7 @@ module.exports = function(app) {
                 }
 
                 scope.showDoc = function(tutorial){
-                    if(tutorial === "description"){
+                    if(tutorial.url === "description"){
                         return false;
                     }else{
                         return true;
@@ -249,38 +254,301 @@ module.exports = function(app) {
 
 module.exports = function(app) {
  
-  app.directive('forceGraphDirective', [ "d3Service", "overviewService", function ( d3Service, overviewService) {
+  app.directive('forceGraphDirective', [ "d3Service", function ( d3Service ) {
     return {
-      controller: 'navController' ,
       restrict: 'E',
       replace: false,
       transclude: true,
       scope: {
-
+          data: '=',
       },
       templateUrl: './app/client/src/directives/templates/forceGraphTemplate.ejs',
       link: function(scope, element, attrs) {
 
-        
-
-        var groups= {
-            Highlevel: "blue",
-            t1: "red",
-            t2: 'red'
-        };
-
-        var sizes = {
-            large: 15,
-            medium: 10,
-            small: 5
-        }
-
         d3Service.d3().then(function(d3) {
 
-            var elements = {};
+            //nodes and links (data)
+            var nodes = {};
             var links = [];
 
-            var elements = overviewService.elements;
+            //width and height of force graph
+            var width = (window.innerWidth > 0) ? window.innerWidth : screen.width
+            var height = 800;
+
+            //componments for d3
+            var force = {}
+            var svg = {}
+            var link = {}
+            var node = {}
+            var tooltip = {}
+
+            //setup data, if no data passed in create an empty array/object
+            nodes = (scope.data != undefined ? scope.data.elements : {} );
+            links = (scope.data !== undefined ? scope.data.links : []);
+
+            //setup a watch for new data
+            scope.$watch('data', function(newValue, oldValue) {
+                if (newValue){
+                    restart(newValue)
+                }else{
+                    console.log("no new value")
+                }
+            }, true);
+            
+
+            //only draw if new data is passed in 
+
+                initSVG();
+                initForce();
+                drawLinks();
+                drawNodes();
+                drawTooltip();
+
+                // svg = d3.select("#graph").append("svg")
+                //     .attr("width", '100%')
+                //     .attr("height", height);
+
+                // force = d3.layout.force()
+                //     .nodes(d3.values(nodes))
+                //     .links(links)
+                //     .size([width, height])
+                //     .linkDistance(70)
+                //     .charge(-1000)
+                //     .on("tick", tick)
+                //     .start();
+
+                // link = svg.selectAll(".link")
+                //     .data(force.links())
+                //     .enter().append("line")
+                //     .attr("class", "link");
+                
+                // node = svg.selectAll(".node")
+                //     .data(force.nodes())
+                //     .enter()
+                //     .append("g")
+                //     .attr("class", "node")
+                //     .on("mouseover", mouseover)
+                //     .on("mouseout", mouseout)
+                //     .on("mousemove", mousemove)
+                //     .call(force.drag);
+
+                // tooltip = d3.select("#graph")
+                //     .append('div')
+                //     .attr("class", "tooltip") 
+                //     .style("opacity", 0)
+
+                // node.append("circle")
+                //     .style('fill', function(d) { return d.group; })
+                //     .attr('r', function(d) { return d.size; });
+
+                // node.append("text")
+                //     .attr("x", 12)
+                //     .attr("dy", ".35em")
+                //     .text(function(d) { return d.name; });
+
+                function initSVG(){
+                    svg = d3.select("#graph").append("svg")
+                        .attr("width", '100%')
+                        .attr("height", height);
+                }
+
+                function initForce(){
+                    force = d3.layout.force()
+                        .nodes(d3.values(nodes))
+                        .links(links)
+                        .size([width, height])
+                        .linkDistance(70)
+                        .charge(-1000)
+                        .on("tick", tick)
+                        .start();
+                }
+
+                function drawLinks(){
+                    link = svg.selectAll(".link")
+                        .data(force.links())
+                        .enter().append("line")
+                        .attr("class", "link");
+                }
+
+                function drawNodes(){
+                    node = svg.selectAll(".node")
+                        .data(force.nodes())
+                        .enter()
+                        .append("g")
+                        .attr("class", "node")
+                        .on("mouseover", mouseover)
+                        .on("mouseout", mouseout)
+                        .on("mousemove", mousemove)
+                        .call(force.drag);
+
+                    node.append("circle")
+                        .style('fill', function(d) { return d.group; })
+                        .attr('r', function(d) { return d.size; });
+
+                    node.append("text")
+                        .attr("x", 12)
+                        .attr("dy", ".35em")
+                        .text(function(d) { return d.name; });
+                }
+
+                function drawTooltip(){
+                    tooltip = d3.select("#graph")
+                        .append('div')
+                        .attr("class", "tooltip") 
+                        .style("opacity", 0)
+                }
+
+                function tick() {
+                    link
+                        .attr("x1", function(d) { return d.source.x; })
+                        .attr("y1", function(d) { return d.source.y; })
+                        .attr("x2", function(d) { return d.target.x; })
+                        .attr("y2", function(d) { return d.target.y; });
+                    node
+                        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+                }
+
+                function mouseover(d) {
+                    tooltip	
+                        .html('<p>'+d.name+'</p>' + '<p>'+d.desc+'</p>' )	 
+                    tooltip
+                        .transition(500)
+                        .style("opacity", .9)
+                        .style("visibility", "visible")
+
+                    node
+                        .transition(500)
+                        .style("opacity", function(o) {
+                            return isConnected(o, d) ? 1.0 : 0.2 ;
+                        })
+                        .selectAll('circle')
+                        .style("fill", function(o) {
+                            if (isConnectedAsTarget(o, d) && isConnectedAsSource(o, d) ) {
+                            fillcolor = 'green';
+                            } else if (isConnectedAsSource(o, d)) {
+                            fillcolor = 'red';
+                            } else if (isConnectedAsTarget(o, d)) {
+                            fillcolor = 'blue';
+                            } else if (isEqual(o, d)) {
+                            fillcolor = "hotpink";
+                            } else {
+                            fillcolor = '#000';
+                            }
+                            return fillcolor;
+                        })
+
+                    link
+                        .transition(500)
+                        .style("stroke-opacity", function(o) {
+                            return o.source === d || o.target === d ? 1 : 0.2;
+                        })
+                }
+
+                
+                function mousemove(d) {
+                    tooltip
+                        .style("left", (d3.event.pageX + 50) + "px")
+                        .style("top", (d3.event.pageY + 50) + "px");
+                }
+                
+                function mouseout(d) {
+
+                    tooltip
+                        .transition(500)
+                        .style("opacity", 0)
+                        .style("visibility", "hidden");
+
+                    node
+                        .transition(500)
+                        .style("opacity", 1)
+                        .selectAll('circle')
+                        .style("fill", function(o) {
+                            return o.group;
+                        });
+                    link
+                        .transition(500)
+                        .style("stroke-opacity", 1)
+                }
+
+                function node_radius(d) { return Math.pow(40.0 * d.size, 1/3); }
+
+                function isConnected(a, b) {
+                    return isConnectedAsTarget(a, b) || isConnectedAsSource(a, b) || a.name == b.name;
+                }
+
+                function isConnectedAsSource(a, b) {
+                    return linkedByIndex[a.name + "," + b.name];
+                }
+
+                function isConnectedAsTarget(a, b) {
+                    return linkedByIndex[b.name + "," + a.name];
+                }
+
+                function isEqual(a, b) {
+                    return a.name == b.name;
+                }
+
+                var linkedByIndex = {};
+                    links.forEach(function(d) {
+                    linkedByIndex[d.source.name + "," + d.target.name] = true;
+                });
+
+                
+
+                function restart(newValue){
+                    //reset the nodes and links
+                    nodes = {};
+                    links = [];
+                    d3.timer(force.resume);
+                    
+                    //get the new data passsed in 
+                    nodes = newValue.elements 
+                    links = newValue.links 
+
+                    //remove all componments 
+                    svg.selectAll('g').remove();
+                    svg.selectAll('.node').remove();
+                    svg.selectAll('.link').remove();
+
+                    //and begin drawing again
+                    initForce();
+                    drawLinks();
+                    drawNodes();
+                    drawTooltip();
+                }
+
+        });
+      }
+    };
+  }]);
+
+
+  
+
+};
+
+
+
+
+
+
+     
+
+        // var groups= {
+        //     Highlevel: "blue",
+        //     t1: "red",
+        //     t2: 'red'
+        // };
+
+        // var sizes = {
+        //     large: 15,
+        //     medium: 10,
+        //     small: 5
+        // }
+
+
+
+ // var elements = overviewService.elements;
             // {
             //     'singlePage': {
             //         name: 'Single Page Web App',
@@ -514,7 +782,7 @@ module.exports = function(app) {
                
                
             // }
-            var links = overviewService.links;
+            // var links = overviewService.links;
             
             // [
             //     {source: elements.singlePage        ,target: elements.angular   },
@@ -581,166 +849,8 @@ module.exports = function(app) {
                 
             // ];
 
-            var nodes = overviewService.elements
+            // var nodes = overviewService.elements
             
-            var width = (window.innerWidth > 0) ? window.innerWidth : screen.width,
-                height = 800;
-
-            var force = d3.layout.force()
-                .nodes(d3.values(nodes))
-                .links(links)
-                .size([width, height])
-                .linkDistance(70)
-                .charge(-1000)
-                .on("tick", tick)
-                .start();
-
-            var svg = d3.select("#graph").append("svg")
-                .attr("width", '100%')
-                .attr("height", height);
-
-            var link = svg.selectAll(".link")
-                .data(force.links())
-                .enter().append("line")
-                .attr("class", "link");
-
-            var node = svg.selectAll(".node")
-                .data(force.nodes())
-                .enter()
-                .append("g")
-                .attr("class", "node")
-                .on("mouseover", mouseover)
-                .on("mouseout", mouseout)
-                .on("mousemove", mousemove)
-                .call(force.drag);
-
-            var tooltip = d3.select("#graph")
-                .append('div')
-                .attr("class", "tooltip") 
-                .style("opacity", 0)
-
-            node.append("circle")
-                .style('fill', function(d) { return d.group; })
-                .attr('r', function(d) { return d.size; });
-
-            node.append("text")
-                .attr("x", 12)
-                .attr("dy", ".35em")
-                .text(function(d) { return d.name; });
-
-            
-
-
-            function tick() {
-                link
-                    .attr("x1", function(d) { return d.source.x; })
-                    .attr("y1", function(d) { return d.source.y; })
-                    .attr("x2", function(d) { return d.target.x; })
-                    .attr("y2", function(d) { return d.target.y; });
-
-                node
-                    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-            }
-
-           
-
-             function mouseover(d) {
-                tooltip	
-                    .html('<p>'+d.name+'</p>' + '<p>'+d.desc+'</p>' )	 
-                tooltip
-                    .transition(500)
-                    .style("opacity", .9)
-                    .style("visibility", "visible")
-
-                node
-                    .transition(500)
-                    .style("opacity", function(o) {
-                        return isConnected(o, d) ? 1.0 : 0.2 ;
-                    })
-                    .selectAll('circle')
-                    .style("fill", function(o) {
-                        if (isConnectedAsTarget(o, d) && isConnectedAsSource(o, d) ) {
-                        fillcolor = 'green';
-                        } else if (isConnectedAsSource(o, d)) {
-                        fillcolor = 'red';
-                        } else if (isConnectedAsTarget(o, d)) {
-                        fillcolor = 'blue';
-                        } else if (isEqual(o, d)) {
-                        fillcolor = "hotpink";
-                        } else {
-                        fillcolor = '#000';
-                        }
-                        return fillcolor;
-                    })
-
-                link
-                    .transition(500)
-                    .style("stroke-opacity", function(o) {
-                        return o.source === d || o.target === d ? 1 : 0.2;
-                    })
-            }
-
-            
-            function mousemove(d) {
-                tooltip
-                    .style("left", (d3.event.pageX + 50) + "px")
-                    .style("top", (d3.event.pageY + 50) + "px");
-            }
-            
-            function mouseout(d) {
-
-                tooltip
-                    .transition(500)
-                    .style("opacity", 0)
-                    .style("visibility", "hidden");
-
-                node
-                    .transition(500)
-                    .style("opacity", 1)
-                    .selectAll('circle')
-                    .style("fill", function(o) {
-                        return o.group;
-                    });
-                link
-                    .transition(500)
-                    .style("stroke-opacity", 1)
-            }
-
-            function node_radius(d) { return Math.pow(40.0 * d.size, 1/3); }
-
-            function isConnected(a, b) {
-                return isConnectedAsTarget(a, b) || isConnectedAsSource(a, b) || a.name == b.name;
-            }
-
-            function isConnectedAsSource(a, b) {
-                return linkedByIndex[a.name + "," + b.name];
-            }
-
-            function isConnectedAsTarget(a, b) {
-                return linkedByIndex[b.name + "," + a.name];
-            }
-
-            function isEqual(a, b) {
-                return a.name == b.name;
-            }
-
-            var linkedByIndex = {};
-                links.forEach(function(d) {
-                linkedByIndex[d.source.name + "," + d.target.name] = true;
-                });
-
-        });
-      }
-    };
-  }]);
-
-
-  
-
-};
-
-
-
 },{}],9:[function(require,module,exports){
 
 
@@ -860,7 +970,6 @@ module.exports = function(app) {
  
     app.directive('tab1Directive', [ function (databaseFactory) {
         return {
-            // controller: 'mainController' ,
             restrict: 'E',
             replace: true,
             scope: {
@@ -882,7 +991,6 @@ module.exports = function(app) {
  
     app.directive('tab2Directive', [ function (databaseFactory) {
         return {
-            controller: 'mainController' ,
             restrict: 'E',
             replace: true,
             transclude: true,
@@ -905,7 +1013,6 @@ module.exports = function(app) {
  
     app.directive('tab3Directive', [ function () {
         return {
-            controller: 'mainController' ,
             restrict: 'E',
             replace: true,
             scope: {
@@ -1005,15 +1112,97 @@ module.exports = function(app) {
 
 };
 },{}],18:[function(require,module,exports){
+
+module.exports = function(app) {
+    
+    app.factory('forceGraphCollectionsService', ['overviewService', "angularForceGraphService", function( overviewService, angularForceGraphService ) {
+
+
+
+            return {
+                overview: overviewService,
+                angular: angularForceGraphService
+            }
+    }])
+}
+        
+      
+},{}],19:[function(require,module,exports){
+
+module.exports = function(app) {
+    
+    app.factory('angularForceGraphService', [ function() {
+
+        var groups= {
+            Highlevel: "blue",
+            t1: "red",
+            t2: 'red'
+        };
+
+        var sizes = {
+            large: 15,
+            medium: 10,
+            small: 5
+        }
+        
+        var elements=  {
+                'singlePage': {
+                    name: 'Single Page Web App',
+                    group: 'red',
+                    size: sizes.large,
+                    desc: "A simple single Webpage with no redirects etc.."
+                },
+                'angular': {
+                    name: 'Angular',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Strong clientSide framework for responsive apps"
+                },
+                'node': {
+                    name: 'Node',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Server side javascript framework"
+                },
+                 'javascript': {
+                    name: 'Javascript',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Programming language"
+                }
+    
+           }
+
+               
+            var links = [
+                {source: elements.singlePage        ,target: elements.angular   },
+                {source: elements.singlePage        ,target: elements.node   },
+                {source: elements.singlePage        ,target: elements.javascript   }
+                
+            ]
+
+
+            return {
+                elements: elements,
+                links: links
+            }
+    }])
+}
+        
+      
+},{}],20:[function(require,module,exports){
 require('angular');
 
 module.exports = function(app) {
   require('./sharedService.js')(app);
   require('./d3.js')(app);
   require('./overviewService.js')(app);
+  require('./forceGraphCollectionsService.js')(app);
+  
+  require('./forceGraphs/angularForceGraphService.js')(app);
   
 };
-},{"./d3.js":17,"./overviewService.js":19,"./sharedService.js":20,"angular":"angular"}],19:[function(require,module,exports){
+},{"./d3.js":17,"./forceGraphCollectionsService.js":18,"./forceGraphs/angularForceGraphService.js":19,"./overviewService.js":21,"./sharedService.js":22,"angular":"angular"}],21:[function(require,module,exports){
 
 module.exports = function(app) {
     
@@ -1337,7 +1526,7 @@ module.exports = function(app) {
 }
         
       
-},{}],20:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -1359,7 +1548,7 @@ module.exports = function(app) {
     });
 
 };
-},{}],21:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 
 var source = angular.module('source', []);
 
@@ -1370,4 +1559,4 @@ require('./factories/')(source)
 
 module.exports = source.name;
 
-},{"./controllers/":2,"./directives/":9,"./factories/":16,"./services/":18}]},{},[1]);
+},{"./controllers/":2,"./directives/":9,"./factories/":16,"./services/":20}]},{},[1]);

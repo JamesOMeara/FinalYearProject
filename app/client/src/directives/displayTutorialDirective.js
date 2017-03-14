@@ -1,9 +1,8 @@
 
 module.exports = function(app) {
  
-    app.directive('displayTutorialDirective', [function () {
+    app.directive('displayTutorialDirective', [ "forceGraphCollectionsService" , function (forceGraphCollectionsService) {
         return {
-            // controller: 'mainController' ,
             restrict: 'E',
             replace: true,
             transclude: true,
@@ -11,14 +10,17 @@ module.exports = function(app) {
                 name: "="
             },
             templateUrl: './app/client/src/directives/templates/displayTutorial.ejs',
-            link: function(scope) {
+            link: function(scope, $scope, forceGraphController) {
 
-                scope.selectedTutorial = "doc/blank.htm";
+                scope.selectedTutorial = {  name:"Error",
+                                            url: "doc/blank.htm"
+                                        };  
 
                 scope.tutorials = [
                     {   
                         name: "Overview",
                         url: "description",
+                        graphData: forceGraphCollectionsService.overview,
                         data: [     
                                 {   url: "description",
                                     name: 'description'}
@@ -27,6 +29,7 @@ module.exports = function(app) {
                     {   
                         name: "Angular",
                         url: "description",
+                        graphData: forceGraphCollectionsService.angular,
                         data: [     
                                 {   url: "doc/angular/Angular.htm",
                                     name: "Walkthrough"} 
@@ -101,7 +104,9 @@ module.exports = function(app) {
                 }
 
                 scope.showDesc = function(tutorial){
-                    if(tutorial === "description"){
+                    console.log('called')
+                    console.log(tutorial)
+                    if(tutorial.url === "description"){
                         return true;
                     }else{
                         return false;
@@ -109,7 +114,7 @@ module.exports = function(app) {
                 }
 
                 scope.showDoc = function(tutorial){
-                    if(tutorial === "description"){
+                    if(tutorial.url === "description"){
                         return false;
                     }else{
                         return true;

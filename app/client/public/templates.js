@@ -3,7 +3,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('./app/client/src/directives/templates/displayTutorial.ejs',
-    "<div>\r" +
+    "<div >\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -415,11 +415,11 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <ul>\r" +
     "\n" +
-    "                    <li ng-repeat=\"t in tutorials\"><a ng-click=\"selectTutorial( t.url )\"><span> {{t.name}} </span></a>\r" +
+    "                    <li ng-repeat=\"t in tutorials\"><a ng-click=\"selectTutorial( t )\"><span> {{t.name}} </span></a>\r" +
     "\n" +
     "                        <ul>\r" +
     "\n" +
-    "                            <li ng-repeat=\"data in t.data\" class=\"has-sub\"><a ng-click=\"selectTutorial( data.url )\"><span> {{data.name}}</span></a></li>\r" +
+    "                            <li ng-repeat=\"data in t.data\" class=\"has-sub\"><a ng-click=\"selectTutorial( data )\"><span> {{data.name}}</span></a></li>\r" +
     "\n" +
     "                        </ul>\r" +
     "\n" +
@@ -433,21 +433,23 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "               \r" +
     "\n" +
-    "\r" +
+    "            \r" +
     "\n" +
-    "            <div ng-if=\"showDesc(selectedTutorial)\">\r" +
+    "            <div ng-if=selectedTutorial.graphData >\r" +
     "\n" +
-    "                <force-graph-directive>\r" +
+    "                <force-graph-directive data = selectedTutorial.graphData >\r" +
     "\n" +
     "            </div>\r" +
     "\n" +
     "\r" +
     "\n" +
+    "            \r" +
+    "\n" +
     "            <div ng-if=\"showDoc(selectedTutorial)\">\r" +
     "\n" +
     "                <div class=\"container\">\r" +
     "\n" +
-    "                    <iframe style=\"width: 100%; height: 800px\" frameborder=\"0\" src={{selectedTutorial}}></iframe>\r" +
+    "                    <iframe style=\"width: 100%; height: 800px\" frameborder=\"0\" src={{selectedTutorial.url}}></iframe>\r" +
     "\n" +
     "                </div>\r" +
     "\n" +
@@ -802,16 +804,6 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "\r" +
-    "\n" +
-    "    <div>\r" +
-    "\n" +
-    "        <force-graph-directive>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
     "</div>"
   );
 
@@ -829,7 +821,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "   \r" +
     "\n" +
-    "    <div>\r" +
+    "    <div >\r" +
     "\n" +
     "        <display-tutorial-directive name=\" 'Angular.htm' \" >\r" +
     "\n" +

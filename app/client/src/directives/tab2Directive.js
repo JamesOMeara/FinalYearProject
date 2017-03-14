@@ -3,7 +3,6 @@ module.exports = function(app) {
  
     app.directive('tab2Directive', [ function (databaseFactory) {
         return {
-            controller: 'mainController' ,
             restrict: 'E',
             replace: true,
             transclude: true,
