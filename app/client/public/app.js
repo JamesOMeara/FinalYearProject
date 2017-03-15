@@ -11,7 +11,7 @@ var app = angular.module("app", [
 
 require('templates')
 
-},{"./src/source":23,"angular":"angular","angular-sanitize":"angular-sanitize","templates":"templates"}],2:[function(require,module,exports){
+},{"./src/source":31,"angular":"angular","angular-sanitize":"angular-sanitize","templates":"templates"}],2:[function(require,module,exports){
 
 require('angular');
 
@@ -106,22 +106,34 @@ module.exports = function(app) {
                         graphData: forceGraphCollectionsService.overview,
                         data: [     
                                 {   url: "description",
-                                    name: 'description'}
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.overview,
+                                }
                             ]
                     },
                     {   
                         name: "Angular",
                         url: "description",
                         graphData: forceGraphCollectionsService.angular,
-                        data: [     
+                        data: [   
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.angular,   
+                                },  
                                 {   url: "doc/angular/Angular.htm",
-                                    name: "Walkthrough"} 
+                                    name: "Walkthrough",
+                                } 
                             ]
                     },
                     {   
                         name: "Node",
                         url: "description",
-                        data: [     
+                        graphData: forceGraphCollectionsService.node,
+                        data: [    
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.node,   
+                                }, 
                                 {   url: "doc/node/node.htm",
                                     name: "Walkthrough"} 
                             ]
@@ -129,7 +141,11 @@ module.exports = function(app) {
                     {   
                         name: "Automation",
                         url: "description",
+                        graphData: forceGraphCollectionsService.automation,
                         data: [     
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.automation,   }, 
                                 {   url: "doc/automation/grunt/grunt.htm",
                                     name: 'Grunt'},
                                 {   url: "doc/automation/jenkins/Jenkins.htm",
@@ -139,7 +155,11 @@ module.exports = function(app) {
                     {   
                         name: "Testing",
                         url: "description",
+                        graphData: forceGraphCollectionsService.testing,
                         data: [     
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.testing,   }, 
                                 {   url: "doc/testing/e2e/e2e.htm",
                                     name: 'End to End Testing'},
                                 {   url: "doc/testing/server/testingServer.htm",
@@ -151,7 +171,11 @@ module.exports = function(app) {
                     {   
                         name: "D3",
                         url: "description",
+                        graphData: forceGraphCollectionsService.d3,
                         data: [     
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.d3,   }, 
                                 {   url: "doc/d3/d3.htm",
                                     name: 'D3'}
                             ]
@@ -159,7 +183,11 @@ module.exports = function(app) {
                     {   
                         name: "Database",
                         url: "description",
+                        graphData: forceGraphCollectionsService.database,
                         data: [     
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.database,   }, 
                                 {   url: "doc/database/database.htm",
                                     name: 'MongoDB'}
                             ]
@@ -167,7 +195,11 @@ module.exports = function(app) {
                     {   
                         name: "Git",
                         url: "description",
+                        graphData: forceGraphCollectionsService.git,
                         data: [     
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.git,   }, 
                                 {   url: "doc/git/GIT.htm",
                                     name: 'How To'}
                             ]
@@ -175,7 +207,11 @@ module.exports = function(app) {
                     {   
                         name: "Server",
                         url: "description",
+                        graphData: forceGraphCollectionsService.server,
                         data: [     
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.server,   }, 
                                 {   url: "doc/ubuntu/ubuntu.htm",
                                     name: 'Amazon EC2'}
                             ]
@@ -251,6 +287,30 @@ module.exports = function(app) {
 
 };
 },{}],8:[function(require,module,exports){
+
+module.exports = function(app) {
+ 
+    app.directive('displayExamplesDirective', [  function () {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            scope: {
+                name: "="
+            },
+            templateUrl: './app/client/src/directives/templates/examplesTemplates/displayExamplesTemplate.ejs',
+            link: function(scope) {
+
+      
+
+
+            }
+        };
+  }]);
+
+
+};
+},{}],9:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -851,7 +911,7 @@ module.exports = function(app) {
 
             // var nodes = overviewService.elements
             
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 
 
 require('angular');
@@ -859,19 +919,22 @@ require('angular');
 module.exports = function(app) {
   require('./navDirective.js')(app);
   require('./simpleTableDirective.js')(app);
-  require('./tab1Directive.js')(app);
-  require('./tab2Directive.js')(app);
-  require('./tab3Directive.js')(app);
-  require('./embeddedPlunkerDirective.js')(app);
-  require('./embeddedJsfiddleDirective.js')(app);
+
+  require('./tabs/tab1Directive.js')(app);
+  require('./tabs/tab2Directive.js')(app);
+  require('./tabs/tab3Directive.js')(app);
+  
   require('./displayTutorialDirective.js')(app);
   require('./forceGraphDirective.js')(app);
-  
 
+  require('./embedded/embeddedPlunkerDirective.js')(app);
+  require('./embedded/embeddedJsfiddleDirective.js')(app);
+
+  require('./examples/displayExamplesDirective.js')(app);
   
   
 };
-},{"./displayTutorialDirective.js":5,"./embeddedJsfiddleDirective.js":6,"./embeddedPlunkerDirective.js":7,"./forceGraphDirective.js":8,"./navDirective.js":10,"./simpleTableDirective.js":11,"./tab1Directive.js":12,"./tab2Directive.js":13,"./tab3Directive.js":14,"angular":"angular"}],10:[function(require,module,exports){
+},{"./displayTutorialDirective.js":5,"./embedded/embeddedJsfiddleDirective.js":6,"./embedded/embeddedPlunkerDirective.js":7,"./examples/displayExamplesDirective.js":8,"./forceGraphDirective.js":9,"./navDirective.js":11,"./simpleTableDirective.js":12,"./tabs/tab1Directive.js":13,"./tabs/tab2Directive.js":14,"./tabs/tab3Directive.js":15,"angular":"angular"}],11:[function(require,module,exports){
 
 module.exports = function(app) {
 
@@ -892,7 +955,7 @@ module.exports = function(app) {
 
 
 };
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -964,7 +1027,7 @@ module.exports = function(app) {
 
 
 };
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -985,7 +1048,7 @@ module.exports = function(app) {
 
 
 };
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -1007,7 +1070,7 @@ module.exports = function(app) {
 
 
 };
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -1044,7 +1107,7 @@ module.exports = function(app) {
 
 
 };
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -1068,13 +1131,13 @@ module.exports = function(app) {
     });
 
 };
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 require('angular');
 
 module.exports = function(app) {
   require('./databaseFactory.js')(app);
 };
-},{"./databaseFactory.js":15,"angular":"angular"}],17:[function(require,module,exports){
+},{"./databaseFactory.js":16,"angular":"angular"}],18:[function(require,module,exports){
 module.exports = function(app) {
     
     app.factory('d3Service', ['$document', '$q', '$rootScope',
@@ -1111,23 +1174,51 @@ module.exports = function(app) {
   ]);
 
 };
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 
 module.exports = function(app) {
     
-    app.factory('forceGraphCollectionsService', ['overviewService', "angularForceGraphService", function( overviewService, angularForceGraphService ) {
+    app.factory('forceGraphCollectionsService', [   'overviewService', 
+                                                    "angularForceGraphService", 
+                                                    "nodeForceGraphService",
+                                                    "automationForceGraphService",
+                                                    "testingForceGraphService",
+                                                    "d3ForceGraphService",
+                                                    "databaseForceGraphService",
+                                                    "gitForceGraphService",
+                                                    "serverForceGraphService",
+
+
+                                                    function( 
+                                                        overviewService, 
+                                                        angularForceGraphService,
+                                                        nodeForceGraphService,
+                                                        automationForceGraphService,
+                                                        testingForceGraphService,
+                                                        d3ForceGraphService,
+                                                        databaseForceGraphService,
+                                                        gitForceGraphService,
+                                                        serverForceGraphService
+                                                     ) {
 
 
 
             return {
                 overview: overviewService,
-                angular: angularForceGraphService
+                angular: angularForceGraphService,
+                node: nodeForceGraphService,
+                automation: automationForceGraphService,
+                testing: testingForceGraphService,
+                d3: d3ForceGraphService,
+                database: databaseForceGraphService,
+                git: gitForceGraphService,
+                server: serverForceGraphService
             }
     }])
 }
         
       
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 
 module.exports = function(app) {
     
@@ -1190,19 +1281,255 @@ module.exports = function(app) {
 }
         
       
-},{}],20:[function(require,module,exports){
-require('angular');
+},{}],21:[function(require,module,exports){
 
 module.exports = function(app) {
-  require('./sharedService.js')(app);
-  require('./d3.js')(app);
-  require('./overviewService.js')(app);
-  require('./forceGraphCollectionsService.js')(app);
-  
-  require('./forceGraphs/angularForceGraphService.js')(app);
-  
-};
-},{"./d3.js":17,"./forceGraphCollectionsService.js":18,"./forceGraphs/angularForceGraphService.js":19,"./overviewService.js":21,"./sharedService.js":22,"angular":"angular"}],21:[function(require,module,exports){
+    
+    app.factory('automationForceGraphService', [ function() {
+
+        var groups= {
+            Highlevel: "blue",
+            t1: "red",
+            t2: 'red'
+        };
+
+        var sizes = {
+            large: 15,
+            medium: 10,
+            small: 5
+        }
+        
+        var elements=  {
+                'singlePage': {
+                    name: 'Single Page Web App',
+                    group: 'red',
+                    size: sizes.large,
+                    desc: "A simple single Webpage with no redirects etc.."
+                },
+                 'javascript': {
+                    name: 'Javascript',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Programming language"
+                }
+           }
+
+               
+            var links = [
+                {source: elements.singlePage        ,target: elements.javascript   }
+                
+            ]
+
+
+            return {
+                elements: elements,
+                links: links
+            }
+    }])
+}
+        
+      
+},{}],22:[function(require,module,exports){
+
+module.exports = function(app) {
+    
+    app.factory('d3ForceGraphService', [ function() {
+
+        var groups= {
+            Highlevel: "blue",
+            t1: "red",
+            t2: 'red'
+        };
+
+        var sizes = {
+            large: 15,
+            medium: 10,
+            small: 5
+        }
+        
+        var elements=  {
+                'singlePage': {
+                    name: 'Single Page Web App',
+                    group: 'red',
+                    size: sizes.large,
+                    desc: "A simple single Webpage with no redirects etc.."
+                },
+                 'javascript': {
+                    name: 'Javascript',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Programming language"
+                }
+           }
+
+               
+            var links = [
+                {source: elements.singlePage        ,target: elements.javascript   }
+                
+            ]
+
+
+            return {
+                elements: elements,
+                links: links
+            }
+    }])
+}
+        
+      
+},{}],23:[function(require,module,exports){
+
+module.exports = function(app) {
+    
+    app.factory('databaseForceGraphService', [ function() {
+
+        var groups= {
+            Highlevel: "blue",
+            t1: "red",
+            t2: 'red'
+        };
+
+        var sizes = {
+            large: 15,
+            medium: 10,
+            small: 5
+        }
+        
+        var elements=  {
+                'singlePage': {
+                    name: 'Single Page Web App',
+                    group: 'red',
+                    size: sizes.large,
+                    desc: "A simple single Webpage with no redirects etc.."
+                },
+                 'javascript': {
+                    name: 'Javascript',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Programming language"
+                }
+           }
+
+               
+            var links = [
+                {source: elements.singlePage        ,target: elements.javascript   }
+                
+            ]
+
+
+            return {
+                elements: elements,
+                links: links
+            }
+    }])
+}
+        
+      
+},{}],24:[function(require,module,exports){
+
+module.exports = function(app) {
+    
+    app.factory('gitForceGraphService', [ function() {
+
+        var groups= {
+            Highlevel: "blue",
+            t1: "red",
+            t2: 'red'
+        };
+
+        var sizes = {
+            large: 15,
+            medium: 10,
+            small: 5
+        }
+        
+        var elements=  {
+                'singlePage': {
+                    name: 'Single Page Web App',
+                    group: 'red',
+                    size: sizes.large,
+                    desc: "A simple single Webpage with no redirects etc.."
+                },
+                 'javascript': {
+                    name: 'Javascript',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Programming language"
+                }
+           }
+
+               
+            var links = [
+                {source: elements.singlePage        ,target: elements.javascript   }
+                
+            ]
+
+
+            return {
+                elements: elements,
+                links: links
+            }
+    }])
+}
+        
+      
+},{}],25:[function(require,module,exports){
+
+module.exports = function(app) {
+    
+    app.factory('nodeForceGraphService', [ function() {
+
+        var groups= {
+            Highlevel: "blue",
+            t1: "red",
+            t2: 'red'
+        };
+
+        var sizes = {
+            large: 15,
+            medium: 10,
+            small: 5
+        }
+        
+        var elements=  {
+                'singlePage': {
+                    name: 'Single Page Web App',
+                    group: 'red',
+                    size: sizes.large,
+                    desc: "A simple single Webpage with no redirects etc.."
+                },
+                'node': {
+                    name: 'Node',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Server side javascript framework"
+                },
+                 'javascript': {
+                    name: 'Javascript',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Programming language"
+                }
+    
+           }
+
+               
+            var links = [
+                {source: elements.singlePage        ,target: elements.node   },
+                {source: elements.singlePage        ,target: elements.javascript   }
+                
+            ]
+
+
+            return {
+                elements: elements,
+                links: links
+            }
+    }])
+}
+        
+      
+},{}],26:[function(require,module,exports){
 
 module.exports = function(app) {
     
@@ -1526,7 +1853,131 @@ module.exports = function(app) {
 }
         
       
-},{}],22:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
+
+module.exports = function(app) {
+    
+    app.factory('serverForceGraphService', [ function() {
+
+        var groups= {
+            Highlevel: "blue",
+            t1: "red",
+            t2: 'red'
+        };
+
+        var sizes = {
+            large: 15,
+            medium: 10,
+            small: 5
+        }
+        
+        var elements=  {
+                'singlePage': {
+                    name: 'Single Page Web App',
+                    group: 'red',
+                    size: sizes.large,
+                    desc: "A simple single Webpage with no redirects etc.."
+                },
+                'node': {
+                    name: 'Node',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Server side javascript framework"
+                },
+                 'javascript': {
+                    name: 'Javascript',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Programming language"
+                }
+    
+           }
+
+               
+            var links = [
+                {source: elements.singlePage        ,target: elements.node   },
+                {source: elements.singlePage        ,target: elements.javascript   }
+                
+            ]
+
+
+            return {
+                elements: elements,
+                links: links
+            }
+    }])
+}
+        
+      
+},{}],28:[function(require,module,exports){
+
+module.exports = function(app) {
+    
+    app.factory('testingForceGraphService', [ function() {
+
+        var groups= {
+            Highlevel: "blue",
+            t1: "red",
+            t2: 'red'
+        };
+
+        var sizes = {
+            large: 15,
+            medium: 10,
+            small: 5
+        }
+        
+        var elements=  {
+                'karma': {
+                    name: 'Single Page Web App',
+                    group: 'red',
+                    size: sizes.large,
+                    desc: ""
+                },
+                 'javascript': {
+                    name: 'Javascript',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Programming language"
+                }
+           }
+
+               
+            var links = [
+                {source: elements.karma        ,target: elements.javascript   }
+                
+            ]
+
+
+            return {
+                elements: elements,
+                links: links
+            }
+    }])
+}
+        
+      
+},{}],29:[function(require,module,exports){
+require('angular');
+
+module.exports = function(app) {
+  require('./sharedService.js')(app);
+  require('./d3.js')(app);
+  require('./forceGraphCollectionsService.js')(app);
+  
+  require('./forceGraphs/overviewService.js')(app);
+  require('./forceGraphs/angularForceGraphService.js')(app);
+  require('./forceGraphs/nodeForceGraphService.js')(app);
+  require('./forceGraphs/automationForceGraphService.js')(app);
+  require('./forceGraphs/testingForceGraphService.js')(app);
+  require('./forceGraphs/d3ForceGraphService.js')(app);
+  require('./forceGraphs/databaseForceGraphService.js')(app);
+  require('./forceGraphs/gitForceGraphService.js')(app);
+  require('./forceGraphs/serverForceGraphService.js')(app);
+
+  
+};
+},{"./d3.js":18,"./forceGraphCollectionsService.js":19,"./forceGraphs/angularForceGraphService.js":20,"./forceGraphs/automationForceGraphService.js":21,"./forceGraphs/d3ForceGraphService.js":22,"./forceGraphs/databaseForceGraphService.js":23,"./forceGraphs/gitForceGraphService.js":24,"./forceGraphs/nodeForceGraphService.js":25,"./forceGraphs/overviewService.js":26,"./forceGraphs/serverForceGraphService.js":27,"./forceGraphs/testingForceGraphService.js":28,"./sharedService.js":30,"angular":"angular"}],30:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -1548,7 +1999,7 @@ module.exports = function(app) {
     });
 
 };
-},{}],23:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 
 var source = angular.module('source', []);
 
@@ -1559,4 +2010,4 @@ require('./factories/')(source)
 
 module.exports = source.name;
 
-},{"./controllers/":2,"./directives/":9,"./factories/":16,"./services/":20}]},{},[1]);
+},{"./controllers/":2,"./directives/":10,"./factories/":17,"./services/":29}]},{},[1]);

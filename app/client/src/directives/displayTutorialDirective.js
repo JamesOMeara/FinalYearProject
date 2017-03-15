@@ -23,22 +23,34 @@ module.exports = function(app) {
                         graphData: forceGraphCollectionsService.overview,
                         data: [     
                                 {   url: "description",
-                                    name: 'description'}
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.overview,
+                                }
                             ]
                     },
                     {   
                         name: "Angular",
                         url: "description",
                         graphData: forceGraphCollectionsService.angular,
-                        data: [     
+                        data: [   
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.angular,   
+                                },  
                                 {   url: "doc/angular/Angular.htm",
-                                    name: "Walkthrough"} 
+                                    name: "Walkthrough",
+                                } 
                             ]
                     },
                     {   
                         name: "Node",
                         url: "description",
-                        data: [     
+                        graphData: forceGraphCollectionsService.node,
+                        data: [    
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.node,   
+                                }, 
                                 {   url: "doc/node/node.htm",
                                     name: "Walkthrough"} 
                             ]
@@ -46,7 +58,11 @@ module.exports = function(app) {
                     {   
                         name: "Automation",
                         url: "description",
+                        graphData: forceGraphCollectionsService.automation,
                         data: [     
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.automation,   }, 
                                 {   url: "doc/automation/grunt/grunt.htm",
                                     name: 'Grunt'},
                                 {   url: "doc/automation/jenkins/Jenkins.htm",
@@ -56,7 +72,11 @@ module.exports = function(app) {
                     {   
                         name: "Testing",
                         url: "description",
+                        graphData: forceGraphCollectionsService.testing,
                         data: [     
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.testing,   }, 
                                 {   url: "doc/testing/e2e/e2e.htm",
                                     name: 'End to End Testing'},
                                 {   url: "doc/testing/server/testingServer.htm",
@@ -68,7 +88,11 @@ module.exports = function(app) {
                     {   
                         name: "D3",
                         url: "description",
+                        graphData: forceGraphCollectionsService.d3,
                         data: [     
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.d3,   }, 
                                 {   url: "doc/d3/d3.htm",
                                     name: 'D3'}
                             ]
@@ -76,7 +100,11 @@ module.exports = function(app) {
                     {   
                         name: "Database",
                         url: "description",
+                        graphData: forceGraphCollectionsService.database,
                         data: [     
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.database,   }, 
                                 {   url: "doc/database/database.htm",
                                     name: 'MongoDB'}
                             ]
@@ -84,7 +112,11 @@ module.exports = function(app) {
                     {   
                         name: "Git",
                         url: "description",
+                        graphData: forceGraphCollectionsService.git,
                         data: [     
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.git,   }, 
                                 {   url: "doc/git/GIT.htm",
                                     name: 'How To'}
                             ]
@@ -92,7 +124,11 @@ module.exports = function(app) {
                     {   
                         name: "Server",
                         url: "description",
+                        graphData: forceGraphCollectionsService.server,
                         data: [     
+                                {   url: "description",
+                                    name: 'Overview',
+                                    graphData: forceGraphCollectionsService.server,   }, 
                                 {   url: "doc/ubuntu/ubuntu.htm",
                                     name: 'Amazon EC2'}
                             ]

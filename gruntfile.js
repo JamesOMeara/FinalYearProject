@@ -58,7 +58,7 @@ grunt.initConfig({
     },
     ngtemplates:  {
         app:        {
-            src:      './app/client/src/directives/templates/*.ejs',
+            src:      './app/client/src/directives/templates/**/*.ejs',
             dest:     pkg.browser.templates, //'./app/client/src/directives/templates/templates.js',
             options:  {
                 // prefix: '',

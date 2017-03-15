@@ -511,6 +511,19 @@ angular.module('app').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('./app/client/src/directives/templates/examplesTemplates/displayExamplesTemplate.ejs',
+    "<div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "TEST\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "<div>"
+  );
+
+
   $templateCache.put('./app/client/src/directives/templates/forceGraphTemplate.ejs',
     "<div>\r" +
     "\n" +
@@ -800,6 +813,14 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "    \r" +
     "\n" +
     "    <!-- /.container -->\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div>\r" +
+    "\n" +
+    "        <display-examples-directive>\r" +
+    "\n" +
+    "    <div>\r" +
     "\n" +
     "\r" +
     "\n" +
