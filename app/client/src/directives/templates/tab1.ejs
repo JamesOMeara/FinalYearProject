@@ -6,8 +6,48 @@
     <div class="container" >
 
         <h1> Home Page </h1>
+        <br>
 
-        
+        <ol>
+            <li>
+                <example1-directive></example1-directive>
+                <br><br>
+            </li>
+            <li>
+                <example2-directive></example2-directive>
+                <br><br>
+            </li>
+            <li>
+                <example3-directive></example3-directive>
+                <br><br>
+            </li>
+            <li>
+                <example4-directive something='passing string into 4th directive'></example4-directive>
+                <br><br>
+            </li>
+            <li>
+                <example5-directive></example5-directive>
+                <br><br>
+            </li>
+            <li>
+                <div ng-controller="exampleController">
+                <example6-directive something='{{ exampleSomething() }}'></example6-directive>
+                </div>
+                <br><br>
+            </li>
+            <li>
+                <example7-directive></example7-directive>
+                <br><br>
+            </li>
+            <li>
+                <example8-directive></example8-directive>
+                <br><br>
+            </li>
+            <li>
+                <example9-directive></example9-directive>
+                <br><br>
+            </li>
+        </ol>
     
 
     
@@ -16,8 +56,6 @@
     
     <!-- /.container -->
 
-    <div>
-        <display-examples-directive>
-    <div>
+    
 
 </div>

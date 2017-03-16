@@ -5,6 +5,8 @@ module.exports = function(app) {
   require('./d3.js')(app);
   require('./forceGraphCollectionsService.js')(app);
   
+  require('./examples/exampleService.js')(app);
+  
   require('./forceGraphs/overviewService.js')(app);
   require('./forceGraphs/angularForceGraphService.js')(app);
   require('./forceGraphs/nodeForceGraphService.js')(app);

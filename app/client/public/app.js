@@ -11,15 +11,33 @@ var app = angular.module("app", [
 
 require('templates')
 
-},{"./src/source":31,"angular":"angular","angular-sanitize":"angular-sanitize","templates":"templates"}],2:[function(require,module,exports){
+},{"./src/source":34,"angular":"angular","angular-sanitize":"angular-sanitize","templates":"templates"}],2:[function(require,module,exports){
+
+module.exports = function(app) {
+ 
+    app.controller("exampleController", function($scope) {
+
+     
+        $scope.exampleSomething = function(){
+            return "String from an example controller"
+        } 
+
+
+    });
+
+};
+},{}],3:[function(require,module,exports){
 
 require('angular');
 
 module.exports = function(app) {
   require('./mainController.js')(app);
   require('./navBarController.js')(app);
+
+  require('./examples/exampleController.js')(app);
+  
 };
-},{"./mainController.js":3,"./navBarController.js":4,"angular":"angular"}],3:[function(require,module,exports){
+},{"./examples/exampleController.js":2,"./mainController.js":4,"./navBarController.js":5,"angular":"angular"}],4:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -57,7 +75,7 @@ module.exports = function(app) {
     });
 
 };
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 
 module.exports = function(app) {
     app.controller("navController", function($scope, sharedService) {
@@ -80,7 +98,7 @@ module.exports = function(app) {
         }
     });
 };
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -248,7 +266,7 @@ module.exports = function(app) {
 
 
 };
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -267,7 +285,7 @@ module.exports = function(app) {
   }]);
 
 };
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -286,31 +304,157 @@ module.exports = function(app) {
   }]);
 
 };
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 
 module.exports = function(app) {
  
-    app.directive('displayExamplesDirective', [  function () {
+    //simple directive hard code the html 
+    app.directive('example1Directive', [  function () {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            template:   '<div>'+
+                        '<p>Displaying Text from Direcitve Template File</p>'+
+                        '<p><b><i>DIRECTIVE HTML: &lt;example1-directive&gt;</i></b></p>'+
+                        '<p><b>OUTPUT:</b>Some random Text Here.. </p> ' + 
+                        '</div>',
+        };
+    }]);
+
+
+    //simple Direcitve sing template
+    app.directive('example2Directive', [  function () {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            templateUrl: './app/client/src/directives/templates/examplesTemplates/example2.ejs',
+        };
+    }]);
+
+
+    //print out a variable from a directives scope
+    app.directive('example3Directive', [  function () {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: false,
+            templateUrl: './app/client/src/directives/templates/examplesTemplates/example3.ejs',
+            link: function(scope) {
+                 scope.something = "hello world"
+            }
+        };
+    }]);
+
+    //input a variable into html directive definition and display it 
+    app.directive('example4Directive', [  function () {
         return {
             restrict: 'E',
             replace: true,
             transclude: true,
             scope: {
-                name: "="
+                //initalize the variable from the element definition 
+                something: '@'
             },
-            templateUrl: './app/client/src/directives/templates/examplesTemplates/displayExamplesTemplate.ejs',
+            templateUrl: './app/client/src/directives/templates/examplesTemplates/example4.ejs',
+        };
+    }]);
+
+    
+
+    //call a directives scope fucntion to return a string and display it
+    app.directive('example5Directive', [  function () {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            scope: {
+            },
+            templateUrl: './app/client/src/directives/templates/examplesTemplates/example5.ejs',
             link: function(scope) {
-
-      
-
-
+                scope.somefunction = function(){
+                    return "some string returned from a fucntion in a directives scope"
+                }
             }
         };
-  }]);
+    }]);
+
+    //print out a string from a $scope variable defined by a controller
+    app.directive('example6Directive', [  function () {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            scope: {
+                //initalize the variable from the element definition (pass in value from contorller)
+                something: '@'
+            },
+            templateUrl: './app/client/src/directives/templates/examplesTemplates/example6.ejs',
+        };
+    }]);
+
+
+    //angular 2 way data binding
+    app.directive('example7Directive', [  function () {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            scope: {
+            },
+            templateUrl: './app/client/src/directives/templates/examplesTemplates/example7.ejs',
+        };
+    }]);
+
+
+    //using a service
+    app.directive('example8Directive', [ 'exampleService',  function(exampleService) {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            scope: {
+            },
+            templateUrl: './app/client/src/directives/templates/examplesTemplates/example8.ejs',
+            link: function(scope) {
+                scope.getStringFromService = function(){
+                    return exampleService.something.description;
+                }
+            }
+        };
+    }]);
+
+
+    //using a factory
+    app.directive('example9Directive', [ 'exampleFactory',  function(exampleFactory) {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            scope: {
+            },
+            templateUrl: './app/client/src/directives/templates/examplesTemplates/example9.ejs',
+            link: function(scope) {
+
+                scope.str ="not initaliazed yet..."
+
+                scope.getRequest = function(){
+                    exampleFactory.get('exampleGetUrl')
+                        .then(function (response) {
+                            scope.str = response.data.message;
+                        }, function (error) {
+                            scope.str = 'Error ' + error.message;
+                        });
+
+                }
+            }
+        };
+    }]);
 
 
 };
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -911,7 +1055,7 @@ module.exports = function(app) {
 
             // var nodes = overviewService.elements
             
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 
 
 require('angular');
@@ -934,7 +1078,7 @@ module.exports = function(app) {
   
   
 };
-},{"./displayTutorialDirective.js":5,"./embedded/embeddedJsfiddleDirective.js":6,"./embedded/embeddedPlunkerDirective.js":7,"./examples/displayExamplesDirective.js":8,"./forceGraphDirective.js":9,"./navDirective.js":11,"./simpleTableDirective.js":12,"./tabs/tab1Directive.js":13,"./tabs/tab2Directive.js":14,"./tabs/tab3Directive.js":15,"angular":"angular"}],11:[function(require,module,exports){
+},{"./displayTutorialDirective.js":6,"./embedded/embeddedJsfiddleDirective.js":7,"./embedded/embeddedPlunkerDirective.js":8,"./examples/displayExamplesDirective.js":9,"./forceGraphDirective.js":10,"./navDirective.js":12,"./simpleTableDirective.js":13,"./tabs/tab1Directive.js":14,"./tabs/tab2Directive.js":15,"./tabs/tab3Directive.js":16,"angular":"angular"}],12:[function(require,module,exports){
 
 module.exports = function(app) {
 
@@ -955,7 +1099,7 @@ module.exports = function(app) {
 
 
 };
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -1027,7 +1171,7 @@ module.exports = function(app) {
 
 
 };
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -1048,7 +1192,7 @@ module.exports = function(app) {
 
 
 };
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -1070,7 +1214,7 @@ module.exports = function(app) {
 
 
 };
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -1107,7 +1251,7 @@ module.exports = function(app) {
 
 
 };
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -1131,13 +1275,35 @@ module.exports = function(app) {
     });
 
 };
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
+
+module.exports = function(app) {
+ 
+    app.factory("exampleFactory", function($http) {
+        var factory = {};
+
+        factory.get = function (url) {
+            return $http.get(url)
+        };
+        factory.post = function (url, something) {
+            return $http.post(url, something);
+        };
+
+        return factory;
+       
+    });
+
+};
+},{}],19:[function(require,module,exports){
 require('angular');
 
 module.exports = function(app) {
   require('./databaseFactory.js')(app);
+
+  require('./examples/exampleFactory.js')(app);
+  
 };
-},{"./databaseFactory.js":16,"angular":"angular"}],18:[function(require,module,exports){
+},{"./databaseFactory.js":17,"./examples/exampleFactory.js":18,"angular":"angular"}],20:[function(require,module,exports){
 module.exports = function(app) {
     
     app.factory('d3Service', ['$document', '$q', '$rootScope',
@@ -1174,7 +1340,23 @@ module.exports = function(app) {
   ]);
 
 };
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
+
+module.exports = function(app) {
+ 
+    app.service("exampleService", function() {
+
+        service = {};
+
+        service.something = {
+            description: "A string contained within a service, services can be used to share variables between controllers etc.."
+        }
+        
+        return service
+    });
+
+};
+},{}],22:[function(require,module,exports){
 
 module.exports = function(app) {
     
@@ -1218,7 +1400,7 @@ module.exports = function(app) {
 }
         
       
-},{}],20:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 
 module.exports = function(app) {
     
@@ -1281,7 +1463,7 @@ module.exports = function(app) {
 }
         
       
-},{}],21:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 
 module.exports = function(app) {
     
@@ -1329,7 +1511,7 @@ module.exports = function(app) {
 }
         
       
-},{}],22:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 
 module.exports = function(app) {
     
@@ -1377,7 +1559,7 @@ module.exports = function(app) {
 }
         
       
-},{}],23:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 
 module.exports = function(app) {
     
@@ -1425,7 +1607,7 @@ module.exports = function(app) {
 }
         
       
-},{}],24:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 
 module.exports = function(app) {
     
@@ -1473,7 +1655,7 @@ module.exports = function(app) {
 }
         
       
-},{}],25:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 
 module.exports = function(app) {
     
@@ -1529,7 +1711,7 @@ module.exports = function(app) {
 }
         
       
-},{}],26:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 
 module.exports = function(app) {
     
@@ -1853,7 +2035,7 @@ module.exports = function(app) {
 }
         
       
-},{}],27:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 
 module.exports = function(app) {
     
@@ -1909,7 +2091,7 @@ module.exports = function(app) {
 }
         
       
-},{}],28:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 
 module.exports = function(app) {
     
@@ -1957,13 +2139,15 @@ module.exports = function(app) {
 }
         
       
-},{}],29:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 require('angular');
 
 module.exports = function(app) {
   require('./sharedService.js')(app);
   require('./d3.js')(app);
   require('./forceGraphCollectionsService.js')(app);
+  
+  require('./examples/exampleService.js')(app);
   
   require('./forceGraphs/overviewService.js')(app);
   require('./forceGraphs/angularForceGraphService.js')(app);
@@ -1977,7 +2161,7 @@ module.exports = function(app) {
 
   
 };
-},{"./d3.js":18,"./forceGraphCollectionsService.js":19,"./forceGraphs/angularForceGraphService.js":20,"./forceGraphs/automationForceGraphService.js":21,"./forceGraphs/d3ForceGraphService.js":22,"./forceGraphs/databaseForceGraphService.js":23,"./forceGraphs/gitForceGraphService.js":24,"./forceGraphs/nodeForceGraphService.js":25,"./forceGraphs/overviewService.js":26,"./forceGraphs/serverForceGraphService.js":27,"./forceGraphs/testingForceGraphService.js":28,"./sharedService.js":30,"angular":"angular"}],30:[function(require,module,exports){
+},{"./d3.js":20,"./examples/exampleService.js":21,"./forceGraphCollectionsService.js":22,"./forceGraphs/angularForceGraphService.js":23,"./forceGraphs/automationForceGraphService.js":24,"./forceGraphs/d3ForceGraphService.js":25,"./forceGraphs/databaseForceGraphService.js":26,"./forceGraphs/gitForceGraphService.js":27,"./forceGraphs/nodeForceGraphService.js":28,"./forceGraphs/overviewService.js":29,"./forceGraphs/serverForceGraphService.js":30,"./forceGraphs/testingForceGraphService.js":31,"./sharedService.js":33,"angular":"angular"}],33:[function(require,module,exports){
 
 module.exports = function(app) {
  
@@ -1999,7 +2183,7 @@ module.exports = function(app) {
     });
 
 };
-},{}],31:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 
 var source = angular.module('source', []);
 
@@ -2010,4 +2194,4 @@ require('./factories/')(source)
 
 module.exports = source.name;
 
-},{"./controllers/":2,"./directives/":10,"./factories/":17,"./services/":29}]},{},[1]);
+},{"./controllers/":3,"./directives/":11,"./factories/":19,"./services/":32}]},{},[1]);

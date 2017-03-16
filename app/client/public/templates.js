@@ -512,14 +512,113 @@ angular.module('app').run(['$templateCache', function($templateCache) {
   );
 
 
-  $templateCache.put('./app/client/src/directives/templates/examplesTemplates/displayExamplesTemplate.ejs',
+  $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example2.ejs',
     "<div>\r" +
     "\n" +
-    "\r" +
+    "    <p>Displaying Text from Direcitve Template File</p>\r" +
     "\n" +
-    "TEST\r" +
+    "    <p><b><i>DIRECTIVE HTML: &lt;example2-directive&gt;</i></b></p>\r" +
     "\n" +
-    "\r" +
+    "    <p><b>OUTPUT:</b>Some random Text Here.. </p> \r" +
+    "\n" +
+    "<div>"
+  );
+
+
+  $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example3.ejs',
+    "<div>\r" +
+    "\n" +
+    "    <p>Displaying Text from directive scope</p>\r" +
+    "\n" +
+    "    <p><b><i>DIRECTIVE HTML: &lt;example3-directive&gt;</i></b></p>\r" +
+    "\n" +
+    "    <p><b>OUTPUT: </b>{{ something }} </p> \r" +
+    "\n" +
+    "<div>"
+  );
+
+
+  $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example4.ejs',
+    "<div>\r" +
+    "\n" +
+    "    <p>Displaying Text input into element</p>\r" +
+    "\n" +
+    "    <p><b><i>DIRECTIVE HTML: &lt;example4-directive something='passing string into 4th directive'&gt;</i></b></p>\r" +
+    "\n" +
+    "    <p><b>OUTPUT: </b>{{ something }} </p> \r" +
+    "\n" +
+    "<div>"
+  );
+
+
+  $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example5.ejs',
+    "<div>\r" +
+    "\n" +
+    "    <p>Displaying Text input into element</p>\r" +
+    "\n" +
+    "    <p><b><i>DIRECTIVE HTML: &lt;example5-directive&gt;</i></b></p>\r" +
+    "\n" +
+    "    <p><b>OUTPUT: </b>{{ somefunction() }} </p> \r" +
+    "\n" +
+    "<div>"
+  );
+
+
+  $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example6.ejs',
+    "<div>\r" +
+    "\n" +
+    "    <p>Displaying Text input into element</p>\r" +
+    "\n" +
+    "    <p><b><i>DIRECTIVE HTML: &lt;example6-directive something='{{ exampleSomething() }}'&gt;</i></b></p>\r" +
+    "\n" +
+    "    <p><b>OUTPUT: </b>{{ something }} </p> \r" +
+    "\n" +
+    "<div>"
+  );
+
+
+  $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example7.ejs',
+    "<div>\r" +
+    "\n" +
+    "    <p>Directive template with 2 way data binding with input text box.</p>\r" +
+    "\n" +
+    "    <p><b><i>DIRECTIVE HTML: &lt;example7-directive&gt;</i></b></p>\r" +
+    "\n" +
+    "    <p><b><i>              : &lt;input ng-model=\"inputString1\"&gt;</i></b></p>\r" +
+    "\n" +
+    "    <p><b><i>              : &#123 &#123; inputString1 &#12;5 &#125;</i></b></p>\r" +
+    "\n" +
+    "    <input ng-model=\"inputString1\">\r" +
+    "\n" +
+    "    <p><b>2 way data binding: inputString1 = </b>{{ inputString1 }} </p> \r" +
+    "\n" +
+    "<div>"
+  );
+
+
+  $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example8.ejs',
+    "<div>\r" +
+    "\n" +
+    "    <p>Directive: Getting shared value from service</p>\r" +
+    "\n" +
+    "    <p><b><i>DIRECTIVE HTML: &lt; example8-directive &gt;</i></b></p>\r" +
+    "\n" +
+    "    <p><b>OUTPUT: </b>{{ getStringFromService() }} </p> \r" +
+    "\n" +
+    "<div>"
+  );
+
+
+  $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example9.ejs',
+    "<div>\r" +
+    "\n" +
+    "    <p>Directive: Getting shared value from factory/server</p>\r" +
+    "\n" +
+    "    <p><b><i>DIRECTIVE HTML: &lt; example9-directive &gt;</i></b></p>\r" +
+    "\n" +
+    "    <button ng-click=getRequest()>click</button>\r" +
+    "\n" +
+    "    <p><b>OUTPUT: </b>{{ str }} </p> \r" +
     "\n" +
     "<div>"
   );
@@ -797,9 +896,89 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <h1> Home Page </h1>\r" +
     "\n" +
+    "        <br>\r" +
+    "\n" +
     "\r" +
     "\n" +
-    "        \r" +
+    "        <ol>\r" +
+    "\n" +
+    "            <li>\r" +
+    "\n" +
+    "                <example1-directive></example1-directive>\r" +
+    "\n" +
+    "                <br><br>\r" +
+    "\n" +
+    "            </li>\r" +
+    "\n" +
+    "            <li>\r" +
+    "\n" +
+    "                <example2-directive></example2-directive>\r" +
+    "\n" +
+    "                <br><br>\r" +
+    "\n" +
+    "            </li>\r" +
+    "\n" +
+    "            <li>\r" +
+    "\n" +
+    "                <example3-directive></example3-directive>\r" +
+    "\n" +
+    "                <br><br>\r" +
+    "\n" +
+    "            </li>\r" +
+    "\n" +
+    "            <li>\r" +
+    "\n" +
+    "                <example4-directive something='passing string into 4th directive'></example4-directive>\r" +
+    "\n" +
+    "                <br><br>\r" +
+    "\n" +
+    "            </li>\r" +
+    "\n" +
+    "            <li>\r" +
+    "\n" +
+    "                <example5-directive></example5-directive>\r" +
+    "\n" +
+    "                <br><br>\r" +
+    "\n" +
+    "            </li>\r" +
+    "\n" +
+    "            <li>\r" +
+    "\n" +
+    "                <div ng-controller=\"exampleController\">\r" +
+    "\n" +
+    "                <example6-directive something='{{ exampleSomething() }}'></example6-directive>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <br><br>\r" +
+    "\n" +
+    "            </li>\r" +
+    "\n" +
+    "            <li>\r" +
+    "\n" +
+    "                <example7-directive></example7-directive>\r" +
+    "\n" +
+    "                <br><br>\r" +
+    "\n" +
+    "            </li>\r" +
+    "\n" +
+    "            <li>\r" +
+    "\n" +
+    "                <example8-directive></example8-directive>\r" +
+    "\n" +
+    "                <br><br>\r" +
+    "\n" +
+    "            </li>\r" +
+    "\n" +
+    "            <li>\r" +
+    "\n" +
+    "                <example9-directive></example9-directive>\r" +
+    "\n" +
+    "                <br><br>\r" +
+    "\n" +
+    "            </li>\r" +
+    "\n" +
+    "        </ol>\r" +
     "\n" +
     "    \r" +
     "\n" +
@@ -817,11 +996,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "    <div>\r" +
-    "\n" +
-    "        <display-examples-directive>\r" +
-    "\n" +
-    "    <div>\r" +
+    "    \r" +
     "\n" +
     "\r" +
     "\n" +

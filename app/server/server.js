@@ -20,10 +20,15 @@ app.get('/home', function(req, res) {
     res.render('index');
 });
 
-
 app.get('/getSomething', function(req, res) {
     results = MongoClient.findDocuments(req, res);
 });
+
+app.get('/exampleGetUrl', function(req, res) {
+    res.send( { message: "this is a message retrieved from server" } ) ;
+});
+
+
 app.post('/postSomething', function(req, res) {
     var body = '';
     req.on('data', function(chunk) {
