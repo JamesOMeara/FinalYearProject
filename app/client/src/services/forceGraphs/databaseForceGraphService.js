@@ -16,23 +16,67 @@ module.exports = function(app) {
         }
         
         var elements=  {
-                'singlePage': {
-                    name: 'Single Page Web App',
+                'database': {
+                    name: 'Database',
                     group: 'red',
                     size: sizes.large,
-                    desc: "A simple single Webpage with no redirects etc.."
+                    desc: "Somewhere where data is stored"
                 },
-                 'javascript': {
-                    name: 'Javascript',
+                 'mongoDB': {
+                    name: 'MongoDB',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Document orientated database"
+                },
+                 'databaseTools': {
+                    name: 'Tools',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Tools to Manage Database"
+                },
+                 'robomongo': {
+                    name: 'Robomongo',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Tool to Manage Database"
+                },
+                'relational': {
+                    name: 'Relational',
                     group: 'orange',
                     size: sizes.medium,
-                    desc: "Programming language"
-                }
+                    desc: "A database structure that uses relations"
+                },
+                'objectOrientated': {
+                    name: 'Object Orientated',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "A database structure that stores objects"
+                },
+                'sql': {
+                    name: 'sql',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "A database structure that stores objects"
+                },
+
+
            }
 
                
             var links = [
-                {source: elements.singlePage        ,target: elements.javascript   }
+                {source: elements.database        ,target: elements.objectOrientated   },
+                {source: elements.database        ,target: elements.relational   },
+
+                {source: elements.objectOrientated        ,target: elements.mongoDB   },
+                
+                {source: elements.database        ,target: elements.databaseTools   },
+                {source: elements.databaseTools        ,target: elements.robomongo   },
+
+                {source: elements.mongoDB        ,target: elements.robomongo   },
+
+                {source: elements.relational        ,target: elements.sql   },
+                
+                
                 
             ]
 

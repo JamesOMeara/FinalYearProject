@@ -1431,26 +1431,95 @@ module.exports = function(app) {
                     size: sizes.medium,
                     desc: "Strong clientSide framework for responsive apps"
                 },
-                'node': {
-                    name: 'Node',
-                    group: 'orange',
-                    size: sizes.medium,
-                    desc: "Server side javascript framework"
-                },
                  'javascript': {
                     name: 'Javascript',
                     group: 'orange',
                     size: sizes.medium,
                     desc: "Programming language"
-                }
+                },
+                 'dyanmic': {
+                    name: 'Dyanmic',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Dyanmic views for web pages"
+                },
+                'client': {
+                    name: 'Client',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Client side of an app (What end user interacts with)"
+                },
+                'componments': {
+                    name: 'Componments',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Angular componments"
+                },
+                'directive': {
+                    name: 'Directive',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Design and create custom elements to be used in your app"
+                },
+                'service': {
+                    name: 'Service',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Pass fucntionaliy between Angular controllers"
+                },
+                'filter': {
+                    name: 'Filter',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Angular componment to filter data dynamically in the browser"
+                },
+                'factory': {
+                    name: 'Factory',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Componment to send/recieve data from server etc"
+                },
+                'controller': {
+                    name: 'Controller',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Busisness logic stored here"
+                },
+                'busisnessLogic': {
+                    name: 'Busisness Logic',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Fucntions that will be used extensivley and provide functionality throughout the app."
+                },
+                'customElements': {
+                    name: 'Custom Elements',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Elements are defined by Directives, which include all logic inside"
+                },
     
            }
 
                
             var links = [
                 {source: elements.singlePage        ,target: elements.angular   },
-                {source: elements.singlePage        ,target: elements.node   },
-                {source: elements.singlePage        ,target: elements.javascript   }
+                {source: elements.singlePage        ,target: elements.javascript   },
+                
+                {source: elements.angular        ,target: elements.dyanmic   },
+                {source: elements.angular        ,target: elements.componments   },
+                {source: elements.angular        ,target: elements.client   },
+                
+                
+                {source: elements.componments       ,target: elements.directive   },
+                {source: elements.componments       ,target: elements.service   },
+                {source: elements.componments       ,target: elements.filter   },
+                {source: elements.componments       ,target: elements.factory   },
+                {source: elements.componments       ,target: elements.controller   },
+
+                {source: elements.controller       ,target: elements.busisnessLogic   },
+                
+                {source: elements.directive       ,target: elements.customElements   },
+                
                 
             ]
 
@@ -1482,23 +1551,153 @@ module.exports = function(app) {
         }
         
         var elements=  {
-                'singlePage': {
-                    name: 'Single Page Web App',
+                'processes': {
+                    name: 'Processes',
                     group: 'red',
                     size: sizes.large,
-                    desc: "A simple single Webpage with no redirects etc.."
+                    desc: "Software processes from start to finish"
                 },
-                 'javascript': {
-                    name: 'Javascript',
+                'development': {
+                    name: 'Development',
                     group: 'orange',
                     size: sizes.medium,
-                    desc: "Programming language"
+                    desc: "The process of making the app."
+                },
+                'testing': {
+                    name: 'Testing',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Process of testing code and output of app."
+                },
+                'building': {
+                    name: 'Building',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "building it locally, or on a server, "
+                },
+                'deployment': {
+                    name: 'Deployment',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Shipping hte final working code to a server and running it continually"
+                },
+                'ci': {
+                    name: 'Continous Integration',
+                    group: 'red',
+                    size: sizes.medium,
+                    desc: "Continually pulling from Source Control and performing jobs"
+                },
+                'buildserver': {
+                    name: 'Build Server',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Server dedicated to running the continous integration tasks"
+                },
+                'jenkins': {
+                    name: 'Jenkins',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "A platform to manage jobs for continous integration"
+                },
+                'karma': {
+                    name: 'Karma',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "A test runner for client side quests"
+                },
+                'testRunner': {
+                    name: 'Test Runner',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: ""
+                },
+                'taskRunner': {
+                    name: 'Task Runner',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "A task runner to manage client side tests"
+                },
+                'grunt': {
+                    name: 'Grunt',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Task runner for an app"
+                },
+                "buildTasks": {
+                    name: 'Build Tasks',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Task or jobs that are run on a build server (Jenkins)"
+                },
+                "nightlyTask": {
+                    name: 'Nightly',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Task or Job that will be run nightly, so that the output will be ready for start of each day"
+                },
+                "buildTask": {
+                    name: 'Build',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Task to pull from source control and carry out a build"
+                },
+                "testTask": {
+                    name: 'Test',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Carry out various tests on the build"
+                },
+                "deployTask": {
+                    name: 'Deploy',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Task that will execute deployment to the deployment server"
+                },
+                "sourceControl": {
+                    name: 'Source Control',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Where all code will be stored and controlled"
+                },
+                "git": {
+                    name: 'GIT',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "A platform for source code management"
                 }
            }
 
                
             var links = [
-                {source: elements.singlePage        ,target: elements.javascript   }
+                
+                {source: elements.processes       ,target: elements.development   },
+                {source: elements.processes       ,target: elements.testing   },
+                {source: elements.processes       ,target: elements.building   },
+                {source: elements.processes       ,target: elements.deployment   },
+                
+                {source: elements.development       ,target: elements.sourceControl   },
+
+                {source: elements.sourceControl       ,target: elements.git   },
+                
+                {source: elements.ci       ,target: elements.building   },
+                {source: elements.ci       ,target: elements.deployment   },
+                {source: elements.ci       ,target: elements.jenkins   },
+                {source: elements.ci       ,target: elements.karma   },
+                {source: elements.ci       ,target: elements.grunt   },
+                {source: elements.ci       ,target: elements.testing   },
+                
+                {source: elements.jenkins       ,target: elements.buildserver   },
+                {source: elements.jenkins       ,target: elements.buildTasks   },
+                {source: elements.buildTasks       ,target: elements.buildTask   },
+                {source: elements.buildTasks       ,target: elements.testTask   },
+                {source: elements.buildTasks       ,target: elements.nightlyTask   },
+                {source: elements.buildTasks       ,target: elements.deployTask   },
+                
+                {source: elements.grunt       ,target: elements.taskRunner   },
+                {source: elements.grunt       ,target: elements.building   },
+                
+                {source: elements.karma       ,target: elements.testRunner   },
+
                 
             ]
 
@@ -1530,23 +1729,77 @@ module.exports = function(app) {
         }
         
         var elements=  {
-                'singlePage': {
-                    name: 'Single Page Web App',
+                'd3': {
+                    name: 'D3',
                     group: 'red',
                     size: sizes.large,
-                    desc: "A simple single Webpage with no redirects etc.."
+                    desc: "Graphically displaying data in a dynamic way "
                 },
                  'javascript': {
                     name: 'Javascript',
                     group: 'orange',
                     size: sizes.medium,
                     desc: "Programming language"
+                },
+                'dataVisualiation': {
+                    name: 'Data Visualation',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Graphically displaying data in a dynamic way "
+                },
+                'dynamic': {
+                    name: 'Dynamic',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Can display dynamically in the browser when given data"
+                },
+                'interactive': {
+                    name: 'Interactive',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "D3 allows you to interact with the given data dynamically"
+                },
+                'principals': {
+                    name: 'Pricipals',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "What can D3 do/provide.. https://en.wikipedia.org/wiki/D3.js"
+                },
+                'selections': {
+                    name: 'Selections',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "This allows the programmer to use css style selectors to select given DOM nodes"
+                },
+                'transitions': {
+                    name: 'Transitions',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "By declaring a transition, values for attributes and styles can be smoothly interpolated over a certain time"
+                },
+                'dataBinding': {
+                    name: 'Data Binding',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "For more advanced uses, loaded data drives the creation of elements. D3.js loads a given dataset, then, for each of its elements, creates an SVG object with associated properties"
                 }
            }
 
                
             var links = [
-                {source: elements.singlePage        ,target: elements.javascript   }
+                {source: elements.d3        ,target: elements.javascript   },
+                {source: elements.d3        ,target: elements.dataVisualiation   },
+                {source: elements.d3        ,target: elements.interactive   },
+                {source: elements.d3        ,target: elements.dynamic   },
+                {source: elements.d3        ,target: elements.principals   },
+
+                {source: elements.principals        ,target: elements.selections   },
+                {source: elements.principals        ,target: elements.transitions   },
+                {source: elements.principals        ,target: elements.dataBinding   },
+                
+                {source: elements.interactive        ,target: elements.dynamic   },
+                
+                
                 
             ]
 
@@ -1578,23 +1831,67 @@ module.exports = function(app) {
         }
         
         var elements=  {
-                'singlePage': {
-                    name: 'Single Page Web App',
+                'database': {
+                    name: 'Database',
                     group: 'red',
                     size: sizes.large,
-                    desc: "A simple single Webpage with no redirects etc.."
+                    desc: "Somewhere where data is stored"
                 },
-                 'javascript': {
-                    name: 'Javascript',
+                 'mongoDB': {
+                    name: 'MongoDB',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Document orientated database"
+                },
+                 'databaseTools': {
+                    name: 'Tools',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Tools to Manage Database"
+                },
+                 'robomongo': {
+                    name: 'Robomongo',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Tool to Manage Database"
+                },
+                'relational': {
+                    name: 'Relational',
                     group: 'orange',
                     size: sizes.medium,
-                    desc: "Programming language"
-                }
+                    desc: "A database structure that uses relations"
+                },
+                'objectOrientated': {
+                    name: 'Object Orientated',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "A database structure that stores objects"
+                },
+                'sql': {
+                    name: 'sql',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "A database structure that stores objects"
+                },
+
+
            }
 
                
             var links = [
-                {source: elements.singlePage        ,target: elements.javascript   }
+                {source: elements.database        ,target: elements.objectOrientated   },
+                {source: elements.database        ,target: elements.relational   },
+
+                {source: elements.objectOrientated        ,target: elements.mongoDB   },
+                
+                {source: elements.database        ,target: elements.databaseTools   },
+                {source: elements.databaseTools        ,target: elements.robomongo   },
+
+                {source: elements.mongoDB        ,target: elements.robomongo   },
+
+                {source: elements.relational        ,target: elements.sql   },
+                
+                
                 
             ]
 
@@ -1626,23 +1923,133 @@ module.exports = function(app) {
         }
         
         var elements=  {
-                'singlePage': {
-                    name: 'Single Page Web App',
-                    group: 'red',
-                    size: sizes.large,
-                    desc: "A simple single Webpage with no redirects etc.."
-                },
-                 'javascript': {
-                    name: 'Javascript',
+                "sourceControl": {
+                    name: 'Source Control',
                     group: 'orange',
                     size: sizes.medium,
-                    desc: "Programming language"
+                    desc: "Where all code will be stored and controlled"
+                },
+                "git": {
+                    name: 'GIT',
+                    group: 'red',
+                    size: sizes.medium,
+                    desc: "A platform for source code management  https://juristr.com/blog/2013/04/git-explained/"
+                },
+                "local": {
+                    name: 'Local Repo',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Git stores a local copy of the repo"
+                },
+                "central": {
+                    name: 'Centraliazed Repo',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Git stores a centraliazed copy of the repo"
+                },
+                "commands": {
+                    name: 'Commands',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Git can be used via command line to update ,pull ,fork etc.. from the desired repo"
+                },
+                "status": {
+                    name: 'Status',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "get the current status of your local repo"
+                },
+                "add": {
+                    name: 'Add',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Allows the user to add certain files to a local commit/Staging area"
+                },
+                "staging": {
+                    name: 'Staging',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "An intermedediate level between your local repository and the centralized one"
+                },
+                "master": {
+                    name: 'Master',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "The repository’s main branch. Depending on the work flow it is the one people work on or the one where the integration happens"
+                },
+                "clone": {
+                    name: 'Clone',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "copies an existing git repository, normally from some remote location to your local environment."
+                },
+                "commit": {
+                    name: 'Commit',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "submitting files to the repository (the local one); in other VCS it is often referred to as “checkin”"
+                },
+                "pull": {
+                    name: 'Pull',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "An update or get latest, Pull will fetch latest and merge"
+                },
+                "fetch": {
+                    name: 'Fetch',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "An update or get latest, Fetch will collect latest changes but not merge"
+                },
+                "push": {
+                    name: 'Push',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "used to submit the code to a remote repository"
+                },
+                "remote": {
+                    name: 'Remote',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: " “remote” locations of your repository, normally on some central server."
+                },
+                "head": {
+                    name: 'Head',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "is a reference to the node to which our working space of the repository currently points."
+                },
+                "branch": {
+                    name: 'Branch',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "the master node or any node can split and branch to different nodes like a tree"
                 }
+               
            }
 
                
             var links = [
-                {source: elements.singlePage        ,target: elements.javascript   }
+                {source: elements.git       ,target: elements.sourceControl   },
+                {source: elements.git       ,target: elements.local   },
+                {source: elements.git       ,target: elements.central   },
+                {source: elements.git       ,target: elements.staging   },
+                {source: elements.git       ,target: elements.commands   },
+
+                {source: elements.commands       ,target: elements.status   },
+                {source: elements.commands       ,target: elements.add   },
+                {source: elements.commands       ,target: elements.master   },
+                {source: elements.commands       ,target: elements.clone   },
+                {source: elements.commands       ,target: elements.commit   },
+                {source: elements.commands       ,target: elements.pull   },
+                {source: elements.commands       ,target: elements.fetch   },
+                {source: elements.commands       ,target: elements.push   },
+                {source: elements.commands       ,target: elements.remote   },
+                {source: elements.commands       ,target: elements.head   },
+                
+                {source: elements.branch       ,target: elements.master   },
+
+                {source: elements.pull       ,target: elements.fetch   },
                 
             ]
 
@@ -1691,14 +2098,58 @@ module.exports = function(app) {
                     group: 'orange',
                     size: sizes.medium,
                     desc: "Programming language"
-                }
+                },
+                'server': {
+                    name: 'Server',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Server side of app, interacts with database and requests from client"
+                },
+                'eventDriven': {
+                    name: 'Event Driven',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "A programming paradigm in which the flow of the program is determined by events such as user actions "
+                },
+                'lightweight': {
+                    name: 'Lightweight',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: ""
+                },
+                'efficent': {
+                    name: 'Efficent',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: ""
+                },
+                'scaleable': {
+                    name: 'Scaleable',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: ""
+                },
+                'asynchronous': {
+                    name: 'Asynchronous',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: ""
+                },
     
            }
 
                
             var links = [
                 {source: elements.singlePage        ,target: elements.node   },
-                {source: elements.singlePage        ,target: elements.javascript   }
+                {source: elements.singlePage        ,target: elements.javascript   },
+                
+                {source: elements.node        ,target: elements.server   },
+                {source: elements.node        ,target: elements.eventDriven   },
+                {source: elements.node        ,target: elements.lightweight   },
+                {source: elements.node        ,target: elements.efficent   },
+                {source: elements.node        ,target: elements.scaleable   },
+                {source: elements.node        ,target: elements.asynchronous   },
+                
                 
             ]
 
@@ -2057,7 +2508,7 @@ module.exports = function(app) {
                 'singlePage': {
                     name: 'Single Page Web App',
                     group: 'red',
-                    size: sizes.large,
+                    size: sizes.medium,
                     desc: "A simple single Webpage with no redirects etc.."
                 },
                 'node': {
@@ -2066,19 +2517,92 @@ module.exports = function(app) {
                     size: sizes.medium,
                     desc: "Server side javascript framework"
                 },
-                 'javascript': {
-                    name: 'Javascript',
-                    group: 'orange',
+                'server': {
+                    name: 'Server',
+                    group: 'red',
                     size: sizes.medium,
-                    desc: "Programming language"
-                }
+                    desc: "Computer or computer program which manages access to a centralized resource or service in a network."
+                },
+                'buildserver': {
+                    name: 'Build Server',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Server dedicated to running the continous integration tasks"
+                },
+                'deploymentServer': {
+                    name: 'Deployment Server',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "A dedicated server to manage deployment of apps/sites"
+                },
+                'hostingServer': {
+                    name: 'Hosting Server',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "A dedicated server to host an app or website"
+                },
+                'ubuntu': {
+                    name: 'Ubuntu',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Operating System"
+                },
+                'linux': {
+                    name: 'linux',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Operating System"
+                },
+                'windows': {
+                    name: 'Windows',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Operating System"
+                },
+                'operatingSystem': {
+                    name: 'Operating System',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "the low-level software that supports a computer's basic functions, such as scheduling tasks and controlling peripherals."
+                },
+                'jenkins': {
+                    name: 'Jenkins',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "A platform to manage jobs for continous integration"
+                },
+                'serverTypes': {
+                    name: 'Uses',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Uses of a deployment Server"
+                },
+                
     
            }
 
                
             var links = [
+                {source: elements.server        ,target: elements.node   },
+                {source: elements.server        ,target: elements.serverTypes   },
+                {source: elements.server        ,target: elements.operatingSystem   },
+
+                {source: elements.operatingSystem        ,target: elements.windows   },
+                {source: elements.operatingSystem        ,target: elements.linux   },
+
+                {source: elements.linux        ,target: elements.ubuntu   },
+
                 {source: elements.singlePage        ,target: elements.node   },
-                {source: elements.singlePage        ,target: elements.javascript   }
+                
+                {source: elements.serverTypes        ,target: elements.buildserver   },
+                {source: elements.serverTypes        ,target: elements.deploymentServer   },
+                {source: elements.serverTypes        ,target: elements.hostingServer   },
+
+                {source: elements.buildserver        ,target: elements.jenkins   },
+                {source: elements.deploymentServer        ,target: elements.jenkins   },
+                {source: elements.hostingServer        ,target: elements.node   },
+                
+                
                 
             ]
 
@@ -2110,23 +2634,169 @@ module.exports = function(app) {
         }
         
         var elements=  {
-                'karma': {
-                    name: 'Single Page Web App',
-                    group: 'red',
-                    size: sizes.large,
-                    desc: ""
+                 'client': {
+                    name: 'Client',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Client side of an app (What end user interacts with)"
                 },
-                 'javascript': {
-                    name: 'Javascript',
+                'angular': {
+                    name: 'Angular',
                     group: 'orange',
                     size: sizes.medium,
-                    desc: "Programming language"
-                }
+                    desc: "Strong clientSide framework for responsive apps"
+                },
+                 'server': {
+                    name: 'Server',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Server side of app, interacts with database and requests from client"
+                },
+                 'componments': {
+                    name: 'Componments',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Angular componments"
+                },
+                'directive': {
+                    name: 'Directive',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Design and create custom elements to be used in your app"
+                },
+                'service': {
+                    name: 'Service',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Pass fucntionaliy between Angular controllers"
+                },
+                'filter': {
+                    name: 'Filter',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Angular componment to filter data dynamically in the browser"
+                },
+                'factory': {
+                    name: 'Factory',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Componment to send/recieve data from server etc"
+                },
+                'controller': {
+                    name: 'Controller',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Busisness logic stored here"
+                },
+                'testing': {
+                    name: 'Testing',
+                    group: 'orange',
+                    size: sizes.medium,
+                    desc: "Process of testing code and output of app."
+                },
+                'ci': {
+                    name: 'Continous Integration',
+                    group: 'red',
+                    size: sizes.medium,
+                    desc: "Continually pulling from Source Control and performing jobs"
+                },
+                'jenkins': {
+                    name: 'Jenkins',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "A platform to manage jobs for continous integration"
+                },
+                'karma': {
+                    name: 'Karma',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "A test runner for client side quests"
+                },
+                'coverage': {
+                    name: 'Code Coverage',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Displaying code coverage of tests to source code"
+                },
+                'testRunner': {
+                    name: 'Test Runner',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: ""
+                },
+                'grunt': {
+                    name: 'Grunt',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Task runner for an app"
+                },
+                "buildTasks": {
+                    name: 'Build Tasks',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Task or jobs that are run on a build server (Jenkins)"
+                },
+                "nightlyTask": {
+                    name: 'Nightly',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Task or Job that will be run nightly, so that the output will be ready for start of each day"
+                },
+                "testTask": {
+                    name: 'Test',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Carry out various tests on the build"
+                },
+                "jasmine": {
+                    name: 'Jasmine',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "jasmine is a Javascript framework for testing"
+                },
+                "jasmineNode": {
+                    name: 'Jasmine Node',
+                    group: 'grey',
+                    size: sizes.medium,
+                    desc: "Framework for server side testing of Node"
+                },
+              
            }
 
                
             var links = [
-                {source: elements.karma        ,target: elements.javascript   }
+
+                {source: elements.componments       ,target: elements.directive   },
+                {source: elements.componments       ,target: elements.service   },
+                {source: elements.componments       ,target: elements.filter   },
+                {source: elements.componments       ,target: elements.factory   },
+                {source: elements.componments       ,target: elements.controller   },
+
+                {source: elements.ci       ,target: elements.jenkins   },
+                {source: elements.ci       ,target: elements.karma   },
+                {source: elements.ci       ,target: elements.grunt   },
+                {source: elements.ci       ,target: elements.testing   },
+
+                {source: elements.jenkins       ,target: elements.buildTasks   },
+                
+                {source: elements.buildTasks       ,target: elements.testTask   },
+                {source: elements.buildTasks       ,target: elements.nightlyTask   },
+                
+                {source: elements.testing       ,target: elements.server   },
+                {source: elements.testing       ,target: elements.client   }, 
+                {source: elements.testing       ,target: elements.jasmine   }, 
+                {source: elements.testing       ,target: elements.coverage   }, 
+                
+                {source: elements.client       ,target: elements.karma   },
+                {source: elements.client       ,target: elements.angular   },
+
+                {source: elements.server       ,target: elements.jasmineNode   },
+
+                {source: elements.angular       ,target: elements.componments   },
+                
+                {source: elements.karma       ,target: elements.testRunner   },
+                {source: elements.karma       ,target: elements.grunt   },
+                
                 
             ]
 
