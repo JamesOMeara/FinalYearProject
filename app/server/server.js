@@ -9,9 +9,6 @@ app.set('views', __dirname + '/../client/src');
 
 app.use(express.static(path.join(__dirname, '/../client/public')));
 
-
-
-
 app.get('/', function(req, res) {
     res.render('index');
 });
