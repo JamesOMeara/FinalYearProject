@@ -24,6 +24,7 @@ module.exports = function(config) {
          'app/client/public/libs.js',
          'app/client/public/app.js',
 
+         
          'spec/unit/client/**/*.js'
     ],
 

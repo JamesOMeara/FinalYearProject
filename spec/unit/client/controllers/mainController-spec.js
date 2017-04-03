@@ -23,6 +23,10 @@ beforeEach( module('app') );
         expect( $scope.currentPage() ).toBe(1);
     });
 
+    it('Expect the section to be defaulted to 0', function() {
+        expect( $scope.showTab(1) ).toBe(true);
+    });
+
    
 
 

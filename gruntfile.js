@@ -74,8 +74,30 @@ grunt.initConfig({
       }
     },
     watch: {
-      files: ['./app/client/src/**/*.js', './app/server/**/*.js', './app/client/src/**/*.ejs', 'gruntfile.js'],
-      tasks: ['build']
+      build_app:{
+            files: ['./app/client/src/**/*.js'],
+            tasks: ['build_source']
+      },
+      build_dependacy:{
+            files: ['./app/client/public/lib/**/*.js'],
+            tasks: ['build_dependacy']
+      },
+      build_template:{
+            files: ['./app/client/src/**/*.ejs'],
+            tasks: ['build_template']
+      },
+      test_client:{
+            files: ['./app/client/src/**/*.js'],
+            tasks: ['test_unit']
+      },
+      test_server:{
+            files: ['./app/server/**/*.js'],
+            tasks: ['test_server']
+      },
+      test_integration:{
+            files: ['./app/client/src/**/*.ejs'],
+            tasks: ['test_e2e']
+      },
     },
     karma: {
         unit: {
@@ -99,7 +121,7 @@ grunt.initConfig({
             browsers: ['Chrome'],
             // logLevel: 'config.LOG_DEBUG'
         }
-    },
+    }, 
     jasmine_nodejs: {
         // task specific (default) options 
         options: {
@@ -114,7 +136,7 @@ grunt.initConfig({
             // configure one or more built-in reporters 
             reporters: {
                 console: {
-                    colors: true,        // (0|false)|(1|true)|2 
+                    colors: 2,        // (0|false)|(1|true)|2 
                     cleanStack: 1,       // (0|false)|(1|true)|2|3 
                     verbosity: 4,        // (0|false)|1|2|3|(4|true) 
                     listStyle: "indent", // "flat"|"indent" 
@@ -183,7 +205,10 @@ grunt.initConfig({
   grunt.registerTask('default', ['browserify']);
   //build
   grunt.registerTask('b', ['build']);
-  grunt.registerTask('build', ['ngtemplates', 'browserify']);
+  grunt.registerTask('build_complete', ['ngtemplates', 'browserify']);
+  grunt.registerTask('build_dependacy', ['ngtemplates', 'browserify:deps']);
+  grunt.registerTask('build_source', ['ngtemplates', 'browserify:client']);
+  grunt.registerTask('build_template', ['ngtemplates', 'browserify:templates']);
   //test
   grunt.registerTask('test', ['test_unit', 'test_server', 'test_e2e']);
   grunt.registerTask('test_unit', ['karma:unit']);
