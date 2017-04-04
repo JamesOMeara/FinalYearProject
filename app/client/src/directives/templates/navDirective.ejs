@@ -8,14 +8,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" ng-click="setSection(sections.home)">James O'M FYP</a>
+            <a class="navbar-brand" ng-click="setSection(sections.home)" id="homeButton1">James O'M FYP</a>
         </div>
         
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-            <li ng-class="{active: isNavbuttonActive(sections.home) }" ><a ng-click="setSection(sections.home)"> Home </a></li>
-            <li ng-class="{active: isNavbuttonActive(sections.two) }" ><a ng-click="setSection(sections.two)"> Tutorials </a></li>
-            <li ng-class="{active: isNavbuttonActive(sections.three) }" ><a ng-click="setSection(sections.three)"> Editor </a></li>
+            <li ng-class="{active: isNavbuttonActive(sections.home) }" ><a ng-click="setSection(sections.home)" id="homeButton2" > Home </a></li>
+            <li ng-class="{active: isNavbuttonActive(sections.two) }" ><a ng-click="setSection(sections.two)" id="tutorialsButton" > Tutorials </a></li>
+            <li ng-class="{active: isNavbuttonActive(sections.three) }" ><a ng-click="setSection(sections.three)" id="editorButton" > Editor </a></li>
             </ul>
             
         </div><!--/.nav-collapse -->

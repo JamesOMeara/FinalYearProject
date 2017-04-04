@@ -589,7 +589,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <input ng-model=\"inputString1\" id=\"example7TextBox\">\r" +
     "\n" +
-    "    <p><b>2 way data binding: inputString1 = </b>{{ inputString1 }} </p> \r" +
+    "    <p id=\"example72wayBinding\" ><b>2 way data binding: inputString1 = </b>{{ inputString1 }} </p> \r" +
     "\n" +
     "<div>"
   );
@@ -775,7 +775,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "            </button>\r" +
     "\n" +
-    "            <a class=\"navbar-brand\" ng-click=\"setSection(sections.home)\">James O'M FYP</a>\r" +
+    "            <a class=\"navbar-brand\" ng-click=\"setSection(sections.home)\" id=\"homeButton1\">James O'M FYP</a>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
@@ -785,11 +785,11 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <ul class=\"nav navbar-nav\">\r" +
     "\n" +
-    "            <li ng-class=\"{active: isNavbuttonActive(sections.home) }\" ><a ng-click=\"setSection(sections.home)\"> Home </a></li>\r" +
+    "            <li ng-class=\"{active: isNavbuttonActive(sections.home) }\" ><a ng-click=\"setSection(sections.home)\" id=\"homeButton2\" > Home </a></li>\r" +
     "\n" +
-    "            <li ng-class=\"{active: isNavbuttonActive(sections.two) }\" ><a ng-click=\"setSection(sections.two)\"> Tutorials </a></li>\r" +
+    "            <li ng-class=\"{active: isNavbuttonActive(sections.two) }\" ><a ng-click=\"setSection(sections.two)\" id=\"tutorialsButton\" > Tutorials </a></li>\r" +
     "\n" +
-    "            <li ng-class=\"{active: isNavbuttonActive(sections.three) }\" ><a ng-click=\"setSection(sections.three)\"> Editor </a></li>\r" +
+    "            <li ng-class=\"{active: isNavbuttonActive(sections.three) }\" ><a ng-click=\"setSection(sections.three)\" id=\"editorButton\" > Editor </a></li>\r" +
     "\n" +
     "            </ul>\r" +
     "\n" +
@@ -885,7 +885,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "<div>\r" +
+    "<div id=\"firstTab\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -1012,7 +1012,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "<div >\r" +
+    "<div id=\"secondTab\">\r" +
     "\n" +
     "   \r" +
     "\n" +
@@ -1035,7 +1035,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
   $templateCache.put('./app/client/src/directives/templates/tab3.ejs',
     "\r" +
     "\n" +
-    "<div>\r" +
+    "<div id=\"thirdTab\">\r" +
     "\n" +
     "\r" +
     "\n" +
