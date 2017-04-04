@@ -7,7 +7,7 @@ module.exports = function(app) {
             restrict: 'E',
             replace: true,
             transclude: true,
-            template:   '<div>'+
+            template:   '<div id="example1Directive">'+
                         '<p>Displaying Text from Direcitve Template File</p>'+
                         '<p><b><i>DIRECTIVE HTML: &lt;example1-directive&gt;</i></b></p>'+
                         '<p><b>OUTPUT:</b>Some random Text Here.. </p> ' + 

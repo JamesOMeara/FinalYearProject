@@ -39,11 +39,11 @@ exports.config = {
 
 
   // Setup the report before any tests start
-  // beforeLaunch: function() {
-  //   return new Promise(function(resolve){
-  //     reporter.beforeLaunch(resolve);
-  //   });
-  // },
+  beforeLaunch: function() {
+    return new Promise(function(resolve){
+      reporter.beforeLaunch(resolve);
+    });
+  },
 
   // Assign the test reporter to each running instance
   onPrepare: function() {
@@ -51,11 +51,11 @@ exports.config = {
   },
 
   // Close the report after all tests finish
-  // afterLaunch: function(exitCode) {
-  //   return new Promise(function(resolve){
-  //     reporter.afterLaunch(resolve.bind(this, exitCode));
-  //   });
-  // },
+  afterLaunch: function(exitCode) {
+    return new Promise(function(resolve){
+      reporter.afterLaunch(resolve.bind(this, exitCode));
+    });
+  },
   //  multiCapabilities: [
   //     {
   //     browserName: 'chrome',
@@ -64,23 +64,12 @@ exports.config = {
   //     }}
   //   ],
 
-    // chromeDriver: 'node_modules/protractor/node_modules/webdriver-manager/selenium/chromedriver',
   drivers: {
     chrome: {
       version: '2.28',
       arch: process.arch,
       baseURL: 'https://chromedriver.storage.googleapis.com'
     },
-    // ie: {
-    //   version: '2.53.1',
-    //   arch: process.arch,
-    //   baseURL: 'https://selenium-release.storage.googleapis.com'
-    // },
-    // firefox: {
-    //   version: '0.11.1',
-    //   arch: process.arch,
-    //   baseURL: 'https://github.com/mozilla/geckodriver/releases/download'
-    // }
   },
 
 
@@ -89,26 +78,11 @@ exports.config = {
 
   // Spec patterns are relative to the current working directory when
   // protractor is called.
-  specs: ['spec/e2e/test.js'],
+  specs: ['spec/e2e/*.js'],
 
   // Options to be passed to Jasmine.
   jasmineNodeOpts: {
     defaultTimeoutInterval: 30000
   },
 
-  // beforeLaunch: function() {
-  //     return new Promise(function(resolve){
-  //       reporter.beforeLaunch(resolve);
-  //     });
-  // },
-
-  // onPrepare: function() {
-  //   jasmine.getEnv().addReporter(reporter);
-  // },
-
-  // afterLaunch: function(exitCode) {
-  //     return new Promise(function(resolve){
-  //       reporter.afterLaunch(resolve.bind(this, exitCode));
-  //     });
-  // },
 };

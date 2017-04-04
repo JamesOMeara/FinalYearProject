@@ -95,7 +95,7 @@ grunt.initConfig({
             tasks: ['test_server']
       },
       test_integration:{
-            files: ['./app/client/src/**/*.ejs'],
+            files: ['spec/e2e/*.js'],
             tasks: ['test_e2e']
       },
     },
@@ -204,7 +204,7 @@ grunt.initConfig({
   //default task
   grunt.registerTask('default', ['browserify']);
   //build
-  grunt.registerTask('b', ['build']);
+  grunt.registerTask('b', ['build_complete']);
   grunt.registerTask('build_complete', ['ngtemplates', 'browserify']);
   grunt.registerTask('build_dependacy', ['ngtemplates', 'browserify:deps']);
   grunt.registerTask('build_source', ['ngtemplates', 'browserify:client']);

@@ -513,7 +513,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example2.ejs',
-    "<div>\r" +
+    "<div id=\"example2Directive\">\r" +
     "\n" +
     "    <p>Displaying Text from Direcitve Template File</p>\r" +
     "\n" +
@@ -526,7 +526,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example3.ejs',
-    "<div>\r" +
+    "<div id=\"example3Directive\">\r" +
     "\n" +
     "    <p>Displaying Text from directive scope</p>\r" +
     "\n" +
@@ -539,7 +539,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example4.ejs',
-    "<div>\r" +
+    "<div id=\"example4Directive\">\r" +
     "\n" +
     "    <p>Displaying Text input into element</p>\r" +
     "\n" +
@@ -552,7 +552,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example5.ejs',
-    "<div>\r" +
+    "<div id=\"example5Directive\">\r" +
     "\n" +
     "    <p>Displaying Text input into element</p>\r" +
     "\n" +
@@ -565,7 +565,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example6.ejs',
-    "<div>\r" +
+    "<div id=\"example6Directive\">\r" +
     "\n" +
     "    <p>Displaying Text input into element</p>\r" +
     "\n" +
@@ -578,7 +578,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example7.ejs',
-    "<div>\r" +
+    "<div id=\"example7Directive\">\r" +
     "\n" +
     "    <p>Directive template with 2 way data binding with input text box.</p>\r" +
     "\n" +
@@ -586,9 +586,9 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <p><b><i>              : &lt;input ng-model=\"inputString1\"&gt;</i></b></p>\r" +
     "\n" +
-    "    <p><b><i>              : &#123 &#123; inputString1 &#12;5 &#125;</i></b></p>\r" +
+    "    <p><b><i>              : &#123 &#123; inputString1 &#125 &#125;</i></b></p>\r" +
     "\n" +
-    "    <input ng-model=\"inputString1\">\r" +
+    "    <input ng-model=\"inputString1\" id=\"example7TextBox\">\r" +
     "\n" +
     "    <p><b>2 way data binding: inputString1 = </b>{{ inputString1 }} </p> \r" +
     "\n" +
@@ -597,7 +597,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example8.ejs',
-    "<div>\r" +
+    "<div id=\"example8Directive\">\r" +
     "\n" +
     "    <p>Directive: Getting shared value from service</p>\r" +
     "\n" +
@@ -610,7 +610,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('./app/client/src/directives/templates/examplesTemplates/example9.ejs',
-    "<div>\r" +
+    "<div id=\"example9Directive\">\r" +
     "\n" +
     "    <p>Directive: Getting shared value from factory/server</p>\r" +
     "\n" +

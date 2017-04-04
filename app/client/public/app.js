@@ -138,8 +138,32 @@ module.exports = function(app) {
                                     name: 'Overview',
                                     graphData: forceGraphCollectionsService.angular,   
                                 },  
-                                {   url: "doc/angular/Angular.htm",
-                                    name: "Walkthrough",
+                                {   url: "doc/angular/1_introduction.htm",
+                                    name: "Introduction",
+                                },  
+                                {   url: "doc/angular/2_gettingStarted.htm",
+                                    name: "Getting Started",
+                                },  
+                                {   url: "doc/angular/3_simpleApp.htm",
+                                    name: "Creating a simple app",
+                                },  
+                                {   url: "doc/angular/4_components.htm",
+                                    name: "Angular Componments",
+                                },  
+                                {   url: "doc/angular/5_directives.htm",
+                                    name: "Directive",
+                                },  
+                                {   url: "doc/angular/6_controllers.htm",
+                                    name: "Controller",
+                                },  
+                                {   url: "doc/angular/7_services.htm",
+                                    name: "Service",
+                                },  
+                                {   url: "doc/angular/8_factories.htm",
+                                    name: "Factory",
+                                },  
+                                {   url: "doc/angular/9_filters.htm",
+                                    name: "Filter",
                                 } 
                             ]
                     },
@@ -152,8 +176,12 @@ module.exports = function(app) {
                                     name: 'Overview',
                                     graphData: forceGraphCollectionsService.node,   
                                 }, 
-                                {   url: "doc/node/node.htm",
-                                    name: "Walkthrough"} 
+                                {   url: "doc/node/1_introduction.htm",
+                                    name: "Introduction"}, 
+                                {   url: "doc/node/2_setup.htm",
+                                    name: "Setup & config"}, 
+                                {   url: "doc/node/3_creatingSimple.htm",
+                                    name: "Creating a simple server"} 
                             ]
                     },
                     {   
@@ -163,11 +191,23 @@ module.exports = function(app) {
                         data: [     
                                 {   url: "description",
                                     name: 'Overview',
-                                    graphData: forceGraphCollectionsService.automation,   }, 
-                                {   url: "doc/automation/grunt/grunt.htm",
-                                    name: 'Grunt'},
-                                {   url: "doc/automation/jenkins/Jenkins.htm",
-                                    name: "Jenkins"} 
+                                    graphData: forceGraphCollectionsService.angular,   
+                                },  
+                                {   url: "doc/automation/1_introduction.htm",
+                                    name: "Introduction",
+                                },  
+                                {   url: "doc/automation/2_grunt.htm",
+                                    name: "Grunt - Intro",
+                                },  
+                                {   url: "doc/automation/3_gruntBrowserify.htm",
+                                    name: "Grunt - Browserify - Bundling app",
+                                },  
+                                {   url: "doc/automation/4_jenkinsIntro.htm",
+                                    name: "Jenkins - Intro",
+                                },  
+                                {   url: "doc/automation/5_jenkinsConfig.htm",
+                                    name: "Jenkins - Config",
+                                },  
                             ]
                     },
                     {   
@@ -194,8 +234,8 @@ module.exports = function(app) {
                                 {   url: "description",
                                     name: 'Overview',
                                     graphData: forceGraphCollectionsService.d3,   }, 
-                                {   url: "doc/d3/d3.htm",
-                                    name: 'D3'}
+                                {   url: "doc/d3/1_introduction.htm",
+                                    name: 'D3 - Intro'}
                             ]
                     },
                     {   
@@ -206,8 +246,12 @@ module.exports = function(app) {
                                 {   url: "description",
                                     name: 'Overview',
                                     graphData: forceGraphCollectionsService.database,   }, 
-                                {   url: "doc/database/database.htm",
-                                    name: 'MongoDB'}
+                                {   url: "doc/database/1_introduction.htm",
+                                    name: 'MongoDB - Intro'},
+                                {   url: "doc/database/2_setup.htm",
+                                    name: 'Setup & Config'},
+                                {   url: "doc/database/3_tools.htm",
+                                    name: 'MongoDB - tools'}
                             ]
                     },
                     {   
@@ -218,8 +262,12 @@ module.exports = function(app) {
                                 {   url: "description",
                                     name: 'Overview',
                                     graphData: forceGraphCollectionsService.git,   }, 
-                                {   url: "doc/git/GIT.htm",
-                                    name: 'How To'}
+                                {   url: "doc/git/1_introduction.htm",
+                                    name: 'Introduction'},
+                                {   url: "doc/git/2_setup.htm",
+                                    name: 'Setup'},
+                                {   url: "doc/git/3_commands.htm",
+                                    name: 'Git - Commands'}
                             ]
                     },
                     {   
@@ -314,7 +362,7 @@ module.exports = function(app) {
             restrict: 'E',
             replace: true,
             transclude: true,
-            template:   '<div>'+
+            template:   '<div id="example1Directive">'+
                         '<p>Displaying Text from Direcitve Template File</p>'+
                         '<p><b><i>DIRECTIVE HTML: &lt;example1-directive&gt;</i></b></p>'+
                         '<p><b>OUTPUT:</b>Some random Text Here.. </p> ' + 
