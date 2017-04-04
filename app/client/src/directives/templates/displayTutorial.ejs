@@ -204,9 +204,9 @@
 
             <div id="cssmenu">
                 <ul>
-                    <li ng-repeat="t in tutorials"><a ng-click="selectTutorial( t )"><span> {{t.name}} </span></a>
+                    <li ng-repeat="t in tutorials" id={{t.name}}_menuOption><a ng-click="selectTutorial( t )"><span> {{t.name}} </span></a>
                         <ul>
-                            <li ng-repeat="data in t.data" class="has-sub"><a ng-click="selectTutorial( data )"><span> {{data.name}}</span></a></li>
+                            <li ng-repeat="data in t.data" class="has-sub" id={{data.name}}_subMenuOption><a ng-click="selectTutorial( data )"><span> {{data.name}}</span></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -221,7 +221,7 @@
             
             <div ng-if="showDoc(selectedTutorial)">
                 <div class="container">
-                    <iframe style="width: 100%; height: 800px" frameborder="0" src={{selectedTutorial.url}}></iframe>
+                    <iframe style="width: 100%; height: 800px" frameborder="0" id={{selectedTutorial.name}}_iframe src={{selectedTutorial.url}}></iframe>
                 </div>
             </div>
             

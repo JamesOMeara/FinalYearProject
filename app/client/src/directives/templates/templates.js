@@ -414,11 +414,11 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <ul>\r" +
     "\n" +
-    "                    <li ng-repeat=\"t in tutorials\"><a ng-click=\"selectTutorial( t )\"><span> {{t.name}} </span></a>\r" +
+    "                    <li ng-repeat=\"t in tutorials\" id={{t.name}}_menuOption><a ng-click=\"selectTutorial( t )\"><span> {{t.name}} </span></a>\r" +
     "\n" +
     "                        <ul>\r" +
     "\n" +
-    "                            <li ng-repeat=\"data in t.data\" class=\"has-sub\"><a ng-click=\"selectTutorial( data )\"><span> {{data.name}}</span></a></li>\r" +
+    "                            <li ng-repeat=\"data in t.data\" class=\"has-sub\" id={{data.name}}_subMenuOption><a ng-click=\"selectTutorial( data )\"><span> {{data.name}}</span></a></li>\r" +
     "\n" +
     "                        </ul>\r" +
     "\n" +
@@ -448,7 +448,7 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <div class=\"container\">\r" +
     "\n" +
-    "                    <iframe style=\"width: 100%; height: 800px\" frameborder=\"0\" src={{selectedTutorial.url}}></iframe>\r" +
+    "                    <iframe style=\"width: 100%; height: 800px\" frameborder=\"0\" id={{selectedTutorial.name}}_iframe src={{selectedTutorial.url}}></iframe>\r" +
     "\n" +
     "                </div>\r" +
     "\n" +

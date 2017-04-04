@@ -21,13 +21,66 @@ describe('angularjs homepage todo list', function() {
     });
 
 
-    xit('directive example 7 Entering into text box must show below it', function() {
-        var textBoxElement = element(by.id('example7TextBox') )
-        textBoxElement.sendKeys('hello world')
+    describe('clicking overview menu button', function() {
+        it('click overview menu option', function() {
+            var overviewButton = element(by.id('Overview_menuOption') )
+            overviewButton.click()
+            var graph = element(by.id('graph') )
 
-        var angular2waybindedElement = element(by.id('example72wayBinding') )
-        expect( textBoxElement.getAttribute('value') ).toContain( "hello world" );
+            expect(graph.isDisplayed() ).toEqual(true)
+        });
+
+        it('click overview suub menu option', function() {
+            var overviewButton = element(by.id('Overview_menuOption') )
+            overviewButton.click()
+
+            var subCategoryButton = overviewButton.element(by.id('Overview_subMenuOption') )
+            subCategoryButton.click()
+
+            var graph = element(by.id('graph') )
+
+            expect(graph.isDisplayed() ).toEqual(true)
+        });
+
     });
+
+
+    describe('angularjs menu button', function() {
+        it('click angular menu option', function() {
+            var angularButton = element(by.id('Angular_menuOption') )
+            angularButton.click()
+            var graph = element(by.id('graph') )
+
+            expect(graph.isDisplayed() ).toEqual(true)
+        });
+
+    });
+
+    describe('automation menu button', function() {
+        it('click automation menu option', function() {
+            var Automation_menuOption = element(by.id('Automation_menuOption') )
+            Automation_menuOption.click()
+            var graph = element(by.id('graph') )
+
+            expect(graph.isDisplayed() ).toEqual(true)
+        });
+
+        it('click auotmaiton introduction menu option', function() {
+            var Automation_menuOption = element(by.id('Automation_menuOption') )
+            Automation_menuOption.click()
+
+            var Introduction_subMenuOption = Automation_menuOption.element(by.id('Introduction_subMenuOption') )
+            Introduction_subMenuOption.click()
+
+            browser.waitForAngular();
+            var documentt = element(by.id('Introduction_iframe') )
+
+            expect(documentt.isDisplayed() ).toEqual(true)
+        });
+
+    });
+
+
 
 
 });
