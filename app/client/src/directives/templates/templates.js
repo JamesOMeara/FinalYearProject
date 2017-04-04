@@ -977,6 +977,14 @@ angular.module('app').run(['$templateCache', function($templateCache) {
     "\n" +
     "            </li>\r" +
     "\n" +
+    "            <li>\r" +
+    "\n" +
+    "                <simple-table-directive></simple-table-directive>\r" +
+    "\n" +
+    "                <br><br>\r" +
+    "\n" +
+    "            </li>\r" +
+    "\n" +
     "        </ol>\r" +
     "\n" +
     "    \r" +

@@ -2,36 +2,18 @@
 
 var HtmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');
 
-// var reporter = new HtmlScreenshotReporter({
-//   dest: 'output/screenshots',
-//   filename: 'Helloworld-E2E-Report.html',
-  
-//   //clean folder before running tests
-//   cleanDestination: true,
- 
-//   showSummary: true,
-//   showConfiguration: true,
-//   reportTitle: "Helloworld E2E Report",
-
-//   ignoreSkippedSpecs: true,
-
-//   captureOnlyFailedSpecs: false,
-//   reportOnlyFailedSpecs: false,
-
-//   //renames the png
-//   pathBuilder: function(currentSpec, suites, browserCapabilities) {
-//       // will return chrome/your-spec-name.png
-//     return browserCapabilities.get('browserName') + '/' + currentSpec.fullName;
-//   },
-//   //creates a json object
-//   // metadataBuilder: function(currentSpec, suites, browserCapabilities) {
-//   //   return { id: currentSpec.id, os: browserCapabilities.get('browserName') };
-//   // }
-// });
 
 var reporter = new HtmlScreenshotReporter({
-  dest: 'target/screenshots',
-  filename: 'my-report.html'
+  dest: 'coverage/e2e/screenshots',
+  filename: 'my-report.html',
+  showSummary: true,
+  showConfiguration: true,
+  reportTitle: "Integration Report",
+
+  pathBuilder: function(currentSpec, suites, browserCapabilities) {
+      // will return chrome/your-spec-name.png
+    return browserCapabilities.get('browserName') + '/' + currentSpec.fullName;
+  },
 });
 
 
